@@ -40,6 +40,16 @@ test('P10 permite búsqueda y filtros desde la interfaz', async ({ page }) => {
   await expect(page.getByText('SE.12.1').or(page.getByText('SE.12.2')).first()).toBeVisible()
 })
 
+test('P04 muestra la jerarquía organizacional y los puestos', async ({ page }) => {
+  await login(page, adminUser, adminPassword)
+  await expect(page.getByRole('heading', { name: 'Organización' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Empresas' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Áreas' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Departamentos' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Secciones' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Puestos' })).toBeVisible()
+})
+
 test('P09 comunica al usuario el rango mínimo/máximo inválido', async ({ page }) => {
   await login(page, adminUser, adminPassword)
   await page.getByRole('heading', { name: 'Nuevo servicio' }).scrollIntoViewIfNeeded()

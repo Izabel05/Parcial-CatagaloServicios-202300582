@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import AdminPanel from './AdminPanel.jsx'
+import OrganizationPanel from './OrganizationPanel.jsx'
 import ServiceBrowser from './ServiceBrowser.jsx'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
@@ -103,6 +104,7 @@ function App() {
         </div>
         <button className="secondary-button" type="button" onClick={handleLogout}>Cerrar sesión</button>
       </header>
+      <OrganizationPanel token={token} role={user.role} />
       <ServiceBrowser token={token} role={user.role} />
       {user.role === 'administrador' && <AdminPanel token={token} />}
     </main>

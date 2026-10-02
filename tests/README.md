@@ -18,7 +18,7 @@ Las pruebas separan datos y responsabilidades:
 - **Unitarias:** `tests/backend/test_importer_rules.py` valida P06 y P08 sobre una copia de lectura del Excel; `tests/backend/test_security.py` valida Argon2id y AES-256-GCM sin base de datos.
 - **Integración:** `tests/integration/test_scenarios.py` cubre P01–P05 y P09–P11 contra una base indicada por `TEST_DATABASE_URL`. El módulo recrea únicamente el esquema de esa base de pruebas, inserta usuarios y jerarquía de prueba, ejecuta dos importaciones y comprueba las respuestas HTTP. No usa el volumen de evaluación.
 - **Persistencia de Compose:** `scripts/verify_persistence.ps1` ejecuta P12 en el proyecto Compose aislado `catalogo-servicios-tests`, escribe un marcador, reinicia el contenedor PostgreSQL y verifica que el volumen conserva el dato. Termina con `down` sin `-v`, por lo que no elimina el volumen de pruebas ni toca el volumen normal.
-- **Extremo a extremo:** `tests/e2e/catalogo.spec.js` usa Playwright contra el frontend real y cubre P01, P02, P03, P09 y P10: login, mensajes de error, cierre de sesión, visibilidad por rol, búsqueda y validación de rangos. Requiere backend, frontend y cuentas locales de demostración; si faltan variables de entorno, los casos quedan omitidos explícitamente.
+- **Extremo a extremo:** `tests/e2e/catalogo.spec.js` usa Playwright contra el frontend real y cubre P01, P02, P03, P04, P09 y P10: login, mensajes de error, cierre de sesión, visibilidad por rol, jerarquía organizacional, búsqueda y validación de rangos. Requiere backend, frontend y cuentas locales de demostración; si faltan variables de entorno, los casos quedan omitidos explícitamente.
 
 ## Ejecución unitaria
 

@@ -66,6 +66,12 @@ Las clases, criticidades y tipos se mantienen en catálogos controlados con clav
 
 La consulta de servicios admite búsqueda por código/nombre, filtros por nivel 1, estado y catálogos, y paginación. La ficha devuelve la relación y el nombre del nivel 1, todos los atributos importados y la trazabilidad. La alta manual exige sección responsable activa; el usuario responsable es opcional y debe pertenecer a esa sección. Los servicios importados pueden quedar sin asignación. `create_demo_users.py` agrega una jerarquía `DEMO` y crea tres asignaciones válidas como datos de demostración nuevos, separados de la fuente Excel.
 
+La interfaz `OrganizationPanel.jsx` presenta la jerarquía en cinco columnas
+encadenadas. Ambos roles pueden explorar los registros y ver los usuarios de un
+puesto; el administrador dispone de alta, edición y baja lógica. Los formularios
+solo ofrecen padres activos, pero la API vuelve a comprobar la relación, por lo
+que la interfaz no sustituye la autorización ni las reglas de negocio.
+
 ## Operación
 
 El procedimiento normal es `docker compose stop` para detener y `docker compose start` para reiniciar conservando datos. `docker compose down` retira contenedores y red, pero conserva el volumen. El procedimiento destructivo es `docker compose down -v`, seguido de `docker compose up --build -d`; elimina la base de prueba y vuelve a importar el Excel original.
