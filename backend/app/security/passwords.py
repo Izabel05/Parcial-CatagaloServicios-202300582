@@ -1,4 +1,4 @@
-from argon2 import PasswordHasher
+from argon2 import PasswordHasher, Type
 from argon2.exceptions import InvalidHashError, VerificationError, VerifyMismatchError
 
 
@@ -12,6 +12,7 @@ class PasswordService:
             parallelism=4,
             hash_len=32,
             salt_len=16,
+            type=Type.ID,
         )
 
     def hash(self, password: str) -> str:

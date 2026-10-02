@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: catalogo_servicios_test
+      POSTGRES_USER: catalogo_test
+      POSTGRES_PASSWORD: catalogo_test
+    ports:
+      - "55432:5432"
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+      - ./backend/db/00_schema.sql:/docker-entrypoint-initdb.d/00_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalogo_test -d catalogo_servicios_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  postgres_test_data:

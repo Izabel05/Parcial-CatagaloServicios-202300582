@@ -19,6 +19,65 @@ Repositorio de la parte práctica del examen parcial 2.
 - Docker Compose v2.20 o superior.
 - Para ejecutar únicamente el frontend: Node.js 22 o superior y npm.
 
+## Instalación en Fedora
+
+La aplicación principal se ejecuta dentro de Docker; no es necesario instalar
+PostgreSQL, Python ni Node.js en el equipo anfitrión. En una versión mantenida
+de Fedora instala Docker Engine y el complemento Compose desde el repositorio
+oficial de Docker:
+
+```bash
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker "$USER"
+newgrp docker
+docker run hello-world
+docker compose version
+```
+
+Si el repositorio Fedora tiene una instalación anterior incompatible, revisa
+los paquetes Docker existentes antes de instalar los oficiales. La guía
+oficial es [Instalar Docker Engine en Fedora](https://docs.docker.com/engine/install/fedora/).
+
+Clona y configura el proyecto:
+
+```bash
+git clone https://github.com/Izabel05/Parcial-CatagaloServicios-202300582.git
+cd Parcial-CatagaloServicios-202300582
+cp .env.example .env
+sed -i "s|REEMPLAZAR_CON_UNA_CLAVE_BASE64_URLSAFE_DE_32_BYTES|$(openssl rand -base64 32 | tr -d '\\n')|" .env
+docker compose up --build -d
+docker compose ps
+```
+
+Abre `http://localhost:5173`, la API en `http://localhost:8000` y Swagger en
+`http://localhost:8000/docs`. Crea las cuentas demo y conserva las contraseñas
+que se imprimen únicamente en la terminal:
+
+```bash
+docker compose exec backend python scripts/create_demo_users.py
+```
+
+Para detener y reiniciar normalmente:
+
+```bash
+docker compose stop
+docker compose start
+```
+
+Para consultar logs:
+
+```bash
+docker compose logs -f backend
+docker compose logs -f frontend
+docker compose logs -f db
+```
+
+No uses `docker compose down -v` salvo que quieras eliminar los datos de
+prueba. `docker compose down` conserva el volumen `postgres_data`.
+
 ## Puesta en marcha con PostgreSQL
 
 1. Copiar `.env.example` como `.env` y completar los valores necesarios.
@@ -32,10 +91,19 @@ El servicio `db` persiste sus datos en el volumen Docker `postgres_data`. El bac
 
 ## Autenticación local
 
+Generar la clave AES únicamente en el entorno local y guardarla en `.env`:
+
+```powershell
+python -c "import base64,secrets; print(base64.urlsafe_b64encode(secrets.token_bytes(32)).decode())"
+```
+
+No usar el marcador de `.env.example` ni guardar la clave generada en Git.
+
 Crear el primer usuario después de levantar la base:
 
 ```powershell
-docker compose exec backend python scripts/create_user.py --username admin --email admin@local.test --display-name "Administrador"
+docker compose exec db psql -U catalogo -d catalogo_servicios -c "SELECT id, codigo, nombre FROM puestos WHERE activo ORDER BY id;"
+docker compose exec backend python scripts/create_user.py --username admin --email admin@local.test --role administrador --display-name "Administrador" --puesto-id ID_PUESTO_ACTIVO
 ```
 
 La aplicación valida usuario o correo contra PostgreSQL. Las contraseñas se almacenan con Argon2id y sal; nunca se guardan en texto plano ni se cifran de forma reversible. Los datos de perfil recuperables se cifran con AES-256-GCM usando `APP_ENCRYPTION_KEY`.
@@ -46,8 +114,50 @@ Endpoints:
 - `POST /api/v1/auth/logout`: revoca la sesión actual.
 - `GET /api/v1/auth/me`: devuelve el usuario autenticado.
 - `GET /api/v1/services`: ruta protegida; requiere `Authorization: Bearer <token>`.
+- `GET /api/v1/admin/users`: listado seguro de usuarios; solo `administrador`.
+- `POST /api/v1/admin/users`: crea usuarios; solo `administrador`.
+- `PATCH /api/v1/admin/users/{id}/status`: activa o desactiva usuarios; solo `administrador`.
+- `PATCH /api/v1/admin/users/{id}/role`: cambia roles; solo `administrador`.
+- `GET /api/v1/admin/organizations`: lectura para ambos roles.
+- `POST/PATCH /api/v1/admin/organizations`: mantenimiento; solo `administrador`.
+- `PUT /api/v1/admin/services/{code}`: mantenimiento del catálogo; solo `administrador`.
+
+## Directorio organizacional
+
+La jerarquía persistida es `Empresa → Área → Departamento → Sección → Puesto → Usuario`.
+Las consultas de empresas, áreas, departamentos, secciones y puestos requieren autenticación y están disponibles para ambos roles. Las altas, modificaciones y bajas lógicas requieren `administrador`:
+
+- `GET/POST/PATCH/DELETE /api/v1/empresas`
+- `GET/POST/PATCH/DELETE /api/v1/areas`
+- `GET/POST/PATCH/DELETE /api/v1/departamentos`
+- `GET/POST/PATCH/DELETE /api/v1/secciones`
+- `GET/POST/PATCH/DELETE /api/v1/puestos`
+- `GET /api/v1/usuarios` permite lectura segura a ambos roles; `POST/PATCH/DELETE /api/v1/usuarios` requiere `administrador`.
+
+Las entidades subordinadas usan códigos únicos dentro de su padre. Las claves foráneas son obligatorias y las asociaciones nuevas solo aceptan padres activos. `DELETE` no elimina filas: marca `activo=false` o `is_active=false`. No se permite desactivar una entidad con hijos activos; tampoco un puesto con usuarios activos. Por eso la desactivación se realiza de abajo hacia arriba y la reactivación de arriba hacia abajo.
+
+## Servicios y catálogos
+
+`/api/v1/services` devuelve resultados paginados y permite `search`, `level_1_code`, `active`, `service_class_id`, `criticality_id`, `service_type_id`, `page` y `page_size`. La búsqueda cubre código y nombre. `GET /api/v1/services/{code}` devuelve la ficha completa, incluyendo todos los campos importados, nivel 1, catálogos, trazabilidad y asignación responsable.
+
+`GET /api/v1/services/catalog-options` entrega las opciones controladas para formularios. Los catálogos también se mantienen mediante `/api/v1/services/catalog/{classes|criticalities|types}`; las consultas son autenticadas y las modificaciones requieren `administrador`. El servidor valida referencias activas y `mínimo <= máximo`, conservando `NULL` cuando el dato está ausente.
+
+Los servicios nuevos requieren nivel 1, clase, criticidad, tipo y sección responsable activos. El usuario responsable es opcional, pero si se informa debe estar activo y pertenecer a la sección seleccionada. Los 46 servicios importados pueden quedar sin asignación porque esas relaciones son datos nuevos del sistema. `scripts/create_demo_users.py` crea una jerarquía `DEMO` y asigna tres servicios importados a usuarios y sección válidos.
 
 La autorización se valida en el backend mediante la sesión almacenada y revocable en PostgreSQL. Ocultar controles del frontend no concede permisos.
+
+Roles:
+
+- `administrador`: mantenimiento de usuarios, unidades organizativas y catálogo.
+- `consulta`: lectura de servicios, estructura y datos públicos de usuarios; recibe `403` en operaciones administrativas.
+
+Crear ambas cuentas de evaluación, sin guardar contraseñas en Git:
+
+```powershell
+docker compose exec backend python scripts/create_demo_users.py
+```
+
+El comando genera contraseñas temporales y las muestra solo una vez en la consola. También acepta `--admin-password` y `--consulta-password` para credenciales locales controladas.
 
 ## Importador idempotente
 

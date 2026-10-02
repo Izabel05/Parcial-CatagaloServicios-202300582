@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import AdminPanel from './AdminPanel.jsx'
+import ServiceBrowser from './ServiceBrowser.jsx'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 
@@ -17,7 +19,6 @@ async function request(path, options = {}) {
 function App() {
   const [token, setToken] = useState(() => sessionStorage.getItem('access_token'))
   const [user, setUser] = useState(null)
-  const [services, setServices] = useState([])
   const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -28,12 +29,10 @@ function App() {
     const loadSession = async () => {
       try {
         const headers = { Authorization: `Bearer ${token}` }
-        const [currentUser, catalog] = await Promise.all([
+        const [currentUser] = await Promise.all([
           request('/api/v1/auth/me', { headers }),
-          request('/api/v1/services', { headers }),
         ])
         setUser(currentUser)
-        setServices(catalog)
       } catch {
         sessionStorage.removeItem('access_token')
         setToken(null)
@@ -71,7 +70,6 @@ function App() {
       sessionStorage.removeItem('access_token')
       setToken(null)
       setUser(null)
-      setServices([])
     }
   }
 
@@ -101,25 +99,12 @@ function App() {
         <div>
           <p className="eyebrow">Catálogo de Servicios</p>
           <h1>Servicios externos</h1>
-          <p className="intro">Sesión activa para {user.username}.</p>
+          <p className="intro">Sesión activa para {user.username} · rol: {user.role}.</p>
         </div>
         <button className="secondary-button" type="button" onClick={handleLogout}>Cerrar sesión</button>
       </header>
-      <section className="card" aria-label="Servicios disponibles">
-        <div>
-          <strong>{services.length} servicios cargados</strong>
-          <p>La información fue solicitada a una ruta protegida del backend.</p>
-        </div>
-      </section>
-      <ul className="service-list">
-        {services.map((service) => (
-          <li key={service.code}>
-            <strong>{service.code}</strong>
-            <span>{service.name}</span>
-            {service.review_status === 'REVIEW' && <small>Revisión pendiente</small>}
-          </li>
-        ))}
-      </ul>
+      <ServiceBrowser token={token} role={user.role} />
+      {user.role === 'administrador' && <AdminPanel token={token} />}
     </main>
   )
 }

@@ -8,10 +8,12 @@ class User:
     id: int
     username: str
     email: str
+    full_name: str
     password_hash: str
     profile_encrypted: str
     is_active: bool
-    is_admin: bool
+    role: str
+    puesto_id: int
     created_at: datetime
 
 
@@ -34,6 +36,8 @@ def public_profile(user: User, profile: dict[str, Any]) -> dict[str, Any]:
         "id": user.id,
         "username": user.username,
         "email": user.email,
-        "is_admin": user.is_admin,
+        "name": user.full_name or profile.get("display_name", user.username),
+        "role": user.role,
+        "puesto_id": user.puesto_id,
         "profile": profile,
     }

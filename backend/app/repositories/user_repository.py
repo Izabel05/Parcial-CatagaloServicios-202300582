@@ -8,8 +8,8 @@ class UserRepository:
     def find_by_identifier(self, identifier: str) -> User | None:
         normalized = identifier.strip().casefold()
         query = """
-            SELECT id, username, email, password_hash, profile_encrypted,
-                   is_active, is_admin, created_at
+            SELECT id, username, email, full_name, password_hash, profile_encrypted,
+                   is_active, role, puesto_id, created_at
             FROM users
             WHERE username_normalized = %s OR email_normalized = %s
         """
@@ -19,8 +19,8 @@ class UserRepository:
 
     def find_by_id(self, user_id: int) -> User | None:
         query = """
-            SELECT id, username, email, password_hash, profile_encrypted,
-                   is_active, is_admin, created_at
+            SELECT id, username, email, full_name, password_hash, profile_encrypted,
+                   is_active, role, puesto_id, created_at
             FROM users
             WHERE id = %s
         """

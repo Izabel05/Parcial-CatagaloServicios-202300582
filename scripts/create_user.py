@@ -19,9 +19,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Crea un usuario local para el catálogo.")
     parser.add_argument("--username", required=True)
     parser.add_argument("--email", required=True)
-    parser.add_argument("--display-name", default="")
+    parser.add_argument("--display-name", required=True)
     parser.add_argument("--phone", default="")
-    parser.add_argument("--admin", action="store_true")
+    parser.add_argument("--role", choices=("administrador", "consulta"), default="consulta")
+    parser.add_argument("--puesto-id", required=True, type=int)
     parser.add_argument("--database-url", default=os.getenv("DATABASE_URL"))
     args = parser.parse_args()
 
@@ -36,13 +37,15 @@ def main() -> None:
     cipher = AesGcmCipher(settings.app_encryption_key)
     profile: dict[str, Any] = {"display_name": args.display_name, "phone": args.phone}
     query = """INSERT INTO users
-        (username, username_normalized, email, email_normalized, password_hash, profile_encrypted, is_admin)
-        VALUES (%s,%s,%s,%s,%s,%s,%s) RETURNING id"""
+        (full_name, username, username_normalized, email, email_normalized, password_hash,
+         profile_encrypted, is_admin, role, puesto_id)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id"""
     values = (
-        args.username.strip(), normalize(args.username), args.email.strip(), normalize(args.email),
-        password_service.hash(password), cipher.encrypt_json(profile), args.admin,
+        args.display_name.strip(), args.username.strip(), normalize(args.username), args.email.strip(),
+        normalize(args.email), password_service.hash(password), cipher.encrypt_json(profile),
+        args.role == "administrador", args.role, args.puesto_id,
     )
-    with get_connection() as connection:
+    with get_connection(args.database_url) as connection:
         user_id = connection.execute(query, values).fetchone()["id"]
     print(f"Usuario creado: id={user_id}, username={args.username.strip()}")
 

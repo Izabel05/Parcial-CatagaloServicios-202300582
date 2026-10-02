@@ -13,7 +13,9 @@ class UserResponse(BaseModel):
     id: int
     username: str
     email: str
-    is_admin: bool
+    name: str
+    role: str
+    puesto_id: int
     profile: dict[str, Any]
 
 

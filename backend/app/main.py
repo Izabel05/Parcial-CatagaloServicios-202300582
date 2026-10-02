@@ -3,7 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config.settings import settings
 from backend.app.database.connection import get_connection
+from backend.app.routes.admin_routes import router as admin_router
 from backend.app.routes.auth_routes import router as auth_router
+from backend.app.routes.directory_routes import router as directory_router
 from backend.app.routes.service_routes import router as service_router
 
 app = FastAPI(title=settings.app_name)
@@ -11,10 +13,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in settings.frontend_origins.split(",") if origin.strip()],
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
 app.include_router(auth_router, prefix=settings.api_prefix)
+app.include_router(admin_router, prefix=settings.api_prefix)
+app.include_router(directory_router, prefix=settings.api_prefix)
 app.include_router(service_router, prefix=settings.api_prefix)
 
 

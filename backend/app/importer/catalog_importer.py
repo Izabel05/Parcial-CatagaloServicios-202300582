@@ -326,10 +326,25 @@ def repo_root() -> Path:
 
 def execute_schema(connection: psycopg.Connection) -> None:
     schema_path = repo_root() / "backend" / "db" / "00_schema.sql"
-    for statement in schema_path.read_text(encoding="utf-8").split(";\n"):
-        statement = statement.strip()
-        if statement:
-            connection.execute(statement)
+    statements: list[str] = []
+    buffer: list[str] = []
+    in_dollar_block = False
+    for line in schema_path.read_text(encoding="utf-8").splitlines(keepends=True):
+        stripped = line.strip()
+        buffer.append(line)
+        if stripped.startswith("DO $$"):
+            in_dollar_block = True
+        if not in_dollar_block and stripped.endswith(";"):
+            statements.append("".join(buffer).strip())
+            buffer = []
+        elif in_dollar_block and stripped.endswith("$$;"):
+            in_dollar_block = False
+            statements.append("".join(buffer).strip())
+            buffer = []
+    if buffer and "".join(buffer).strip():
+        statements.append("".join(buffer).strip())
+    for statement in statements:
+        connection.execute(statement)
 
 
 def json_equal(left: Any, right: Any) -> bool:
@@ -447,6 +462,23 @@ def run_import(input_path: Path, sheet_name: str, database_url: str) -> dict[str
                     summary["updated"] += 1
                 else:
                     summary["unchanged"] += 1
+            # Los textos originales del Excel se conservan; cuando coinciden
+            # con una opción controlada se completa su FK sin tocar asignaciones manuales.
+            connection.execute(
+                """UPDATE services s SET service_class_id=c.id
+                FROM service_classes c
+                WHERE s.service_class_id IS NULL AND lower(c.name)=lower(s.service_class)"""
+            )
+            connection.execute(
+                """UPDATE services s SET criticality_id=c.id
+                FROM service_criticalities c
+                WHERE s.criticality_id IS NULL AND lower(c.name)=lower(s.criticality)"""
+            )
+            connection.execute(
+                """UPDATE services s SET service_type_id=c.id
+                FROM service_types c
+                WHERE s.service_type_id IS NULL AND lower(c.name)=lower(s.service_type)"""
+            )
             for observation in observations:
                 connection.execute(
                     """INSERT INTO import_observations
