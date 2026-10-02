@@ -12,6 +12,27 @@
 
 ## Pendientes de ejecución en Fedora/Docker
 
+Creacion de .env y creacion de secret
+
+Instalar docker
+
+Ejecutar Docker compose up --build -d
+
+![alt text](image.png)
+
+Ejecuccion de pruebas de integracion
+
+
+![alt text](image.png)
+
+Prueba unitaria de python 
+
+![alt text](image.png)
+
+Ejecuccion de prueba P12 
+
+![alt text](image.png)
+
 En el entorno donde se realizó esta revisión no estaban instalados Docker ni
 `node_modules`, por lo que aún debe ejecutarse y capturarse:
 
