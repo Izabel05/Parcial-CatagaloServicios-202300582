@@ -8,8 +8,13 @@ incluir secretos ni datos personales.
 - `../Imagenes/DockerEjecucion.png`: construcción y arranque saludable de Docker.
 - `../Imagenes/EjecucionPrueba.png`: creación del entorno aislado de pruebas.
 - `../Imagenes/P12Ejecuccion.png`: persistencia después de reiniciar el contenedor.
+- `../Imagenes/PruebaIntegracion.png`: prueba de integración aprobada dentro de
+  Docker (`Ran 1 test`, `OK`).
+- `../Imagenes/PruebaE2EOmitida.png`: ejecución Playwright con seis casos
+  omitidos; demuestra el arranque del harness, pero no una aprobación E2E.
 - `../Imagenes/PruebaUnitariaPyhton.png`: ejecución omitida; no representa una
-  prueba aprobada y debe reemplazarse por una captura con resultado real.
+  prueba aprobada. La nueva captura de integración la reemplaza para ese
+  escenario, pero todavía falta una captura de las pruebas unitarias.
 
 La explicación y las imágenes están integradas en
 [`docs/RESOLUCION.md`](../RESOLUCION.md). Antes de subir nuevas capturas,

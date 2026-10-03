@@ -343,9 +343,12 @@ cambios, omitidos y observados en `import_runs`, junto con el detalle en
 
 ![Preparación de la base de pruebas](Imagenes/EjecucionPrueba.png)
 
-La imagen anterior documenta el arranque de la base aislada para pruebas. La
-fotografía `PruebaUnitariaPyhton.png` se conserva en la sección de resultados
-con la aclaración de que su integración quedó omitida.
+![Prueba de integración aprobada](Imagenes/PruebaIntegracion.png)
+
+Las imágenes anteriores documentan el arranque de la base aislada y una
+ejecución real de integración con resultado `OK`. La fotografía
+`PruebaUnitariaPyhton.png` se conserva como antecedente de una ejecución
+omitida, no como evidencia aprobatoria.
 
 El ciclo documentado fue: solicitud de importación → fallo al separar bloques
 SQL `DO` → corrección del parser → validación de sintaxis, esquema y ejecución
@@ -382,6 +385,8 @@ IA para funcionar.
 | 2026-10-02 | `57b2024` + cambios locales | pruebas unitarias de importador y seguridad | 4 aprobadas, 2 omitidas por dependencias del entorno de revisión. |
 | 2026-10-02 | fotografía Fedora | `docker compose up --build -d` | Build finalizado y servicios saludables; ver `DockerEjecucion.png`. |
 | 2026-10-02 | fotografía Fedora | `bash scripts/verify_persistence.sh` | P12 aprobado; ver `P12Ejecuccion.png`. |
+| 2026-10-02 | `194fc36` | `docker compose -f compose.test.yaml -p catalogo-servicios-tests run --build --rm backend-tests` | Integración aprobada: una prueba ejecutada, `OK`; ver `PruebaIntegracion.png`. |
+| 2026-10-02 | `442822b` | `npx playwright test tests/e2e/catalogo.spec.js` | Seis casos omitidos; ejecución no aprobatoria, ver `PruebaE2EOmitida.png`. |
 
 ![Ejecución de pruebas unitarias/integración](Imagenes/PruebaUnitariaPyhton.png)
 
@@ -389,13 +394,26 @@ Esta captura no se presenta como una prueba aprobada: el resultado muestra
 `OK (skipped=1)`, por lo que la integración debe repetirse con PostgreSQL
 disponible.
 
+![Integración aprobada en Docker](Imagenes/PruebaIntegracion.png)
+
+La integración ya fue repetida con PostgreSQL aislado y finalizó con `OK`.
+
+![Ejecución E2E omitida](Imagenes/PruebaE2EOmitida.png)
+
+La captura E2E muestra `6 skipped`. Playwright arrancó, pero los escenarios no
+se ejecutaron porque faltaban credenciales `E2E_*` en esa sesión de terminal;
+debe reemplazarse por una captura que muestre `6 passed`.
+
 La fotografía `PruebaUnitariaPyhton.png` muestra `OK (skipped=1)` para una
-ejecución de integración; se conserva como evidencia de una ejecución omitida,
-no como aprobación. La ejecución correcta se realiza con:
+ejecución anterior; se conserva como evidencia histórica, no como aprobación.
+La integración correcta ya está registrada en `PruebaIntegracion.png`. Las
+ejecuciones reproducibles se realizan con:
 
 ```bash
 docker compose -f compose.test.yaml -p catalogo-servicios-tests run --build --rm backend-tests
 docker compose exec backend python -m unittest tests.backend.test_importer_rules tests.backend.test_security
+cd frontend
+npx playwright test tests/e2e/catalogo.spec.js
 ```
 
 ### Fallos encontrados y correcciones
