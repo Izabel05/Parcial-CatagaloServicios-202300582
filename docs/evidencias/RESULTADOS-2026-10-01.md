@@ -73,3 +73,5 @@ contenga esta corrección y una captura o salida de consola sin secretos.
 
 
 ![alt text](image.png)
+
+![alt text](image-1.png)
