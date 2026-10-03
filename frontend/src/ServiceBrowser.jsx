@@ -2,6 +2,31 @@ import { useEffect, useState } from 'react'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 
+const DETAIL_LABELS = {
+  id: 'Identificador', code: 'Código', original_code: 'Código original', level_1_code: 'Código nivel 1',
+  level_1_name: 'Nombre nivel 1', name: 'Nombre', active: 'Estado', service_class: 'Clase',
+  service_class_name: 'Nombre de clase', criticality: 'Criticidad', criticality_name: 'Nombre de criticidad',
+  service_type: 'Tipo de servicio', service_type_name: 'Nombre del tipo', description: 'Descripción',
+  metric: 'Métrica', minimum: 'Mínimo', maximum: 'Máximo', review_status: 'Estado de revisión',
+  service_class_id: 'Identificador de clase', criticality_id: 'Identificador de criticidad',
+  service_type_id: 'Identificador de tipo', source_sheet: 'Hoja de origen', source_row: 'Fila de origen',
+  source_range: 'Rango de origen', transformations: 'Transformaciones', responsible_section_id: 'Identificador de sección responsable',
+  responsible_section_code: 'Código de sección responsable', responsible_user_id: 'Identificador de usuario responsable',
+  responsible_user_name: 'Usuario responsable',
+}
+
+function detailLabel(key) {
+  return DETAIL_LABELS[key] ?? key.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
+}
+
+function DetailValue({ value }) {
+  if (value === null || value === undefined || value === '') return 'Sin dato'
+  if (typeof value === 'boolean') return value ? 'Activo' : 'Inactivo'
+  if (Array.isArray(value)) return <ul className="detail-list">{value.map((item, index) => <li key={index}><DetailValue value={item} /></li>)}</ul>
+  if (typeof value === 'object') return <dl className="detail-map">{Object.entries(value).map(([key, nestedValue]) => <div key={key}><dt>{detailLabel(key)}</dt><dd><DetailValue value={nestedValue} /></dd></div>)}</dl>
+  return String(value)
+}
+
 async function apiRequest(path, token, options = {}) {
   const response = await fetch(`${API_URL}${path}`, {
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, ...(options.headers ?? {}) },
@@ -166,7 +191,7 @@ function ServiceBrowser({ token, role }) {
         <div className="pagination"><button type="button" disabled={pageData.page <= 1} onClick={() => setPageData((current) => ({ ...current, page: current.page - 1 }))}>Anterior</button><span>Página {pageData.page} de {pageData.pages}</span><button type="button" disabled={pageData.page >= pageData.pages} onClick={() => setPageData((current) => ({ ...current, page: current.page + 1 }))}>Siguiente</button></div>
       </section>
 
-      {selected && <section className="card service-detail" aria-label="Ficha de servicio"><div className="section-heading"><div><p className="eyebrow">Ficha completa</p><h2>{selected.code}</h2></div><div className="button-row"><button className="small-button" type="button" onClick={() => setSelected(null)}>Cerrar</button>{role === 'administrador' && <><button className="small-button" type="button" onClick={() => startEditing(selected)}>Editar</button>{selected.active !== false && <button className="small-button danger-button" type="button" onClick={() => deactivateService(selected)}>Baja lógica</button>}</>}</div></div><dl>{Object.entries(selected).map(([key, value]) => <div key={key}><dt>{key}</dt><dd>{value === null || value === '' ? 'Sin dato' : typeof value === 'object' ? JSON.stringify(value) : String(value)}</dd></div>)}</dl></section>}
+      {selected && <section className="card service-detail" aria-label="Ficha de servicio"><div className="section-heading"><div><p className="eyebrow">Ficha completa</p><h2>{selected.code}</h2></div><div className="button-row"><button className="small-button" type="button" onClick={() => setSelected(null)}>Cerrar</button>{role === 'administrador' && <><button className="small-button" type="button" onClick={() => startEditing(selected)}>Editar</button>{selected.active !== false && <button className="small-button danger-button" type="button" onClick={() => deactivateService(selected)}>Baja lógica</button>}</>}</div></div><dl>{Object.entries(selected).map(([key, value]) => <div key={key}><dt>{detailLabel(key)}</dt><dd><DetailValue value={value} /></dd></div>)}</dl></section>}
 
       {editing && <section className="card" aria-label="Editar servicio"><div className="section-heading"><div><p className="eyebrow">Administración</p><h2>Editar {editing.code}</h2></div><button className="small-button" type="button" onClick={() => setEditing(null)}>Cancelar</button></div><form className="filter-grid" onSubmit={saveEditing}><input name="name" value={editing.name} onChange={updateEditing} placeholder="Nombre" required /><select name="service_class_id" value={editing.service_class_id} onChange={updateEditing} required>{catalogs.service_classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select><select name="criticality_id" value={editing.criticality_id} onChange={updateEditing} required>{catalogs.criticalities.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select><select name="service_type_id" value={editing.service_type_id} onChange={updateEditing} required>{catalogs.service_types.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select><select name="responsible_section_id" value={editing.responsible_section_id} onChange={updateEditing} required>{sections.map((section) => <option key={section.id} value={section.id}>{section.codigo} · {section.nombre}</option>)}</select><select name="responsible_user_id" value={editing.responsible_user_id} onChange={updateEditing}><option value="">Sin usuario responsable</option>{users.map((user) => <option key={user.id} value={user.id}>{user.name} · {user.username}</option>)}</select><input name="minimum" type="number" value={editing.minimum} onChange={updateEditing} placeholder="Mínimo opcional" /><input name="maximum" type="number" value={editing.maximum} onChange={updateEditing} placeholder="Máximo opcional" /><label className="checkbox-label"><input name="active" type="checkbox" checked={editing.active} onChange={(event) => setEditing((current) => ({ ...current, active: event.target.checked }))} /> Servicio activo</label><button type="submit">Guardar cambios</button></form></section>}
 
