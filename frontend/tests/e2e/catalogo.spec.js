@@ -17,6 +17,16 @@ async function login(page, identifier, password) {
   await page.getByRole('button', { name: 'Entrar' }).click()
 }
 
+async function openServices(page) {
+  await page.getByRole('tab', { name: 'Servicios' }).click()
+  await expect(page.getByRole('heading', { name: 'Buscar servicios' })).toBeVisible()
+}
+
+async function openOrganization(page) {
+  await page.getByRole('tab', { name: 'Organización' }).click()
+  await expect(page.getByRole('heading', { name: 'Organización' })).toBeVisible()
+}
+
 test('P01 rechaza credenciales incorrectas y acepta las válidas', async ({ page }) => {
   await login(page, adminUser, 'credencial-incorrecta')
   await expect(page.getByRole('alert')).toContainText(/incorrect|inválid|credencial/i)
@@ -36,15 +46,14 @@ test('P02 y P03 protegen la sesión y respetan el rol consulta', async ({ page }
 test('el dashboard navega por pestañas sin apilar todas las vistas', async ({ page }) => {
   await login(page, adminUser, adminPassword)
   await expect(page.getByRole('tab', { name: 'Resumen' })).toHaveAttribute('aria-selected', 'true')
-  await page.getByRole('tab', { name: 'Servicios' }).click()
-  await expect(page.getByRole('heading', { name: 'Buscar servicios' })).toBeVisible()
-  await page.getByRole('tab', { name: 'Organización' }).click()
-  await expect(page.getByRole('heading', { name: 'Organización' })).toBeVisible()
+  await openServices(page)
+  await openOrganization(page)
   await expect(page.getByRole('heading', { name: 'Buscar servicios' })).toHaveCount(0)
 })
 
 test('P10 permite búsqueda y filtros desde la interfaz', async ({ page }) => {
   await login(page, adminUser, adminPassword)
+  await openServices(page)
   await page.getByLabel('Buscar por código o nombre').fill('SE.12')
   await page.getByRole('button', { name: 'Aplicar filtros' }).click()
   await expect(page.getByText('SE.12.1').or(page.getByText('SE.12.2')).first()).toBeVisible()
@@ -52,7 +61,7 @@ test('P10 permite búsqueda y filtros desde la interfaz', async ({ page }) => {
 
 test('P04 muestra la jerarquía organizacional y los puestos', async ({ page }) => {
   await login(page, adminUser, adminPassword)
-  await expect(page.getByRole('heading', { name: 'Organización' })).toBeVisible()
+  await openOrganization(page)
   await expect(page.getByRole('heading', { name: 'Empresas' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Áreas' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Departamentos' })).toBeVisible()
@@ -62,6 +71,7 @@ test('P04 muestra la jerarquía organizacional y los puestos', async ({ page }) 
 
 test('P09 comunica al usuario el rango mínimo/máximo inválido', async ({ page }) => {
   await login(page, adminUser, adminPassword)
+  await openServices(page)
   await page.getByRole('heading', { name: 'Nuevo servicio' }).scrollIntoViewIfNeeded()
   await page.getByPlaceholder('Código').fill(`E2E-${Date.now()}`)
   await page.getByPlaceholder('Nombre').fill('Validación E2E')

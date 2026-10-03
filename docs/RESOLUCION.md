@@ -356,7 +356,7 @@ IA para funcionar.
 
 | Requisito | Implementación | Prueba | Evidencia |
 |---|---|---|---|
-| Login válido e inválido | `auth_service.py`, `/auth/login` | P01 integración/E2E | `tests/integration/test_scenarios.py`, `tests/e2e/catalogo.spec.js` |
+| Login válido e inválido | `auth_service.py`, `/auth/login` | P01 integración/E2E | `tests/integration/test_scenarios.py`, `frontend/tests/e2e/catalogo.spec.js` |
 | Logout, sesión y usuario inactivo | sesiones revocables y dependencias de auth | P02 | `test_scenarios.py` |
 | Roles y servidor protegido | `require_administrator`, `require_functional_reader` | P03 | `test_scenarios.py`, `AdminPanel.jsx` |
 | Jerarquía organizacional | `directory_service.py`, `OrganizationPanel.jsx` | P04 | `test_scenarios.py`, E2E P04 |
@@ -378,7 +378,7 @@ IA para funcionar.
 |---|---|---|---|
 | 2026-10-01 | `57b2024` + cambios locales | `python -m backend.app.importer --dry-run` | 12 nivel 1, 46 nivel 2, 63 omitidas, 57 observadas. |
 | 2026-10-02 | `57b2024` + cambios locales | `python -m compileall -q backend scripts tests` | OK. |
-| 2026-10-02 | `57b2024` + cambios locales | `node --check tests/e2e/catalogo.spec.js` | OK. |
+| 2026-10-02 | `57b2024` + cambios locales | `node --check frontend/tests/e2e/catalogo.spec.js` | OK. |
 | 2026-10-02 | `57b2024` + cambios locales | pruebas unitarias de importador y seguridad | 4 aprobadas, 2 omitidas por dependencias del entorno de revisión. |
 | 2026-10-02 | fotografía Fedora | `docker compose up --build -d` | Build finalizado y servicios saludables; ver `DockerEjecucion.png`. |
 | 2026-10-02 | fotografía Fedora | `bash scripts/verify_persistence.sh` | P12 aprobado; ver `P12Ejecuccion.png`. |

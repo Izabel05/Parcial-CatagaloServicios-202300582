@@ -5,7 +5,7 @@
 | Control | Comando | Resultado |
 |---|---|---|
 | Sintaxis Python | `python -m compileall -q backend scripts tests` | OK |
-| Sintaxis JavaScript de pruebas | `node --check tests/e2e/catalogo.spec.js` | OK |
+| Sintaxis JavaScript de pruebas | `node --check frontend/tests/e2e/catalogo.spec.js` | OK |
 | Importación sin escritura | `python -m backend.app.importer --dry-run` | 12 nivel 1, 46 nivel 2, 63 omitidas, 57 observadas |
 | Unitarias | `python -m unittest tests.backend.test_importer_rules tests.backend.test_security` | 4 OK, 2 omitidas por dependencias del entorno |
 | SQL | comprobación de restricciones y bloques `DO` | OK |
