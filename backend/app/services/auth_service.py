@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+from ipaddress import ip_address
 import secrets
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
@@ -55,7 +56,7 @@ class AuthService:
             token_hash=self._hash_token(raw_token),
             expires_at=expires_at,
             user_agent=user_agent,
-            ip_address=ip_address,
+            ip_address=self._normalize_ip_address(ip_address),
         )
         return LoginResult(raw_token, "bearer", expires_at, user)
 
@@ -78,3 +79,13 @@ class AuthService:
     @staticmethod
     def _hash_token(raw_token: str) -> str:
         return hashlib.sha256(raw_token.encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def _normalize_ip_address(value: str | None) -> str | None:
+        """Evita insertar hosts de prueba o valores no válidos en una columna INET."""
+        if not value:
+            return None
+        try:
+            return str(ip_address(value))
+        except ValueError:
+            return None
