@@ -70,3 +70,6 @@ El historial técnico registrado fue: tarea de importación → fallo al separar
 bloques SQL `DO` → corrección del parser → validación de sintaxis, esquema y
 prueba en seco satisfactoria. La evidencia final debe enlazar el commit que
 contenga esta corrección y una captura o salida de consola sin secretos.
+
+
+![alt text](image.png)
