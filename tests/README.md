@@ -33,16 +33,17 @@ instalar Python ni las dependencias del backend en el equipo anfitrión.
 
 ## Ejecución de integración
 
-Usar una base PostgreSQL exclusiva para pruebas. Por ejemplo, con el contenedor
-de pruebas levantado:
+Usar una base PostgreSQL exclusiva para pruebas. El servicio `backend-tests`
+ejecuta las pruebas dentro de Docker y evita depender de Python instalado en el
+equipo anfitrión:
 
-```powershell
-docker compose -f compose.test.yaml -p catalogo-servicios-tests up -d db
-$env:TEST_DATABASE_URL = "postgresql://catalogo_test:catalogo_test@localhost:55432/catalogo_servicios_test"
-python -m unittest tests.integration.test_scenarios
+```bash
+docker compose -f compose.test.yaml -p catalogo-servicios-tests run --build --rm backend-tests
 ```
 
-La URL apunta al puerto `55432` de la base de pruebas, no a la base de evaluación. No se debe cambiar `POSTGRES_PORT` de la instalación normal para ejecutar estas pruebas.
+La base de pruebas usa el servicio interno `db` y el volumen
+`postgres_test_data`; no toca la base de evaluación. Si se ejecuta el módulo
+fuera de Docker, `TEST_DATABASE_URL` debe apuntar a `localhost:55432`.
 
 ## P12
 

@@ -16,5 +16,16 @@ services:
       timeout: 3s
       retries: 15
 
+  backend-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TEST_DATABASE_URL: postgresql://catalogo_test:catalogo_test@db:5432/catalogo_servicios_test
+    depends_on:
+      db:
+        condition: service_healthy
+    command: python -m unittest tests.integration.test_scenarios
+
 volumes:
   postgres_test_data:

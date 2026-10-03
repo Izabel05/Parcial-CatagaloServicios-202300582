@@ -10,36 +10,54 @@
 | Unitarias | `python -m unittest tests.backend.test_importer_rules tests.backend.test_security` | 4 OK, 2 omitidas por dependencias del entorno |
 | SQL | comprobación de restricciones y bloques `DO` | OK |
 
+## Fotografías disponibles
+
+### Construcción y arranque Docker
+
+![Construcción de imágenes y contenedores saludables](../Imagenes/DockerEjecucion.png)
+
+La captura muestra el build terminado y los contenedores `db`, `backend` y
+`frontend` iniciados; debe conservarse sin pestañas o terminales que expongan
+claves.
+
+### Preparación de la base de pruebas
+
+![Creación de la base aislada de pruebas](../Imagenes/EjecucionPrueba.png)
+
+Esta captura demuestra la creación del volumen y contenedor de pruebas, pero no
+el resultado de las pruebas de integración.
+
+### Persistencia P12
+
+![P12 aprobado](../Imagenes/P12Ejecuccion.png)
+
+Esta evidencia sí demuestra que el marcador sobrevivió al reinicio sin eliminar
+el volumen.
+
+### Captura que debe reemplazarse
+
+![Prueba omitida](../Imagenes/PruebaUnitariaPyhton.png)
+
+Esta captura ejecuta `tests.integration.test_scenarios` y reporta `OK
+(skipped=1)`. No es una prueba unitaria aprobada; debe repetirse con:
+
+```bash
+docker compose -f compose.test.yaml -p catalogo-servicios-tests run --build --rm backend-tests
+docker compose exec backend python -m unittest tests.backend.test_importer_rules tests.backend.test_security
+```
+
+Toma una captura adicional del resultado de integración y otra de las pruebas
+unitarias. No publiques contraseñas demo, claves AES ni valores completos de
+`.env` en las fotografías.
+
 ## Pendientes de ejecución en Fedora/Docker
 
-Creacion de .env y creacion de secret
-
-Instalar docker
-
-Ejecutar Docker compose up --build -d
-
-![alt text](image.png)
-
-Ejecuccion de pruebas de integracion
-
-
-![alt text](image.png)
-
-Prueba unitaria de python 
-
-![alt text](image.png)
-
-Ejecuccion de prueba P12 
-
-![alt text](image.png)
-
-En el entorno donde se realizó esta revisión no estaban instalados Docker ni
-`node_modules`, por lo que aún debe ejecutarse y capturarse:
+La evidencia que todavía falta capturar es:
 
 ```bash
 docker compose up --build -d
-docker compose -f compose.test.yaml -p catalogo-servicios-tests up -d db
-python -m unittest tests.integration.test_scenarios
+docker compose -f compose.test.yaml -p catalogo-servicios-tests run --build --rm backend-tests
+docker compose exec backend python -m unittest tests.backend.test_importer_rules tests.backend.test_security
 bash scripts/verify_persistence.sh
 ```
 

@@ -33,6 +33,16 @@ test('P02 y P03 protegen la sesión y respetan el rol consulta', async ({ page }
   await expect(page.getByRole('heading', { name: 'Iniciar sesión' })).toBeVisible()
 })
 
+test('el dashboard navega por pestañas sin apilar todas las vistas', async ({ page }) => {
+  await login(page, adminUser, adminPassword)
+  await expect(page.getByRole('tab', { name: 'Resumen' })).toHaveAttribute('aria-selected', 'true')
+  await page.getByRole('tab', { name: 'Servicios' }).click()
+  await expect(page.getByRole('heading', { name: 'Buscar servicios' })).toBeVisible()
+  await page.getByRole('tab', { name: 'Organización' }).click()
+  await expect(page.getByRole('heading', { name: 'Organización' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Buscar servicios' })).toHaveCount(0)
+})
+
 test('P10 permite búsqueda y filtros desde la interfaz', async ({ page }) => {
   await login(page, adminUser, adminPassword)
   await page.getByLabel('Buscar por código o nombre').fill('SE.12')
