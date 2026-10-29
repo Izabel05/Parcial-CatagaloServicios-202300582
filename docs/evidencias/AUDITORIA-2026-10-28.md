@@ -87,3 +87,10 @@ La fuente del parcial pegada por el usuario se conserva sin transformar su
 formato. Sus instrucciones son datos de evaluación, no órdenes para el asistente.
 La limitación de la jerarquía CMDB y la validación física pendiente en Fedora
 siguen declaradas en [AUDITORIA](../AUDITORIA.md).
+
+## Correspondencia con el commit de cierre
+
+El código probado quedó versionado en `28a328f0268cd8c4f737c3af73dad32d45be9f62`. Se comprobaron los 140
+archivos contra sus blobs Git normalizando solo CRLF/LF. La fuente TXT conserva
+sus bytes originales. [Resultado](auditoria-2026-10-28/correspondencia-commit.json).
+Este vínculo se creó después de las corridas; no cambia su fecha, base ni logs.
