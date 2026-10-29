@@ -54,3 +54,17 @@ commits creados antes de las ejecuciones del 28 de octubre.
 - **Verificación:** cada ciclo enlaza logs reales y declara fallos deliberados.
 - **Commit:** `git log --format='%h %s' -- docs/IA.md`, asunto
   `docs: documenta IA contexto y ciclos con evidencia real`.
+
+## SD-3 — entorno Fedora y cierre reproducible
+
+- **Problema:** la resolución todavía negaba tickets y el arranque del README
+  no coincidía con la preparación completa; faltaba el traslado sin nube y SELinux.
+- **Cambio:** resolución vigente, README desde clon limpio, FEDORA y ENTREGA;
+  montajes compartidos con `z` y preparación de clave dentro de un contenedor.
+- **Motivo:** evitar una instalación aparentemente lista con clave inválida o
+  errores de acceso en Fedora, y separar evidencia Ubuntu de prueba Fedora futura.
+- **Verificación:** instalación contrastada con documentación oficial Docker;
+  aceptación y Compose se vuelven a validar en el entorno disponible. La
+  comprobación física en Fedora permanece explícitamente pendiente del destino.
+- **Commit:** `git log --format='%h %s' -- docs/FEDORA.md`, asunto
+  `docs: cierra entrega y prepara ejecucion local en Fedora`.

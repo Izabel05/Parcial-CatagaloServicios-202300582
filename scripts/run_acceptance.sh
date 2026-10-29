@@ -22,7 +22,7 @@ printf '%s\n' "Inicio UTC: $(date -u +%FT%TZ)" "Commit base: $commit" "Árbol mo
 "${compose[@]}" build backend-tests backend </dev/null > "$ACCEPTANCE_EVIDENCE_DIR/build.txt" 2>&1
 "${compose[@]}" up -d db --wait </dev/null > "$ACCEPTANCE_EVIDENCE_DIR/db-start.txt" 2>&1
 "${compose[@]}" run --rm --no-deps backend-tests python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit "$commit" --dirty "$dirty" </dev/null > "$ACCEPTANCE_EVIDENCE_DIR/backend-tests.txt" 2>&1
-"${compose[@]}" run --rm --no-deps -v "$PWD:/workspace:ro" backend-tests python scripts/source_manifest.py --root /workspace --output /evidence/codigo.json </dev/null
+"${compose[@]}" run --rm --no-deps -v "$PWD:/workspace:ro,z" backend-tests python scripts/source_manifest.py --root /workspace --output /evidence/codigo.json </dev/null
 "${compose[@]}" up -d backend frontend --wait </dev/null > "$ACCEPTANCE_EVIDENCE_DIR/app-start.txt" 2>&1
 "${compose[@]}" exec -T backend python scripts/check_acceptance_runtime.py </dev/null > "$ACCEPTANCE_EVIDENCE_DIR/runtime-antes.txt"
 "${compose[@]}" exec -T backend python scripts/persistence_snapshot.py --output /evidence/antes.json </dev/null

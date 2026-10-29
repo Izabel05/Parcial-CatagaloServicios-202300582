@@ -9,7 +9,7 @@ services:
       - "55432:5432"
     volumes:
       - postgres_test_data:/var/lib/postgresql/data
-      - ./backend/db/00_schema.sql:/docker-entrypoint-initdb.d/00_schema.sql:ro
+      - ./backend/db/00_schema.sql:/docker-entrypoint-initdb.d/00_schema.sql:ro,z
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U catalogo_test -d catalogo_servicios_test"]
       interval: 3s
