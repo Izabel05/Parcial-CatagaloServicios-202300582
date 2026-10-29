@@ -32,6 +32,10 @@ Compose y generación sobre el commit `4b13cab`, tras las actualizaciones de
 contexto y la preparación de Fedora. Las capturas sugeridas para el equipo
 destino están en [ENTREGA](../ENTREGA.md).
 
+La [galería del frontend actualizado](FRONTEND-2026-10-28.md) contiene 23 capturas
+reales, los siete procesos, roles y vistas móviles, con 16 E2E aprobadas y
+manifiestos de la versión ejecutada. Es la referencia visual más reciente.
+
 ## Organización de las fotografías
 
 - `../Imagenes/DockerEjecucion.png`: construcción y arranque saludable de Docker.

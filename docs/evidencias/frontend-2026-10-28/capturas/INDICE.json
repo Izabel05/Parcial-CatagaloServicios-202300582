@@ -1,0 +1,237 @@
+{
+  "base": "http://127.0.0.1:15175",
+  "api": "http://127.0.0.1:18002",
+  "fecha_utc": "2026-10-29T04:56:44.504Z",
+  "capturas": [
+    {
+      "archivo": "01-acceso.png",
+      "descripcion": "Acceso con cuenta local; no muestra credenciales.",
+      "rol": "sin sesión",
+      "fecha_utc": "2026-10-29T04:56:33.549Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "02-resumen.png",
+      "descripcion": "Navegación y accesos a los módulos del sistema.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:33.956Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "03-catalogo.png",
+      "descripcion": "Catálogo de 46 servicios de la fuente, filtros y fichas.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:34.320Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "04-cmdb.png",
+      "descripcion": "Inventario de 5,000 dispositivos, búsqueda, clasificación y paginación.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:34.765Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "05-ficha-ci.png",
+      "descripcion": "Atributos originales y técnicos del CI seleccionado.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:35.288Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "06-dependencias.png",
+      "descripcion": "Relaciones navegables y servicios potencialmente afectados; no afirma interrupción.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:35.367Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "07-colas.png",
+      "descripcion": "Siete colas, una por proceso, con permisos y objetivos calendario.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:36.018Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "08-permisos.png",
+      "descripcion": "Permisos por rol o usuario en la cola de cambios.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:36.152Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "09-cambio-pendiente.png",
+      "descripcion": "Cambio pendiente, planes y decisión por un aprobador independiente.",
+      "rol": "approver",
+      "fecha_utc": "2026-10-29T04:56:37.205Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "10-consulta.png",
+      "descripcion": "Colas visibles para consulta sin formularios de escritura.",
+      "rol": "consulta",
+      "fecha_utc": "2026-10-29T04:56:37.882Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "11-consola.png",
+      "descripcion": "Consola de agente: tickets y filtros de las colas autorizadas.",
+      "rol": "agent",
+      "fecha_utc": "2026-10-29T04:56:38.565Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "12-problema.png",
+      "descripcion": "Problema cerrado con causa raíz, incidentes y cambio correctivo.",
+      "rol": "agent",
+      "fecha_utc": "2026-10-29T04:56:39.032Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "13-evento-e3.png",
+      "descripcion": "Evento E3 respondido y vínculo a un incidente I6.",
+      "rol": "agent",
+      "fecha_utc": "2026-10-29T04:56:39.491Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "14-incidente-i6.png",
+      "descripcion": "Incidente I6 con diagnóstico, recuperación y solución.",
+      "rol": "agent",
+      "fecha_utc": "2026-10-29T04:56:39.964Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "23-historial.png",
+      "descripcion": "Auditoría del ticket con actor, fecha y valores anteriores/nuevos.",
+      "rol": "agent",
+      "fecha_utc": "2026-10-29T04:56:40.080Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "20-nuevo-servicio.png",
+      "descripcion": "Nuevo servicio cerrado mediante vínculo a un servicio existente, sin duplicarlo.",
+      "rol": "agent",
+      "fecha_utc": "2026-10-29T04:56:40.562Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "21-acceso.png",
+      "descripcion": "Solicitud de acceso, beneficiario y permiso, con aprobación independiente.",
+      "rol": "approver",
+      "fecha_utc": "2026-10-29T04:56:41.624Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "15-portal.png",
+      "descripcion": "Portal limitado a tickets del solicitante.",
+      "rol": "requester",
+      "fecha_utc": "2026-10-29T04:56:42.315Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "22-servicio-tecnologia.png",
+      "descripcion": "Solicitud sobre servicio existente con evidencia y confirmación del solicitante.",
+      "rol": "requester",
+      "fecha_utc": "2026-10-29T04:56:42.775Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "16-faq.png",
+      "descripcion": "Autoservicio con artículo publicado y búsqueda.",
+      "rol": "requester",
+      "fecha_utc": "2026-10-29T04:56:43.012Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "17-tablero.png",
+      "descripcion": "Cantidades y objetivos de datos sintéticos; puede incluir solicitudes adicionales de las E2E.",
+      "rol": "admin",
+      "fecha_utc": "2026-10-29T04:56:43.762Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "archivo": "18-movil-resumen.png",
+      "descripcion": "Portada y navegación en una pantalla de 390 px.",
+      "rol": "requester",
+      "fecha_utc": "2026-10-29T04:56:44.149Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "archivo": "19-movil-portal.png",
+      "descripcion": "Portal y filtros adaptados al ancho móvil.",
+      "rol": "requester",
+      "fecha_utc": "2026-10-29T04:56:44.504Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ]
+}

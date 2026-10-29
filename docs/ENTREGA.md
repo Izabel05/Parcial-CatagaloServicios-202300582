@@ -21,6 +21,15 @@ destino siguiendo FEDORA.md. No hace falta publicar la aplicación en la nube.
 
 Las capturas complementan logs y ejecución; no sustituyen las pruebas. Ya existen:
 
+La interfaz mejorada tiene una [galería actual de 23 capturas](evidencias/FRONTEND-2026-10-28.md)
+obtenidas del servidor temporal: cubre los siete procesos y los roles de
+evaluación. Están en `docs/evidencias/frontend-2026-10-28/capturas/`, con índice
+fechado y 16 pruebas de navegador aprobadas. No necesitas repetir las capturas
+funcionales si presentas esa misma interfaz; en Fedora agrega principalmente
+la captura del entorno y el resultado de las pruebas ejecutadas en ese equipo.
+
+Las siguientes son evidencias anteriores conservadas:
+
 - `docs/evidencias/demo-2026-10-28/tablero-final.png`: tablero calendario revisado.
 - `docs/evidencias/demo-2026-10-28/proceso-incidente-final.png`: incidente atendido.
 - `docs/evidencias/pantallas-2026-10-28/tablero-solicitante.png`: ámbito del portal.

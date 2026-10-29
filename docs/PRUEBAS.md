@@ -11,6 +11,12 @@ Tras versionar el cierre y adaptar montajes para Fedora se ejecutó de nuevo la
 aceptación completa sobre `4b13cab4475c072c38a8da6e43ee81852205251c`, sin cambios
 en código: [verificación del cierre](evidencias/CIERRE-2026-10-28.md).
 
+El rediseño posterior del frontend se valida con **16 E2E sin omisiones**
+(las 15 existentes y una de navegación/desbordamiento móvil), compilación y
+arranque Compose. Código, capturas y resultados de esa fase:
+[FRONTEND-2026-10-28](evidencias/FRONTEND-2026-10-28.md). Las pruebas backend
+anteriores se conservan; no se presentan como ejecuciones nuevas del rediseño.
+
 ## Ejecutar sin instalar Python ni Node en el anfitrión
 
 Con Docker Compose y Bash (Linux, WSL o Git Bash), desde la raíz del repositorio:

@@ -181,3 +181,24 @@ Los diagramas y el diccionario exacto están en MODELO y las reglas en CMDB.
 
 Para defender la entrega: elegir R2, SD-1 y L3; explicar la entrada, decisión,
 archivo modificado, prueba y resultado. Las capturas complementan la ejecución.
+
+## Seguimiento real: frontend y capturador
+
+Solicitud posterior del usuario: «Mejora el frontend y conectate al servidor
+para tomar las capturas que haga falta». Se proporcionaron componentes, estilos,
+pruebas existentes y datos sintéticos, conservando la autorización en servidor.
+El objetivo fue mejorar navegación y legibilidad y producir evidencia visual real.
+
+Se implementó el rediseño y se ejecutó Playwright contra la copia aislada. La
+primera propuesta del capturador esperaba el encabezado, pero ese encabezado
+también aparece durante la carga: una imagen mostró «Cargando…» y otra operación
+encontró un elemento desconectado. Se revisó la instrucción operativa: esperar
+el título exacto del ticket seleccionado y los 25 registros de la página antes
+de capturar. Se regeneraron las imágenes y se revisaron visualmente, incluida
+la consola que había fallado. El resultado fue 23 capturas, 16 E2E y compilación
+correcta. Límite de salida: ninguna imagen final pendiente de datos y flujos
+de navegador sin omisiones. No fue un fallo introducido deliberadamente.
+
+Este ciclo se vincula al commit `d40a42a` y a
+[FRONTEND-2026-10-28](evidencias/FRONTEND-2026-10-28.md), que conserva registros
+iniciales y finales. No se envían secretos a las capturas ni se guardan sesiones.

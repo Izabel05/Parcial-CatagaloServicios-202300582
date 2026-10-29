@@ -74,6 +74,8 @@ fuera de Git. No existe contraseña fija de evaluación versionada.
 | [CMDB](docs/CMDB.md) | Generación, clasificación y dependencias. |
 | [SERVICE_DESK](docs/SERVICE_DESK.md) / [PROCESOS](docs/PROCESOS.md) | Base común y siete flujos, permisos y transiciones. |
 | [PANTALLAS_Y_TIEMPOS](docs/PANTALLAS_Y_TIEMPOS.md) | Portal, consola, FAQ y métricas calendario. |
+| [FRONTEND](docs/FRONTEND.md) | Diseño actualizado, navegación adaptable y reproducción de capturas. |
+| [Galería de 23 capturas](docs/evidencias/FRONTEND-2026-10-28.md) | Siete procesos, roles, CMDB, portal, FAQ, tablero y móvil; 16 E2E aprobadas. |
 | [IA](docs/IA.md) | Ocho solicitudes reales, contexto, harness y ciclos de corrección. |
 | [PRUEBAS](docs/PRUEBAS.md) | Matriz P01–P18, aislamiento y comandos. |
 | [DEMOSTRACION](docs/DEMOSTRACION.md) | Cuentas, datos, repetición y recorridos. |

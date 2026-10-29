@@ -68,3 +68,14 @@ commits creados antes de las ejecuciones del 28 de octubre.
   comprobación física en Fedora permanece explícitamente pendiente del destino.
 - **Commit:** `git log --format='%h %s' -- docs/FEDORA.md`, asunto
   `docs: cierra entrega y prepara ejecucion local en Fedora`.
+
+## SD-4 — interfaz y evidencia visual verificable
+
+- **Solicitud:** «Mejora el frontend y conectate al servidor para tomar las capturas que haga falta».
+- **Cambio:** navegación lateral, acceso, portada, fichas y listas legibles,
+  tablero en columnas y adaptación móvil; capturador con perfiles de evaluación.
+- **Motivo:** las vistas de 980 px apilaban información y las capturas anteriores
+  no cubrían todos los procesos. Las imágenes nuevas deben esperar datos reales.
+- **Verificación:** 16 E2E, compilación, 23 capturas y 138 huellas coincidentes.
+- **Commit de código:** `d40a42a702a2c49a3afbd78c34cb6f37acdbe55e`.
+- **Fuentes:** [diseño](../FRONTEND.md) y [resultados](../evidencias/FRONTEND-2026-10-28.md).

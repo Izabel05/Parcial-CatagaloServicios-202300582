@@ -1,0 +1,4 @@
+NAME                               IMAGE                           COMMAND                  SERVICE    CREATED         STATUS                   PORTS
+catalogo-frontend-app-backend-1    catalogo-frontend-app-backend   "sh -c 'python -m ba…"   backend    7 minutes ago   Up 7 minutes (healthy)   127.0.0.1:18002->8000/tcp
+catalogo-frontend-app-db-1         postgres:16-alpine              "docker-entrypoint.s…"   db         7 minutes ago   Up 7 minutes (healthy)   5432/tcp
+catalogo-frontend-app-frontend-1   node:22-alpine                  "docker-entrypoint.s…"   frontend   7 minutes ago   Up 7 minutes             127.0.0.1:15175->5173/tcp
