@@ -1,0 +1,1 @@
+scripts/verify_persistence.sh: línea 2: set: pipefail: nombre de opción no válido

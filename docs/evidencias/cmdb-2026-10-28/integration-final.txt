@@ -1,0 +1,83 @@
+ Container catalogo-cmdb-tests-db-1 Running 
+ Image catalogo-cmdb-tests-backend-tests Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 582B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 154B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 19.70kB done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.0s done
+#6 DONE 0.0s
+
+#7 [2/8] WORKDIR /app
+#7 CACHED
+
+#8 [3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#8 CACHED
+
+#9 [4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#9 CACHED
+
+#10 [5/8] COPY backend ./backend
+#10 DONE 0.3s
+
+#11 [6/8] COPY data ./data
+#11 DONE 0.0s
+
+#12 [7/8] COPY scripts ./scripts
+#12 DONE 0.0s
+
+#13 [8/8] COPY tests ./tests
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers 0.1s done
+#14 exporting manifest sha256:6b513487c0e72df8217d489bb72703bbcf1fefa288d25c8a170607af6f0a36c4 done
+#14 exporting config sha256:b856d4192ed1eeaa2eca25556612ff8c5132073b4715ff25393c001ed59f8d39 done
+#14 exporting attestation manifest sha256:e60c7d3c9c877a7fa946d4ee3ba4a81073db6a22a30ea4f578b99b6d6712fedc 0.0s done
+#14 exporting manifest list sha256:d419749ab82dad6d981307c93c62572e7bddd2e14984f1eef53fadf9a5eaed6d done
+#14 naming to docker.io/library/catalogo-cmdb-tests-backend-tests:latest done
+#14 unpacking to docker.io/library/catalogo-cmdb-tests-backend-tests:latest 0.0s done
+#14 DONE 0.2s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image catalogo-cmdb-tests-backend-tests Built 
+ Container catalogo-cmdb-tests-db-1 Waiting 
+ Container catalogo-cmdb-tests-db-1 Healthy 
+ Container catalogo-cmdb-tests-backend-tests-run-a78df0f77ccf Creating 
+ Container catalogo-cmdb-tests-backend-tests-run-a78df0f77ccf Created 
+test_import_controls (tests.backend.test_importer_rules.ImporterRulesTest.test_import_controls) ... ok
+test_incomplete_final_services_are_review (tests.backend.test_importer_rules.ImporterRulesTest.test_incomplete_final_services_are_review) ... ok
+test_observations_cover_conflict_and_explicit_continuation_rule (tests.backend.test_importer_rules.ImporterRulesTest.test_observations_cover_conflict_and_explicit_continuation_rule) ... ok
+test_se12_has_one_canonical_level_and_preserves_codes (tests.backend.test_importer_rules.ImporterRulesTest.test_se12_has_one_canonical_level_and_preserves_codes) ... ok
+test_passwords_are_hashed_and_verified (tests.backend.test_security.SecurityTest.test_passwords_are_hashed_and_verified) ... ok
+test_profile_data_round_trips_with_aes_gcm (tests.backend.test_security.SecurityTest.test_profile_data_round_trips_with_aes_gcm) ... ok
+test_P01_to_P11_auth_hierarchy_catalog_and_import (tests.integration.test_cmdb.CmdbIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import) ... ok
+test_cmdb_01_generacion_5000_idempotente (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_01_generacion_5000_idempotente) ... {"cmdb_generar_y_repetir_5000_segundos": 3.601, "entorno": "Docker Python 3.12/PostgreSQL 16"}
+ok
+test_cmdb_02_permisos_filtros_y_detalle (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_02_permisos_filtros_y_detalle) ... {"cmdb_busqueda_y_detalle_segundos": 0.0982, "dispositivos": 5000}
+ok
+test_cmdb_03_clasificaciones_y_ubicaciones (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_03_clasificaciones_y_ubicaciones) ... ok
+test_cmdb_04_relaciones_ciclos_e_impacto (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_04_relaciones_ciclos_e_impacto) ... ok
+test_cmdb_05_mantenimiento_ci_y_referencias (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_05_mantenimiento_ci_y_referencias) ... ok
+test_cmdb_06_ciclos_concurrentes (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_06_ciclos_concurrentes) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 17.192s
+
+OK

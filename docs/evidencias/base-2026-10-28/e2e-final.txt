@@ -1,0 +1,53 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (650ms)
+  ✓  2 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (574ms)
+  ✓  3 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (618ms)
+  ✓  4 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (695ms)
+  ✓  5 tests/e2e/catalogo.spec.js:62:1 › P04 muestra la jerarquía organizacional y los puestos (660ms)
+  ✘  6 tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido (5.8s)
+
+
+  1) tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido ─────
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected pattern: /mínimo.*máximo/i
+    Received string:  "[object Object]"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+        13 × locator resolved to <p role="alert" class="error">[object Object]</p>
+           - unexpected value "[object Object]"
+
+
+      80 |   await alta.getByPlaceholder('Máximo opcional').fill('1')
+      81 |   await alta.getByRole('button', { name: 'Crear servicio' }).click()
+    > 82 |   await expect(page.getByRole('alert')).toContainText(/mínimo.*máximo/i)
+         |                                         ^
+      83 | })
+      84 |
+        at /work/tests/e2e/catalogo.spec.js:82:41
+
+    Error Context: test-results/catalogo-P09-comunica-al-u-e226a-ango-mínimo-máximo-inválido/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/catalogo-P09-comunica-al-u-e226a-ango-mínimo-máximo-inválido/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/catalogo-P09-comunica-al-u-e226a-ango-mínimo-máximo-inválido/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido ──────
+  5 passed (9.7s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

@@ -50,6 +50,9 @@ function AdminPanel({ token }) {
             <select value={user.role} onChange={(event) => updateUser(user.id, 'role', event.target.value)}>
               <option value="administrador">administrador</option>
               <option value="consulta">consulta</option>
+              <option value="solicitante">solicitante</option>
+              <option value="agente">agente</option>
+              <option value="aprobador">aprobador</option>
             </select>
             <button type="button" className="small-button" onClick={() => updateUser(user.id, 'status', !user.is_active)}>
               {user.is_active ? 'Desactivar' : 'Activar'}

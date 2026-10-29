@@ -1,0 +1,2 @@
+Demostración: 7 colas, 6 usuarios, 37 tickets (5 por proceso; 7 incidentes), E0-E3 e I0-I6, 5000 dispositivos y etiquetas únicas.
+Repetición: 0 tickets nuevos; IDs conservados y dos notificaciones.

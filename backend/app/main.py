@@ -7,6 +7,10 @@ from backend.app.routes.admin_routes import router as admin_router
 from backend.app.routes.auth_routes import router as auth_router
 from backend.app.routes.directory_routes import router as directory_router
 from backend.app.routes.service_routes import router as service_router
+from backend.app.routes.cmdb_routes import router as cmdb_router
+from backend.app.routes.desk_routes import router as desk_router
+from backend.app.routes.process_routes import router as process_router
+from backend.app.routes.experience_routes import router as experience_router
 
 app = FastAPI(title=settings.app_name)
 app.add_middleware(
@@ -20,6 +24,10 @@ app.include_router(auth_router, prefix=settings.api_prefix)
 app.include_router(admin_router, prefix=settings.api_prefix)
 app.include_router(directory_router, prefix=settings.api_prefix)
 app.include_router(service_router, prefix=settings.api_prefix)
+app.include_router(cmdb_router, prefix=settings.api_prefix)
+app.include_router(desk_router, prefix=settings.api_prefix)
+app.include_router(process_router, prefix=settings.api_prefix)
+app.include_router(experience_router, prefix=settings.api_prefix)
 
 
 @app.get("/health", tags=["health"])

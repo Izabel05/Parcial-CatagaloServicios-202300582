@@ -94,3 +94,15 @@ select { background: #fff; border: 1px solid #c8d3e5; border-radius: 10px; paddi
 @media (max-width: 900px) { .organization-tree { grid-template-columns: repeat(5, minmax(180px, 1fr)); } }
 @media (max-width: 760px) { .summary-grid { grid-template-columns: 1fr; } }
 @media (max-width: 680px) { .page-header { flex-direction: column; } .service-list li { grid-template-columns: 1fr; } .container, .auth-layout { padding-left: 16px; padding-right: 16px; } .organization-detail { flex-direction: column; } .dashboard-nav button { flex: 1 1 40%; } }
+
+.metric-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:20px; }
+.metric { display:grid; gap:10px; }
+.metric strong { font-size:2rem; color:#4969a3; }
+.table-scroll { overflow-x:auto; }
+.table-scroll table { border-collapse:collapse; width:100%; min-width:850px; text-align:left; }
+.table-scroll th,.table-scroll td { padding:12px 8px; border-bottom:1px solid #dce4f1; vertical-align:top; }
+.faq-article { padding:16px 0; border-bottom:1px solid #dce4f1; }
+.faq-article summary { cursor:pointer; font-weight:700; color:#4969a3; }
+.preserve-lines { white-space:pre-wrap; overflow-wrap:anywhere; }
+textarea { font:inherit; border:1px solid #c8d3e5; border-radius:8px; padding:10px; width:100%; min-height:80px; }
+@media(max-width:680px) { .metric-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }

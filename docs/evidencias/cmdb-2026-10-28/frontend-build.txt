@@ -1,0 +1,5 @@
+
+> catalogo-servicios-frontend@0.1.0 build
+> vite build
+
+sh: vite: not found

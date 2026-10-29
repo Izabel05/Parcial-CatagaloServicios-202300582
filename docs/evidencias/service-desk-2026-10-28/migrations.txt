@@ -1,0 +1,1 @@
+{'migraciones_aplicadas': ['004_ticket_resolucion.sql']}

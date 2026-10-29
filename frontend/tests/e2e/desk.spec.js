@@ -1,0 +1,111 @@
+import { test, expect } from '@playwright/test'
+
+test.beforeEach(async({page})=>{
+  test.skip(!process.env.E2E_REQUESTER_PASSWORD||!process.env.E2E_AGENT_PASSWORD,'Requiere cuentas Service Desk de prueba')
+  await page.goto('/')
+})
+
+async function login(page,user,password) {
+  await page.getByLabel('Usuario o correo').fill(user)
+  await page.getByLabel('Contraseña',{exact:true}).fill(password)
+  await page.getByRole('button',{name:'Entrar',exact:true}).click()
+  await page.getByRole('tab',{name:'Service Desk',exact:true}).click()
+  await expect(page.getByRole('heading',{name:'Service Desk',exact:true})).toBeVisible()
+}
+
+async function search(page,title) {
+  await page.getByLabel('Número o título',{exact:true}).fill(title)
+  await page.getByRole('button',{name:'Filtrar tickets',exact:true}).click()
+  const results=page.getByRole('region',{name:'Búsqueda de tickets'})
+  await expect(results.getByRole('button',{name:/SD-\d+/})).toHaveCount(1)
+  await results.getByRole('listitem').filter({hasText:title}).getByRole('button',{name:/SD-\d+/}).click()
+}
+
+test('solicitante crea ticket con adjunto y agente atiende sin filtrar notas internas',async({page})=>{
+  await login(page,process.env.E2E_REQUESTER_USER,process.env.E2E_REQUESTER_PASSWORD)
+  const form=page.getByRole('region',{name:'Crear ticket',exact:true})
+  const title=`E2E-Ticket-${Date.now()}`
+  await form.getByLabel('Título ticket').fill(title)
+  await form.getByLabel('Descripción ticket').fill('Solicitud controlada desde el portal')
+  const service=form.getByRole('combobox',{name:'Servicio ticket',exact:true})
+  await expect(service.locator('option')).not.toHaveCount(1)
+  await service.selectOption({index:1})
+  await form.getByRole('combobox',{name:'Cola ticket',exact:true}).selectOption({label:'Incidentes · incidentes'})
+  await form.getByLabel('Justificación sin CI').fill('Trámite sin equipo específico')
+  await form.getByRole('button',{name:'Crear ticket',exact:true}).click()
+  const detail=page.getByRole('region',{name:'Ficha de ticket'})
+  await expect(detail.getByRole('heading',{name:new RegExp(title)})).toBeVisible()
+  await detail.getByLabel('Comentario',{exact:true}).fill('Comentario visible al solicitante')
+  await detail.getByRole('button',{name:'Agregar comentario',exact:true}).click()
+  await expect(detail.getByRole('list',{name:'Comentarios del ticket'}).getByText(/Comentario visible al solicitante/)).toBeVisible()
+  await detail.getByLabel('Archivo adjunto').setInputFiles({name:'solicitud.txt',mimeType:'text/plain',buffer:Buffer.from('Evidencia sintética')})
+  await detail.getByRole('button',{name:'Subir adjunto',exact:true}).click()
+  await expect(detail.getByRole('button',{name:'Descargar solicitud.txt'})).toBeVisible()
+  await page.getByRole('button',{name:'Cerrar sesión'}).click()
+  await login(page,process.env.E2E_AGENT_USER,process.env.E2E_AGENT_PASSWORD)
+  await search(page,title)
+  await detail.getByRole('button',{name:'Tomar ticket',exact:true}).click()
+  await expect(detail.getByText(/incidentes · incidente · en_atencion/)).toBeVisible()
+  await detail.getByLabel('Comentario',{exact:true}).fill('Nota privada de soporte E2E')
+  await detail.getByLabel('Nota interna',{exact:true}).check()
+  await detail.getByRole('button',{name:'Agregar comentario',exact:true}).click()
+  await expect(detail.getByRole('list',{name:'Comentarios del ticket'}).getByText(/Nota privada de soporte E2E/)).toBeVisible()
+  await page.getByRole('button',{name:'Cerrar sesión'}).click()
+  await login(page,process.env.E2E_REQUESTER_USER,process.env.E2E_REQUESTER_PASSWORD)
+  await search(page,title)
+  await expect(detail.getByText(/Nota privada de soporte E2E/)).toHaveCount(0)
+  await expect(detail.getByRole('button',{name:'Descargar solicitud.txt'})).toBeVisible()
+})
+
+test('consulta no obtiene formularios de escritura en Service Desk',async({page})=>{
+  await login(page,process.env.E2E_CONSULTA_USER,process.env.E2E_CONSULTA_PASSWORD)
+  await expect(page.getByRole('region',{name:'Búsqueda de tickets'})).toBeVisible()
+  await expect(page.getByRole('region',{name:'Crear ticket',exact:true})).toHaveCount(0)
+  await expect(page.getByRole('button',{name:'Guardar cola',exact:true})).toHaveCount(0)
+  await expect(page.getByRole('button',{name:'Guardar roles adicionales'})).toHaveCount(0)
+})
+
+test('incidente exige evidencias y recorre sus etapas desde el formulario',async({page})=>{
+  await login(page,process.env.E2E_REQUESTER_USER,process.env.E2E_REQUESTER_PASSWORD)
+  const form=page.getByRole('region',{name:'Crear ticket',exact:true})
+  const title=`E2E-Proceso-${Date.now()}`
+  await form.getByLabel('Título ticket').fill(title)
+  await form.getByLabel('Descripción ticket').fill('Incidente de prueba de flujo')
+  await expect(form.getByLabel('Servicio ticket').locator('option')).not.toHaveCount(1)
+  await form.getByLabel('Servicio ticket').selectOption({index:1})
+  await form.getByLabel('Cola ticket').selectOption({label:'Incidentes · incidentes'})
+  await form.getByLabel('Justificación sin CI').fill('Sin equipo específico')
+  await form.getByRole('button',{name:'Crear ticket',exact:true}).click()
+  await expect(page.getByRole('region',{name:'Ficha de ticket'}).getByRole('heading',{name:new RegExp(title)})).toBeVisible()
+  await page.getByRole('button',{name:'Cerrar sesión'}).click()
+  await login(page,process.env.E2E_AGENT_USER,process.env.E2E_AGENT_PASSWORD)
+  await search(page,title)
+  await page.getByRole('button',{name:'Tomar ticket',exact:true}).click()
+  await expect(page.getByText(/incidentes · incidente · en_atencion/)).toBeVisible()
+  const workflow=page.getByRole('region',{name:'Proceso del ticket'})
+  async function advance(state,success=true) {
+    await workflow.getByLabel('Etapa destino').selectOption(state)
+    await workflow.getByLabel('Motivo transición').fill('Evidencia de prueba de navegador')
+    await workflow.getByRole('button',{name:'Avanzar proceso'}).click()
+    if(success)await expect(workflow.locator('strong')).toHaveText(state)
+  }
+  async function save() {
+    await workflow.getByLabel('Motivo datos del proceso').fill('Registro de evidencia')
+    await workflow.getByRole('button',{name:'Guardar datos del proceso'}).click()
+    await expect(page.getByRole('status')).toHaveText('Operación completada')
+  }
+  await advance('clasificacion')
+  await advance('diagnostico',false)
+  await expect(page.getByRole('alert')).toContainText('Complete:')
+  await workflow.getByRole('combobox',{name:'categoria',exact:true}).selectOption('I0')
+  await workflow.getByRole('combobox',{name:'interrupcion',exact:true}).selectOption('false')
+  await save()
+  await advance('diagnostico')
+  await workflow.getByLabel('diagnostico',{exact:true}).fill('Equipo redundante mantiene disponibilidad')
+  await save();await advance('atencion')
+  await workflow.getByLabel('evidencia recuperacion').fill('Verificación de disponibilidad')
+  await workflow.getByLabel('duracion real horas').fill('0')
+  await workflow.getByLabel('solucion',{exact:true}).fill('Configuración restaurada')
+  await save();await advance('recuperado');await advance('resuelto');await advance('cerrado')
+  await page.screenshot({path:'test-results/proceso-incidente.png',fullPage:true})
+})

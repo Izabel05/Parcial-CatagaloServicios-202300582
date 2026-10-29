@@ -1,0 +1,123 @@
+ Image node:22-alpine Pulling 
+ 304511616d6a Pulling fs layer 0B
+ 7b229517ed22 Pulling fs layer 0B
+ 8776aa3d2ba7 Pulling fs layer 0B
+ 7246d4c6a55d Pulling fs layer 0B
+ 8597ec7f632e Downloading 25.64kB
+ 8597ec7f632e Downloading 25.64kB
+ 304511616d6a Download complete 0B
+ 8597ec7f632e Download complete 0B
+ 9cb01b8fd902 Download complete 0B
+ 8776aa3d2ba7 Downloading 2.097MB
+ 7246d4c6a55d Download complete 0B
+ 8776aa3d2ba7 Downloading 5.243MB
+ 7b229517ed22 Downloading 1.049MB
+ 8776aa3d2ba7 Downloading 8.389MB
+ 7b229517ed22 Downloading 3.146MB
+ 8776aa3d2ba7 Downloading 13.63MB
+ 7b229517ed22 Download complete 0B
+ 7b229517ed22 Extracting 1B
+ 8776aa3d2ba7 Downloading 18.87MB
+ 7b229517ed22 Pull complete 0B
+ 8776aa3d2ba7 Downloading 23.07MB
+ 8776aa3d2ba7 Downloading 28.31MB
+ 8776aa3d2ba7 Downloading 32.51MB
+ 8776aa3d2ba7 Downloading 36.7MB
+ 8776aa3d2ba7 Downloading 39.85MB
+ 8776aa3d2ba7 Downloading 44.04MB
+ 8776aa3d2ba7 Downloading 49.28MB
+ 8776aa3d2ba7 Downloading 53.48MB
+ 8776aa3d2ba7 Downloading 56.22MB
+ 8776aa3d2ba7 Download complete 0B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Extracting 1B
+ 8776aa3d2ba7 Pull complete 0B
+ 304511616d6a Pull complete 0B
+ 7246d4c6a55d Pull complete 0B
+ Image node:22-alpine Pulled 
+ Image catalogo-baseline-app-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 564B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 500B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 164B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 5.51kB done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.0s done
+#6 DONE 0.0s
+
+#7 [5/8] COPY backend ./backend
+#7 CACHED
+
+#8 [2/8] WORKDIR /app
+#8 CACHED
+
+#9 [3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#9 CACHED
+
+#10 [4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#10 CACHED
+
+#11 [6/8] COPY data ./data
+#11 CACHED
+
+#12 [7/8] COPY scripts ./scripts
+#12 DONE 0.2s
+
+#13 [8/8] COPY tests ./tests
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers 0.0s done
+#14 exporting manifest sha256:6b88f646e006289e33fbfcb8def9d91ee09e21c1d7d1c33207dd1bfca6bf0b0b done
+#14 exporting config sha256:7cf6221c502b351f96e4ac098b468961c7b351bd34f636488dc1bfda42e74619 done
+#14 exporting attestation manifest sha256:167bf6ff0b7da17ead2fec5a1a968df3b90b2e7e12eaa501093f20ba7ad11b60 0.0s done
+#14 exporting manifest list sha256:e72f78b45b03cf18fc243cfe1824ce822749b1fc54faa1dd518754824c0e89da
+#14 exporting manifest list sha256:e72f78b45b03cf18fc243cfe1824ce822749b1fc54faa1dd518754824c0e89da done
+#14 naming to docker.io/library/catalogo-baseline-app-backend:latest done
+#14 unpacking to docker.io/library/catalogo-baseline-app-backend:latest 0.0s done
+#14 DONE 0.1s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image catalogo-baseline-app-backend Built 
+ Network catalogo-baseline-app_default Creating 
+ Network catalogo-baseline-app_default Created 
+ Volume catalogo-baseline-app_postgres_data Creating 
+ Volume catalogo-baseline-app_postgres_data Created 
+ Volume catalogo-baseline-app_frontend_node_modules Creating 
+ Volume catalogo-baseline-app_frontend_node_modules Created 
+ Container catalogo-baseline-app-db-1 Creating 
+ Container catalogo-baseline-app-db-1 Created 
+ Container catalogo-baseline-app-backend-1 Creating 
+ Container catalogo-baseline-app-backend-1 Created 
+ Container catalogo-baseline-app-frontend-1 Creating 
+ Container catalogo-baseline-app-frontend-1 Created 
+ Container catalogo-baseline-app-db-1 Starting 
+ Container catalogo-baseline-app-db-1 Started 
+ Container catalogo-baseline-app-db-1 Waiting 
+ Container catalogo-baseline-app-db-1 Healthy 
+ Container catalogo-baseline-app-backend-1 Starting 
+ Container catalogo-baseline-app-backend-1 Started 
+ Container catalogo-baseline-app-backend-1 Waiting 
+ Container catalogo-baseline-app-backend-1 Healthy 
+ Container catalogo-baseline-app-frontend-1 Starting 
+ Container catalogo-baseline-app-frontend-1 Started 

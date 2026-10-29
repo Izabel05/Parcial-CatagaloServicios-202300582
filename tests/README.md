@@ -2,6 +2,18 @@
 
 Pruebas automatizadas del proyecto.
 
+La aceptación **P01–P18 de Service Desk** se ejecuta con
+`bash scripts/run_acceptance.sh`; matriz, aislamiento y reportes reales:
+[docs/PRUEBAS.md](../docs/PRUEBAS.md). Esta numeración no sustituye la del parcial.
+
+La suite de CMDB y los comandos de generación/persistencia están documentados
+en [`docs/CMDB.md`](../docs/CMDB.md). La ampliación de tickets/colas se explica
+en [`docs/SERVICE_DESK.md`](../docs/SERVICE_DESK.md). El comando predeterminado
+de `compose.test.yaml` ejecuta las unitarias y suites de integración del parcial,
+CMDB, Service Desk y siete procesos, incluida la generación repetida de 5,000,
+la toma concurrente de tickets y la correlación idempotente de eventos. La suite
+de procesos vuelve a ejecutar las regresiones de su base común.
+
 - Las pruebas del backend pueden organizarse en `tests/backend/`.
 - Las pruebas del frontend pueden organizarse en `tests/frontend/`.
 - Las pruebas de integración pueden organizarse en `tests/integration/`.
@@ -57,6 +69,10 @@ sistema normal. No ejecutar `docker compose down -v` sobre la instalación de
 evaluación.
 
 ## Ejecución E2E de interfaz
+
+La suite de Compose también ejecuta `tests.integration.test_processes`, con
+los siete procesos, transiciones permitidas/rechazadas y correlación concurrente
+de eventos. Consulte [PROCESOS.md](../docs/PROCESOS.md).
 
 Con la aplicación normal levantada y las cuentas creadas localmente:
 

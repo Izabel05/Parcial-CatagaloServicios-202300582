@@ -1,0 +1,9 @@
+ Container catalogo-cmdb-app-backend-1 Restarting 
+ Container catalogo-cmdb-app-frontend-1 Restarting 
+ Container catalogo-cmdb-app-db-1 Restarting 
+ Container catalogo-cmdb-app-frontend-1 Started 
+ Container catalogo-cmdb-app-db-1 Started 
+ Container catalogo-cmdb-app-backend-1 Started 
+
+Datos antes/despues identicos: {"servicios" : 46, "dispositivos" : 5000, "historial" : 10002, "datos_ci" : "8d0f56013b231f473780d7547eb1199c"}
+API: {"status": "ok", "database": "ok"}

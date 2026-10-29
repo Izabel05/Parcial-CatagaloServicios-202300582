@@ -1,0 +1,1154 @@
+{
+  "inicio": "2026-10-29T00:13:54.269525+00:00",
+  "fin_backend": "2026-10-29T00:15:26.803502+00:00",
+  "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+  "arbol_modificado": true,
+  "entorno": {
+    "python": "3.12.14",
+    "sistema": "Linux-7.0.0-38-generic-x86_64-with-glibc2.41",
+    "base": "catalogo_aceptacion_test"
+  },
+  "metodos_ejecutados": 63,
+  "fallos": 0,
+  "errores": 0,
+  "omisiones": 0,
+  "metodos": {
+    "tests.backend.test_importer_rules.ImporterRulesTest.test_import_controls": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:13:55.213372+00:00",
+      "segundos": 1.29262,
+      "salida": ""
+    },
+    "tests.backend.test_importer_rules.ImporterRulesTest.test_incomplete_final_services_are_review": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:13:56.506074+00:00",
+      "segundos": 1.341658,
+      "salida": ""
+    },
+    "tests.backend.test_importer_rules.ImporterRulesTest.test_observations_cover_conflict_and_explicit_continuation_rule": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:13:57.847796+00:00",
+      "segundos": 1.286693,
+      "salida": ""
+    },
+    "tests.backend.test_importer_rules.ImporterRulesTest.test_se12_has_one_canonical_level_and_preserves_codes": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:13:59.134582+00:00",
+      "segundos": 1.308177,
+      "salida": ""
+    },
+    "tests.backend.test_security.SecurityTest.test_passwords_are_hashed_and_verified": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:00.442903+00:00",
+      "segundos": 0.177451,
+      "salida": ""
+    },
+    "tests.backend.test_security.SecurityTest.test_profile_data_round_trips_with_aes_gcm": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:00.620383+00:00",
+      "segundos": 0.001049,
+      "salida": ""
+    },
+    "tests.backend.test_desk_metrics.MetricsTest.test_cierre_sin_resolucion_no_es_solucion": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:00.621474+00:00",
+      "segundos": 0.000188,
+      "salida": ""
+    },
+    "tests.backend.test_desk_metrics.MetricsTest.test_limites_y_no_objetivo": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:00.621677+00:00",
+      "segundos": 3.7e-05,
+      "salida": ""
+    },
+    "tests.backend.test_desk_metrics.MetricsTest.test_pendientes_no_son_cero_y_pausas_no_descontadas": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:00.621727+00:00",
+      "segundos": 7.4e-05,
+      "salida": ""
+    },
+    "tests.backend.test_desk_metrics.MetricsTest.test_reapertura_conserva_ciclo_anterior_sin_duplicar_tickets": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:00.621815+00:00",
+      "segundos": 8e-05,
+      "salida": ""
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:04.785173+00:00",
+      "segundos": 2.876383,
+      "salida": ""
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_01_generacion_5000_idempotente": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:07.661589+00:00",
+      "segundos": 3.941511,
+      "salida": "{\"cmdb_generar_y_repetir_5000_segundos\": 3.94, \"entorno\": \"Docker Python 3.12/PostgreSQL 16\"}\n"
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_02_permisos_filtros_y_detalle": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:11.603123+00:00",
+      "segundos": 0.13018,
+      "salida": "{\"cmdb_busqueda_y_detalle_segundos\": 0.1025, \"dispositivos\": 5000}\n"
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_03_clasificaciones_y_ubicaciones": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:11.733327+00:00",
+      "segundos": 0.352534,
+      "salida": ""
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_04_relaciones_ciclos_e_impacto": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:12.085890+00:00",
+      "segundos": 0.540735,
+      "salida": ""
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_05_mantenimiento_ci_y_referencias": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:12.626652+00:00",
+      "segundos": 0.581533,
+      "salida": ""
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_06_ciclos_concurrentes": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:13.208213+00:00",
+      "segundos": 0.102675,
+      "salida": ""
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_07_correspondencia_fuente_disponible": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:13.310919+00:00",
+      "segundos": 0.053782,
+      "salida": "{\"P04\": \"Correspondencia con C5/C6 y atributos B4:U4 verificada; la fuente no contiene árbol multinivel\", \"jerarquia_multinivel_verificada\": false}\n"
+    },
+    "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_08_mediciones_filtros_5000": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:13.364733+00:00",
+      "segundos": 0.234279,
+      "salida": "{\"P16\": [{\"consulta\": \"page=2&page_size=25&es_dispositivo=true&activo=true\", \"segundos\": 0.050643, \"filas\": 25, \"total\": 5000}, {\"consulta\": \"search=000123&page_size=10&activo=true\", \"segundos\": 0.055387, \"filas\": 1, \"total\": 1}, {\"consulta\": \"clasificacion_id=1&es_dispositivo=true&activo=true&page_size=17\", \"segundos\": 0.081323, \"filas\": 17, \"total\": 5000}], \"entorno\": \"FastAPI TestClient, Docker Python 3.12/PostgreSQL 16, 5000 dispositivos\"}\n"
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:22.255283+00:00",
+      "segundos": 4.08128,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_01_referencias_y_aislamiento": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:26.336657+00:00",
+      "segundos": 0.436104,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_02_consulta_no_se_eleva": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:26.772740+00:00",
+      "segundos": 0.352842,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_03_tomar_atomico_y_orden": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:27.125621+00:00",
+      "segundos": 0.331842,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:27.457482+00:00",
+      "segundos": 0.50147,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_05_notas_adjuntos_y_descarga": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:27.958983+00:00",
+      "segundos": 0.921783,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_06_vinculos_y_rechazo_de_saltos": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:28.880815+00:00",
+      "segundos": 0.437589,
+      "salida": ""
+    },
+    "tests.integration.test_desk.DeskIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:29.318432+00:00",
+      "segundos": 0.564299,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:35.893503+00:00",
+      "segundos": 2.841333,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p01_cambio_aprobacion_pruebas_reversion_y_reapertura": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:38.734861+00:00",
+      "segundos": 1.426876,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p02_nuevo_servicio_sin_duplicados": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:40.161764+00:00",
+      "segundos": 0.726798,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p03_incidentes_categorias_y_evidencias": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:40.888587+00:00",
+      "segundos": 5.049741,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p04_eventos_idempotentes_y_cola_correcta": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:45.938356+00:00",
+      "segundos": 2.291294,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p05_evento_vincula_incidente_existente": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:48.229676+00:00",
+      "segundos": 0.412302,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p06_problema_causa_raiz_y_cambio": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:48.642006+00:00",
+      "segundos": 1.378786,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p07_acceso_impide_autoaprobacion_beneficiario": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:50.020819+00:00",
+      "segundos": 0.72528,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p08_tecnologia_solo_solicitante_confirma": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:50.746124+00:00",
+      "segundos": 0.687683,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p09_consulta_bloqueada_en_todas_operaciones": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:51.433833+00:00",
+      "segundos": 0.288165,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p10_creacion_catalogo_y_reintento": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:51.722024+00:00",
+      "segundos": 0.545165,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_p11_categoria_justificada_y_creador_no_aprueba": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:52.267215+00:00",
+      "segundos": 0.713071,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_01_referencias_y_aislamiento": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:52.980313+00:00",
+      "segundos": 0.316952,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_02_consulta_no_se_eleva": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:53.297345+00:00",
+      "segundos": 0.280169,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_03_tomar_atomico_y_orden": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:53.577541+00:00",
+      "segundos": 0.251349,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:53.828916+00:00",
+      "segundos": 0.390608,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_05_notas_adjuntos_y_descarga": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:54.219550+00:00",
+      "segundos": 0.704039,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_06_vinculos_y_rechazo_de_saltos": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:54.923621+00:00",
+      "segundos": 0.363588,
+      "salida": ""
+    },
+    "tests.integration.test_processes.ProcessIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:14:55.287236+00:00",
+      "segundos": 0.44767,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:00.984481+00:00",
+      "segundos": 2.901022,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_ex01_portal_y_consola_aislados_en_servidor": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:03.885532+00:00",
+      "segundos": 0.43601,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_ex02_tablero_ambito_y_objetivos_capturados": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:04.321570+00:00",
+      "segundos": 0.394235,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_ex03_reapertura_y_primera_atencion_por_ciclo": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:04.715830+00:00",
+      "segundos": 0.64986,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_ex04_faq_borradores_publicacion_y_autorizacion": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:05.365716+00:00",
+      "segundos": 0.312359,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_ex05_paginacion_y_filtros_no_amplian_acceso": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:05.678132+00:00",
+      "segundos": 0.209119,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_ex06_migracion_no_inventa_objetivos_historicos": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:05.887276+00:00",
+      "segundos": 0.133126,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_01_referencias_y_aislamiento": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:06.020434+00:00",
+      "segundos": 0.317042,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_02_consulta_no_se_eleva": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:06.337499+00:00",
+      "segundos": 0.281107,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_03_tomar_atomico_y_orden": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:06.618638+00:00",
+      "segundos": 0.252929,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:06.871593+00:00",
+      "segundos": 0.396845,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_05_notas_adjuntos_y_descarga": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:07.268464+00:00",
+      "segundos": 0.700988,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_06_vinculos_y_rechazo_de_saltos": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:07.969478+00:00",
+      "segundos": 0.363789,
+      "salida": ""
+    },
+    "tests.integration.test_experience.ExperienceIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:08.333293+00:00",
+      "segundos": 0.446826,
+      "salida": ""
+    },
+    "tests.integration.test_demo.DemoIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:12.248681+00:00",
+      "segundos": 2.829339,
+      "salida": ""
+    },
+    "tests.integration.test_demo.DemoIntegrationTest.test_demo_01_37_tickets_roles_categorias_y_repeticion": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:15.078047+00:00",
+      "segundos": 8.341713,
+      "salida": ""
+    },
+    "tests.integration.test_demo.DemoIntegrationTest.test_demo_02_fallo_deliberado_revierte_tickets_y_lote": {
+      "estado": "APROBADO",
+      "inicio": "2026-10-29T00:15:23.419806+00:00",
+      "segundos": 3.383509,
+      "salida": ""
+    }
+  },
+  "escenarios": [
+    {
+      "id": "P01",
+      "titulo": "Autenticación y permisos",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Credenciales válidas/incorrectas, sesión revocada, usuario inactivo y rol consulta",
+      "esperado": "Sesiones válidas funcionan; credenciales, sesiones y operaciones no autorizadas se rechazan",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:22.255283+00:00",
+          "segundos": 4.08128,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_02_consulta_no_se_eleva",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:26.772740+00:00",
+          "segundos": 0.352842,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803405+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P02",
+      "titulo": "Importación repetible 12/46",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Dos importaciones del catálogo original con observaciones",
+      "esperado": "12 niveles 1, 46 servicios de fuente y observaciones conservadas sin duplicados",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:22.255283+00:00",
+          "segundos": 4.08128,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803420+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P03",
+      "titulo": "CMDB reproducible",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Semilla 582, dos generaciones de 5000 dispositivos",
+      "esperado": "5000 etiquetas distintas; segunda carga crea cero dispositivos",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_01_generacion_5000_idempotente",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:07.661589+00:00",
+          "segundos": 3.941511,
+          "salida": "{\"cmdb_generar_y_repetir_5000_segundos\": 3.94, \"entorno\": \"Docker Python 3.12/PostgreSQL 16\"}\n"
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803426+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P04",
+      "titulo": "Correspondencia de fuentes y clasificación",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Excel CMDB!B4:U6, Hardware/Software C5/C6; padres inválidos y ciclos",
+      "esperado": "Etiquetas y referencias de la fuente disponibles preservadas; padres inexistentes y ciclos rechazados; sin inventar niveles ausentes",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_07_correspondencia_fuente_disponible",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:13.310919+00:00",
+          "segundos": 0.053782,
+          "salida": "{\"P04\": \"Correspondencia con C5/C6 y atributos B4:U4 verificada; la fuente no contiene árbol multinivel\", \"jerarquia_multinivel_verificada\": false}\n"
+        },
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_03_clasificaciones_y_ubicaciones",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:11.733327+00:00",
+          "segundos": 0.352534,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_06_ciclos_concurrentes",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:13.208213+00:00",
+          "segundos": 0.102675,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803433+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true,
+      "limitacion": "El Excel disponible no contiene un árbol multinivel; se verifica C5/C6 y no se atribuyen niveles inexistentes a la lección 22."
+    },
+    {
+      "id": "P05",
+      "titulo": "Referencias de tickets",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Servicio y CI válidos, IDs inexistentes y un solicitante ajeno",
+      "esperado": "Alta válida; referencias inválidas y lectura ajena rechazadas",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_01_referencias_y_aislamiento",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:26.336657+00:00",
+          "segundos": 0.436104,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803438+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P06",
+      "titulo": "Roles y usuarios por cola",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Concesiones por rol y por usuario; revocación incompatible y consulta con roles adicionales",
+      "esperado": "Acceso limitado por política, consulta permanece de lectura y no se revoca atención aún asignada",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_02_consulta_no_se_eleva",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:26.772740+00:00",
+          "segundos": 0.352842,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:29.318432+00:00",
+          "segundos": 0.564299,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803442+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P07",
+      "titulo": "Ordenamiento y toma atómica",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Tickets con prioridades y dos agentes sobre un mismo ticket",
+      "esperado": "Orden prioridad/antigüedad/ID; resultados 200 y 409 y un solo responsable",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_03_tomar_atomico_y_orden",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:27.125621+00:00",
+          "segundos": 0.331842,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803446+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P08",
+      "titulo": "Transferencia trazable",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Otra cola del mismo proceso, cola de otro proceso y escalamiento",
+      "esperado": "Transferencia válida con bitácora; destino incompatible y escalamiento incorrecto rechazados",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:27.457482+00:00",
+          "segundos": 0.50147,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803449+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P09",
+      "titulo": "Siete recorridos",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Rutas completas y saltos para los siete procesos",
+      "esperado": "Recorridos válidos llegan a cierre y transiciones ilegales se rechazan",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p01_cambio_aprobacion_pruebas_reversion_y_reapertura",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:38.734861+00:00",
+          "segundos": 1.426876,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p02_nuevo_servicio_sin_duplicados",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:40.161764+00:00",
+          "segundos": 0.726798,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p03_incidentes_categorias_y_evidencias",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:40.888587+00:00",
+          "segundos": 5.049741,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p04_eventos_idempotentes_y_cola_correcta",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:45.938356+00:00",
+          "segundos": 2.291294,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p06_problema_causa_raiz_y_cambio",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:48.642006+00:00",
+          "segundos": 1.378786,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p07_acceso_impide_autoaprobacion_beneficiario",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:50.020819+00:00",
+          "segundos": 0.72528,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p08_tecnologia_solo_solicitante_confirma",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:50.746124+00:00",
+          "segundos": 0.687683,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803459+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P10",
+      "titulo": "Aprobaciones independientes",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Cambio sin aprobación; beneficiario/creador intentando aprobar",
+      "esperado": "Ejecución sin aprobación y autoaprobación rechazadas; ciclo reabierto exige nueva decisión",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p01_cambio_aprobacion_pruebas_reversion_y_reapertura",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:38.734861+00:00",
+          "segundos": 1.426876,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p07_acceso_impide_autoaprobacion_beneficiario",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:50.020819+00:00",
+          "segundos": 0.72528,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p11_categoria_justificada_y_creador_no_aprueba",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:52.267215+00:00",
+          "segundos": 0.713071,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803464+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P11",
+      "titulo": "Eventos E0–E3",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "E0/E1, generación E2/E3 simultánea y vínculo a incidente existente",
+      "esperado": "E0/E1 no generan incidentes; E2/E3 correlacionan sin duplicados; cola equivocada rechazada",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p04_eventos_idempotentes_y_cola_correcta",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:45.938356+00:00",
+          "segundos": 2.291294,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p05_evento_vincula_incidente_existente",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:48.229676+00:00",
+          "segundos": 0.412302,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_demo.DemoIntegrationTest.test_demo_01_37_tickets_roles_categorias_y_repeticion",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:15:15.078047+00:00",
+          "segundos": 8.341713,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803469+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P12",
+      "titulo": "Incidentes I0–I6",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Siete categorías, límites 3/8/48/168/169/720 horas, prioridad y redundancia independiente",
+      "esperado": "Duraciones y evidencia validadas; prioridades mapeadas y redundancia registrada; contradicciones justificadas o rechazadas",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p03_incidentes_categorias_y_evidencias",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:40.888587+00:00",
+          "segundos": 5.049741,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p11_categoria_justificada_y_creador_no_aprueba",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:52.267215+00:00",
+          "segundos": 0.713071,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803473+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P13",
+      "titulo": "Trazabilidad incidente–problema–cambio",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Incidentes vinculados a problema con causa raíz y cambio correctivo",
+      "esperado": "Vínculos tipados recuperables; problema no se resuelve antes de su cambio",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p06_problema_causa_raiz_y_cambio",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:48.642006+00:00",
+          "segundos": 1.378786,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803477+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P14",
+      "titulo": "Grafo CI–servicio",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Dependencias, alojamientos y conexiones cíclicas",
+      "esperado": "Recorrido devuelve servicios potencialmente afectados; ciclos de dependencia se rechazan y conexiones admitidas se conservan",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_04_relaciones_ciclos_e_impacto",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:12.085890+00:00",
+          "segundos": 0.540735,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_06_ciclos_concurrentes",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:13.208213+00:00",
+          "segundos": 0.102675,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803481+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P15",
+      "titulo": "Resolución, reapertura y actor",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Intento de cierre sin evidencias y un ciclo cerrado/reabierto",
+      "esperado": "No se omite resolución; nueva versión y bitácora con actor/fecha; ciclo anterior conservado",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_desk.DeskIntegrationTest.test_sd_06_vinculos_y_rechazo_de_saltos",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:28.880815+00:00",
+          "segundos": 0.437589,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_processes.ProcessIntegrationTest.test_p01_cambio_aprobacion_pruebas_reversion_y_reapertura",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:38.734861+00:00",
+          "segundos": 1.426876,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_experience.ExperienceIntegrationTest.test_ex03_reapertura_y_primera_atencion_por_ciclo",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:15:04.715830+00:00",
+          "segundos": 0.64986,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803487+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P16",
+      "titulo": "Paginación y mediciones",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Búsqueda, página 2 y filtro por clase sobre 5000 dispositivos activos",
+      "esperado": "Cantidades/páginas esperadas y tiempos medidos con perf_counter, indicando entorno",
+      "obtenido": [
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_08_mediciones_filtros_5000",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:13.364733+00:00",
+          "segundos": 0.234279,
+          "salida": "{\"P16\": [{\"consulta\": \"page=2&page_size=25&es_dispositivo=true&activo=true\", \"segundos\": 0.050643, \"filas\": 25, \"total\": 5000}, {\"consulta\": \"search=000123&page_size=10&activo=true\", \"segundos\": 0.055387, \"filas\": 1, \"total\": 1}, {\"consulta\": \"clasificacion_id=1&es_dispositivo=true&activo=true&page_size=17\", \"segundos\": 0.081323, \"filas\": 17, \"total\": 5000}], \"entorno\": \"FastAPI TestClient, Docker Python 3.12/PostgreSQL 16, 5000 dispositivos\"}\n"
+        },
+        {
+          "metodo": "tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_02_permisos_filtros_y_detalle",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:11.603123+00:00",
+          "segundos": 0.13018,
+          "salida": "{\"cmdb_busqueda_y_detalle_segundos\": 0.1025, \"dispositivos\": 5000}\n"
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803492+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P17",
+      "titulo": "Indicadores controlados",
+      "comando": "python scripts/run_acceptance_cases.py --output /evidence/casos.json --commit 7255835b653ebd1b948d0c97a41cfffaacbb7a85 --dirty true",
+      "entrada": "Reloj fijo, pendientes, límite exacto, reapertura, transferencia y objetivos congelados",
+      "esperado": "Promedios omiten pendientes, pausa descontada cero y ciclos/objetivos preservados por política de calendario",
+      "obtenido": [
+        {
+          "metodo": "tests.backend.test_desk_metrics.MetricsTest.test_limites_y_no_objetivo",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:00.621677+00:00",
+          "segundos": 3.7e-05,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.backend.test_desk_metrics.MetricsTest.test_pendientes_no_son_cero_y_pausas_no_descontadas",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:00.621727+00:00",
+          "segundos": 7.4e-05,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.backend.test_desk_metrics.MetricsTest.test_reapertura_conserva_ciclo_anterior_sin_duplicar_tickets",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:14:00.621815+00:00",
+          "segundos": 8e-05,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_experience.ExperienceIntegrationTest.test_ex02_tablero_ambito_y_objetivos_capturados",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:15:04.321570+00:00",
+          "segundos": 0.394235,
+          "salida": ""
+        },
+        {
+          "metodo": "tests.integration.test_experience.ExperienceIntegrationTest.test_ex03_reapertura_y_primera_atencion_por_ciclo",
+          "estado": "APROBADO",
+          "inicio": "2026-10-29T00:15:04.715830+00:00",
+          "segundos": 0.64986,
+          "salida": ""
+        }
+      ],
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:26.803499+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    },
+    {
+      "id": "P18",
+      "titulo": "Reinicio sin pérdida",
+      "comando": "bash scripts/run_acceptance.sh",
+      "entrada": {
+        "contenedores": [
+          "db",
+          "backend",
+          "frontend"
+        ],
+        "snapshot_antes": {
+          "service_level_1": {
+            "cantidad": 12,
+            "huella": "a350ec35dda690b50cb5742cda5a0d69"
+          },
+          "services": {
+            "cantidad": 47,
+            "huella": "5c6c4e4fca7043a8da26875a61506d07"
+          },
+          "cmdb_ci": {
+            "cantidad": 5000,
+            "huella": "39cc30beea35ae73f5c9c06d97f89101"
+          },
+          "cmdb_dispositivos": {
+            "cantidad": 5000,
+            "huella": "0dd7d0d8bcc7a2ec9c186794eddcf56d"
+          },
+          "cmdb_clasificaciones": {
+            "cantidad": 2,
+            "huella": "1ef0943dfa2c16658c615ba3a9a65316"
+          },
+          "cmdb_relaciones": {
+            "cantidad": 2,
+            "huella": "ab59f599137548caf2ac8acbbc9e62e3"
+          },
+          "cmdb_ci_servicios": {
+            "cantidad": 5000,
+            "huella": "870f20da83cbbb5de8dd83941a89fca2"
+          },
+          "cmdb_ubicaciones": {
+            "cantidad": 1,
+            "huella": "485e06243bd56a894da5d9fb03baebbe"
+          },
+          "cmdb_lotes_sinteticos": {
+            "cantidad": 1,
+            "huella": "7efc84c720080491c0ded1b5c1e80e9e"
+          },
+          "cmdb_auditoria": {
+            "cantidad": 15006,
+            "huella": "6c5ca035ef58f5fedac357351287721b"
+          },
+          "sd_colas": {
+            "cantidad": 7,
+            "huella": "ef52d19653ef2d5674283dfd90123e98"
+          },
+          "sd_tickets": {
+            "cantidad": 37,
+            "huella": "ce2522eeb444180c9c88da618e4dd49c"
+          },
+          "sd_historial": {
+            "cantidad": 231,
+            "huella": "08a8f86e5aec7d1aaf69ec1bc546f2a8"
+          },
+          "sd_aprobaciones": {
+            "cantidad": 6,
+            "huella": "452f70408284114ae2a0ec1ac51d0860"
+          },
+          "sd_comentarios": {
+            "cantidad": 0,
+            "huella": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "sd_adjuntos": {
+            "cantidad": 0,
+            "huella": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "sd_ticket_ci": {
+            "cantidad": 37,
+            "huella": "d94d145b785b544885a16e8f7707d1be"
+          },
+          "sd_ticket_vinculos": {
+            "cantidad": 12,
+            "huella": "caad156141051b62d82bb80d696d3c82"
+          },
+          "sd_permisos_cola": {
+            "cantidad": 42,
+            "huella": "c7f645c1c11a5b1c126db4bca4d708d8"
+          },
+          "sd_cola_responsables": {
+            "cantidad": 7,
+            "huella": "740b370db5d4dc7aa2b2896e51b137a9"
+          },
+          "sd_roles_usuario": {
+            "cantidad": 0,
+            "huella": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "sd_ciclos_tiempo": {
+            "cantidad": 37,
+            "huella": "c85493fdf3897784d0a09096acf1cee2"
+          },
+          "sd_procesos_ticket": {
+            "cantidad": 37,
+            "huella": "b35a19e93aab46bab5851bb1fdfbe963"
+          },
+          "sd_evento_incidente": {
+            "cantidad": 2,
+            "huella": "d29fad00a1fbc3677662956bf2692629"
+          },
+          "sd_notificaciones": {
+            "cantidad": 2,
+            "huella": "76958d1825683f0412a96b20c800af2c"
+          },
+          "sd_faq": {
+            "cantidad": 5,
+            "huella": "385d055f908b4c632775cf93fbdfab94"
+          },
+          "sd_demo_lotes": {
+            "cantidad": 1,
+            "huella": "61ca60b2067a073b3d6c5dc4c9665983"
+          },
+          "sd_demo_tickets": {
+            "cantidad": 37,
+            "huella": "e63c63c35b3d3da8cb1e8e44992ef9b1"
+          }
+        }
+      },
+      "esperado": "Mismos conteos y checksums; catálogo, 5000 dispositivos, tickets e historial conservados; API/frontend HTTP 200",
+      "obtenido": {
+        "snapshots_iguales": true,
+        "datos_minimos_presentes": true,
+        "snapshot_despues": {
+          "service_level_1": {
+            "cantidad": 12,
+            "huella": "a350ec35dda690b50cb5742cda5a0d69"
+          },
+          "services": {
+            "cantidad": 47,
+            "huella": "5c6c4e4fca7043a8da26875a61506d07"
+          },
+          "cmdb_ci": {
+            "cantidad": 5000,
+            "huella": "39cc30beea35ae73f5c9c06d97f89101"
+          },
+          "cmdb_dispositivos": {
+            "cantidad": 5000,
+            "huella": "0dd7d0d8bcc7a2ec9c186794eddcf56d"
+          },
+          "cmdb_clasificaciones": {
+            "cantidad": 2,
+            "huella": "1ef0943dfa2c16658c615ba3a9a65316"
+          },
+          "cmdb_relaciones": {
+            "cantidad": 2,
+            "huella": "ab59f599137548caf2ac8acbbc9e62e3"
+          },
+          "cmdb_ci_servicios": {
+            "cantidad": 5000,
+            "huella": "870f20da83cbbb5de8dd83941a89fca2"
+          },
+          "cmdb_ubicaciones": {
+            "cantidad": 1,
+            "huella": "485e06243bd56a894da5d9fb03baebbe"
+          },
+          "cmdb_lotes_sinteticos": {
+            "cantidad": 1,
+            "huella": "7efc84c720080491c0ded1b5c1e80e9e"
+          },
+          "cmdb_auditoria": {
+            "cantidad": 15006,
+            "huella": "6c5ca035ef58f5fedac357351287721b"
+          },
+          "sd_colas": {
+            "cantidad": 7,
+            "huella": "ef52d19653ef2d5674283dfd90123e98"
+          },
+          "sd_tickets": {
+            "cantidad": 37,
+            "huella": "ce2522eeb444180c9c88da618e4dd49c"
+          },
+          "sd_historial": {
+            "cantidad": 231,
+            "huella": "08a8f86e5aec7d1aaf69ec1bc546f2a8"
+          },
+          "sd_aprobaciones": {
+            "cantidad": 6,
+            "huella": "452f70408284114ae2a0ec1ac51d0860"
+          },
+          "sd_comentarios": {
+            "cantidad": 0,
+            "huella": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "sd_adjuntos": {
+            "cantidad": 0,
+            "huella": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "sd_ticket_ci": {
+            "cantidad": 37,
+            "huella": "d94d145b785b544885a16e8f7707d1be"
+          },
+          "sd_ticket_vinculos": {
+            "cantidad": 12,
+            "huella": "caad156141051b62d82bb80d696d3c82"
+          },
+          "sd_permisos_cola": {
+            "cantidad": 42,
+            "huella": "c7f645c1c11a5b1c126db4bca4d708d8"
+          },
+          "sd_cola_responsables": {
+            "cantidad": 7,
+            "huella": "740b370db5d4dc7aa2b2896e51b137a9"
+          },
+          "sd_roles_usuario": {
+            "cantidad": 0,
+            "huella": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "sd_ciclos_tiempo": {
+            "cantidad": 37,
+            "huella": "c85493fdf3897784d0a09096acf1cee2"
+          },
+          "sd_procesos_ticket": {
+            "cantidad": 37,
+            "huella": "b35a19e93aab46bab5851bb1fdfbe963"
+          },
+          "sd_evento_incidente": {
+            "cantidad": 2,
+            "huella": "d29fad00a1fbc3677662956bf2692629"
+          },
+          "sd_notificaciones": {
+            "cantidad": 2,
+            "huella": "76958d1825683f0412a96b20c800af2c"
+          },
+          "sd_faq": {
+            "cantidad": 5,
+            "huella": "385d055f908b4c632775cf93fbdfab94"
+          },
+          "sd_demo_lotes": {
+            "cantidad": 1,
+            "huella": "61ca60b2067a073b3d6c5dc4c9665983"
+          },
+          "sd_demo_tickets": {
+            "cantidad": 37,
+            "huella": "e63c63c35b3d3da8cb1e8e44992ef9b1"
+          }
+        },
+        "http": "API y frontend HTTP 200; base conectada"
+      },
+      "estado": "APROBADO",
+      "fecha": "2026-10-29T00:15:42.290423+00:00",
+      "commit": "7255835b653ebd1b948d0c97a41cfffaacbb7a85",
+      "arbol_modificado": true
+    }
+  ],
+  "fin": "2026-10-29T00:15:42.290434+00:00",
+  "resumen": {
+    "APROBADO": 18,
+    "FALLIDO": 0
+  }
+}

@@ -1,0 +1,4 @@
+NAME                           IMAGE                       COMMAND                  SERVICE    CREATED         STATUS                    PORTS
+catalogo-cmdb-app-backend-1    catalogo-cmdb-app-backend   "sh -c 'python -m ba…"   backend    6 minutes ago   Up 41 seconds (healthy)   127.0.0.1:18000->8000/tcp
+catalogo-cmdb-app-db-1         postgres:16-alpine          "docker-entrypoint.s…"   db         6 minutes ago   Up 51 seconds (healthy)   5432/tcp
+catalogo-cmdb-app-frontend-1   node:22-alpine              "docker-entrypoint.s…"   frontend   6 minutes ago   Up 51 seconds             127.0.0.1:15173->5173/tcp

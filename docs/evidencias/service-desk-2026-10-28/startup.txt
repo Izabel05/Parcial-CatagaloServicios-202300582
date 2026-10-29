@@ -1,0 +1,82 @@
+ Image catalogo-desk-app-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 554B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 154B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 5.35kB done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.0s done
+#6 DONE 0.0s
+
+#7 [6/8] COPY data ./data
+#7 CACHED
+
+#8 [7/8] COPY scripts ./scripts
+#8 CACHED
+
+#9 [4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#9 CACHED
+
+#10 [2/8] WORKDIR /app
+#10 CACHED
+
+#11 [5/8] COPY backend ./backend
+#11 CACHED
+
+#12 [3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#12 CACHED
+
+#13 [8/8] COPY tests ./tests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:0a7de328e28bd9a16bf476fa17a366cc7f3052434b5eb178b845055999d8f5f0 done
+#14 exporting config sha256:2db2b0559bb90d5368ae678999ef502ada9438e07bbee05e0cad38d4fff3fefc done
+#14 exporting attestation manifest sha256:d1dda2c97c27d77e271714f496d6c02b87130f7ff12e77b37fcb84f296ac5e79
+#14 exporting attestation manifest sha256:d1dda2c97c27d77e271714f496d6c02b87130f7ff12e77b37fcb84f296ac5e79 0.1s done
+#14 exporting manifest list sha256:abe41c7a64193f7dbbf526f6cdfd66865d2f8e8ba34cd43ba749e76d9c9bd3da
+#14 exporting manifest list sha256:abe41c7a64193f7dbbf526f6cdfd66865d2f8e8ba34cd43ba749e76d9c9bd3da done
+#14 naming to docker.io/library/catalogo-desk-app-backend:latest done
+#14 unpacking to docker.io/library/catalogo-desk-app-backend:latest done
+#14 DONE 0.3s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image catalogo-desk-app-backend Built 
+ Network catalogo-desk-app_default Creating 
+ Network catalogo-desk-app_default Created 
+ Volume catalogo-desk-app_postgres_data Creating 
+ Volume catalogo-desk-app_postgres_data Created 
+ Volume catalogo-desk-app_frontend_node_modules Creating 
+ Volume catalogo-desk-app_frontend_node_modules Created 
+ Container catalogo-desk-app-db-1 Creating 
+ Container catalogo-desk-app-db-1 Created 
+ Container catalogo-desk-app-backend-1 Creating 
+ Container catalogo-desk-app-backend-1 Created 
+ Container catalogo-desk-app-frontend-1 Creating 
+ Container catalogo-desk-app-frontend-1 Created 
+ Container catalogo-desk-app-db-1 Starting 
+ Container catalogo-desk-app-db-1 Started 
+ Container catalogo-desk-app-db-1 Waiting 
+ Container catalogo-desk-app-db-1 Healthy 
+ Container catalogo-desk-app-backend-1 Starting 
+ Container catalogo-desk-app-backend-1 Started 
+ Container catalogo-desk-app-backend-1 Waiting 
+ Container catalogo-desk-app-backend-1 Healthy 
+ Container catalogo-desk-app-frontend-1 Starting 
+ Container catalogo-desk-app-frontend-1 Started 

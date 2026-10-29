@@ -1,0 +1,15 @@
+ Container catalogo-demo-app-frontend-1 Stopping 
+ Container catalogo-demo-app-frontend-1 Stopped 
+ Container catalogo-demo-app-frontend-1 Removing 
+ Container catalogo-demo-app-frontend-1 Removed 
+ Container catalogo-demo-app-backend-1 Stopping 
+ Container catalogo-demo-app-backend-1 Stopped 
+ Container catalogo-demo-app-backend-1 Removing 
+ Container catalogo-demo-app-backend-1 Removed 
+ Container catalogo-demo-app-db-1 Stopping 
+ Container catalogo-demo-app-db-1 Stopped 
+ Container catalogo-demo-app-db-1 Removing 
+ Container catalogo-demo-app-db-1 Removed 
+ Network catalogo-demo-app_default Removing 
+ Network catalogo-demo-app_default Removed 
+600 .env

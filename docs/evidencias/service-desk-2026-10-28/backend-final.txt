@@ -1,0 +1,91 @@
+ Container catalogo-desk-tests-db-1 Running 
+ Image catalogo-desk-tests-backend-tests Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 582B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 154B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 31.59kB done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.0s done
+#6 DONE 0.0s
+
+#7 [3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#7 CACHED
+
+#8 [2/8] WORKDIR /app
+#8 CACHED
+
+#9 [4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#9 CACHED
+
+#10 [5/8] COPY backend ./backend
+#10 DONE 0.3s
+
+#11 [6/8] COPY data ./data
+#11 DONE 0.0s
+
+#12 [7/8] COPY scripts ./scripts
+#12 DONE 0.0s
+
+#13 [8/8] COPY tests ./tests
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers 0.1s done
+#14 exporting manifest sha256:7d53300822423076a9a5dab5b26ace56eb6d55fcf32c93230f93d4f1a6c34035 done
+#14 exporting config sha256:eb38416f06890d048d6e3cd5cc43e585bb1c97fd79ab159e1399446288e23d2b done
+#14 exporting attestation manifest sha256:66542af0c3a5ac36a0b29d523ea9f91c1061c574d525f2bad2f888aaf583d8d5 0.0s done
+#14 exporting manifest list sha256:630ef9cde311614eda5c2dae737ecfbb7cda49f02ef7bfe219ce63d36602a22c done
+#14 naming to docker.io/library/catalogo-desk-tests-backend-tests:latest done
+#14 unpacking to docker.io/library/catalogo-desk-tests-backend-tests:latest 0.0s done
+#14 DONE 0.2s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image catalogo-desk-tests-backend-tests Built 
+ Container catalogo-desk-tests-db-1 Waiting 
+ Container catalogo-desk-tests-db-1 Healthy 
+ Container catalogo-desk-tests-backend-tests-run-551f15fb5e5e Creating 
+ Container catalogo-desk-tests-backend-tests-run-551f15fb5e5e Created 
+test_import_controls (tests.backend.test_importer_rules.ImporterRulesTest.test_import_controls) ... ok
+test_incomplete_final_services_are_review (tests.backend.test_importer_rules.ImporterRulesTest.test_incomplete_final_services_are_review) ... ok
+test_observations_cover_conflict_and_explicit_continuation_rule (tests.backend.test_importer_rules.ImporterRulesTest.test_observations_cover_conflict_and_explicit_continuation_rule) ... ok
+test_se12_has_one_canonical_level_and_preserves_codes (tests.backend.test_importer_rules.ImporterRulesTest.test_se12_has_one_canonical_level_and_preserves_codes) ... ok
+test_passwords_are_hashed_and_verified (tests.backend.test_security.SecurityTest.test_passwords_are_hashed_and_verified) ... ok
+test_profile_data_round_trips_with_aes_gcm (tests.backend.test_security.SecurityTest.test_profile_data_round_trips_with_aes_gcm) ... ok
+test_P01_to_P11_auth_hierarchy_catalog_and_import (tests.integration.test_cmdb.CmdbIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import) ... ok
+test_cmdb_01_generacion_5000_idempotente (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_01_generacion_5000_idempotente) ... {"cmdb_generar_y_repetir_5000_segundos": 3.541, "entorno": "Docker Python 3.12/PostgreSQL 16"}
+ok
+test_cmdb_02_permisos_filtros_y_detalle (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_02_permisos_filtros_y_detalle) ... ok
+test_cmdb_03_clasificaciones_y_ubicaciones (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_03_clasificaciones_y_ubicaciones) ... {"cmdb_busqueda_y_detalle_segundos": 0.0982, "dispositivos": 5000}
+ok
+test_cmdb_04_relaciones_ciclos_e_impacto (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_04_relaciones_ciclos_e_impacto) ... ok
+test_cmdb_05_mantenimiento_ci_y_referencias (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_05_mantenimiento_ci_y_referencias) ... ok
+test_cmdb_06_ciclos_concurrentes (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_06_ciclos_concurrentes) ... ok
+test_P01_to_P11_auth_hierarchy_catalog_and_import (tests.integration.test_desk.DeskIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import) ... ok
+test_sd_01_referencias_y_aislamiento (tests.integration.test_desk.DeskIntegrationTest.test_sd_01_referencias_y_aislamiento) ... ok
+test_sd_02_consulta_no_se_eleva (tests.integration.test_desk.DeskIntegrationTest.test_sd_02_consulta_no_se_eleva) ... ok
+test_sd_03_tomar_atomico_y_orden (tests.integration.test_desk.DeskIntegrationTest.test_sd_03_tomar_atomico_y_orden) ... ok
+test_sd_04_transferencia_escalamiento_y_bajas (tests.integration.test_desk.DeskIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas) ... ok
+test_sd_05_notas_adjuntos_y_descarga (tests.integration.test_desk.DeskIntegrationTest.test_sd_05_notas_adjuntos_y_descarga) ... ok
+test_sd_06_vinculos_aprobacion_y_ciclo_comun (tests.integration.test_desk.DeskIntegrationTest.test_sd_06_vinculos_aprobacion_y_ciclo_comun) ... ok
+test_sd_07_concesion_directa_revocacion_y_edicion (tests.integration.test_desk.DeskIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 28.096s
+
+OK

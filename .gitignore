@@ -1,4 +1,7 @@
 .env
+.e2e.env
+.demo-*
+.demo/
 __pycache__/
 *.py[cod]
 .pytest_cache/

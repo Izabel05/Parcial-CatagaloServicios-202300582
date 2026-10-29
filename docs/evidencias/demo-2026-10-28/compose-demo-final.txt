@@ -1,0 +1,74 @@
+ Image catalogo-demo-app-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 554B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 154B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 7.12kB done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.0s done
+#6 DONE 0.0s
+
+#7 [3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#7 CACHED
+
+#8 [2/8] WORKDIR /app
+#8 CACHED
+
+#9 [5/8] COPY backend ./backend
+#9 CACHED
+
+#10 [7/8] COPY scripts ./scripts
+#10 CACHED
+
+#11 [4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#11 CACHED
+
+#12 [6/8] COPY data ./data
+#12 CACHED
+
+#13 [8/8] COPY tests ./tests
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:aeab52fefee7de69bebff17672d9f18f086ed9570a8e5e2b7446962aa35ff47b done
+#14 exporting config sha256:da2eb5ac8b50d24dd3342a76824b7f51c3709682393525a735a2d8ff92b5808f done
+#14 exporting attestation manifest sha256:05142f40dd2d7aa8a3a2bac66819f54738f15b82c845f73e6499845e03356d89 0.0s done
+#14 exporting manifest list sha256:5c055f8378e5e7abf8638118363aa99684e8de55788292bccff2b885cbfb6023 done
+#14 naming to docker.io/library/catalogo-demo-app-backend:latest done
+#14 unpacking to docker.io/library/catalogo-demo-app-backend:latest done
+#14 DONE 0.1s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image catalogo-demo-app-backend Built 
+ Container catalogo-demo-app-db-1 Running 
+ Container catalogo-demo-app-backend-1 Recreate 
+ Container catalogo-demo-app-backend-1 Recreated 
+ Container catalogo-demo-app-frontend-1 Running 
+ Container catalogo-demo-app-db-1 Waiting 
+ Container catalogo-demo-app-db-1 Healthy 
+ Container catalogo-demo-app-backend-1 Starting 
+ Container catalogo-demo-app-backend-1 Started 
+ Container catalogo-demo-app-backend-1 Waiting 
+ Container catalogo-demo-app-backend-1 Healthy 
+ Container catalogo-demo-app-frontend-1 Waiting 
+ Container catalogo-demo-app-db-1 Waiting 
+ Container catalogo-demo-app-backend-1 Waiting 
+ Container catalogo-demo-app-backend-1 Healthy 
+ Container catalogo-demo-app-db-1 Healthy 
+ Container catalogo-demo-app-frontend-1 Healthy 

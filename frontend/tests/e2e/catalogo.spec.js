@@ -52,11 +52,32 @@ test('el dashboard navega por pestañas sin apilar todas las vistas', async ({ p
 })
 
 test('P10 permite búsqueda y filtros desde la interfaz', async ({ page }) => {
+  // Entregar la respuesta inicial después del filtro reproduce la carrera detectada.
+  let releaseInitial
+  let captureInitial
+  const initialHeld = new Promise((resolve) => { captureInitial = resolve })
+  const release = new Promise((resolve) => { releaseInitial = resolve })
+  await page.route('**/api/v1/services?*', async (route) => {
+    if (new URL(route.request().url()).searchParams.has('search')) return route.continue()
+    const response = await route.fetch()
+    captureInitial()
+    await release
+    await route.fulfill({ response })
+  })
   await login(page, adminUser, adminPassword)
   await openServices(page)
+  await initialHeld
   await page.getByLabel('Buscar por código o nombre').fill('SE.12')
   await page.getByRole('button', { name: 'Aplicar filtros' }).click()
   await expect(page.getByText('SE.12.1').or(page.getByText('SE.12.2')).first()).toBeVisible()
+  const initialDelivered = page.waitForResponse((response) => {
+    const url = new URL(response.url())
+    return url.pathname.endsWith('/api/v1/services') && !url.searchParams.has('search')
+  })
+  releaseInitial()
+  await initialDelivered
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+  await expect(page.getByText('3 resultados', { exact: true })).toBeVisible()
 })
 
 test('P04 muestra la jerarquía organizacional y los puestos', async ({ page }) => {
@@ -73,10 +94,11 @@ test('P09 comunica al usuario el rango mínimo/máximo inválido', async ({ page
   await login(page, adminUser, adminPassword)
   await openServices(page)
   await page.getByRole('heading', { name: 'Nuevo servicio' }).scrollIntoViewIfNeeded()
-  await page.getByPlaceholder('Código').fill(`E2E-${Date.now()}`)
-  await page.getByPlaceholder('Nombre').fill('Validación E2E')
-  await page.getByPlaceholder('Mínimo opcional').fill('10')
-  await page.getByPlaceholder('Máximo opcional').fill('1')
-  await page.getByRole('button', { name: 'Crear servicio' }).click()
+  const alta = page.getByRole('region', { name: 'Alta de servicio', exact: true })
+  await alta.getByPlaceholder('Código', { exact: true }).fill(`E2E-${Date.now()}`)
+  await alta.getByPlaceholder('Nombre', { exact: true }).fill('Validación E2E')
+  await alta.getByPlaceholder('Mínimo opcional').fill('10')
+  await alta.getByPlaceholder('Máximo opcional').fill('1')
+  await alta.getByRole('button', { name: 'Crear servicio' }).click()
   await expect(page.getByRole('alert')).toContainText(/mínimo.*máximo/i)
 })

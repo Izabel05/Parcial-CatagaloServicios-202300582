@@ -1,0 +1,52 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (759ms)
+  ✓  2 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (576ms)
+  ✓  3 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (605ms)
+  ✘  4 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (5.7s)
+  ✓  5 tests/e2e/catalogo.spec.js:62:1 › P04 muestra la jerarquía organizacional y los puestos (663ms)
+  ✓  6 tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido (792ms)
+
+
+  1) tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz ────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('SE.12.1').or(getByText('SE.12.2')).first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('SE.12.1').or(getByText('SE.12.2')).first() with timeout 5000ms
+      - waiting for getByText('SE.12.1').or(getByText('SE.12.2')).first()
+
+
+      57 |   await page.getByLabel('Buscar por código o nombre').fill('SE.12')
+      58 |   await page.getByRole('button', { name: 'Aplicar filtros' }).click()
+    > 59 |   await expect(page.getByText('SE.12.1').or(page.getByText('SE.12.2')).first()).toBeVisible()
+         |                                                                                 ^
+      60 | })
+      61 |
+      62 | test('P04 muestra la jerarquía organizacional y los puestos', async ({ page }) => {
+        at /work/tests/e2e/catalogo.spec.js:59:81
+
+    Error Context: test-results/catalogo-P10-permite-búsqueda-y-filtros-desde-la-interfaz/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/catalogo-P10-permite-búsqueda-y-filtros-desde-la-interfaz/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/catalogo-P10-permite-búsqueda-y-filtros-desde-la-interfaz/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz ─────────────
+  5 passed (10.3s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

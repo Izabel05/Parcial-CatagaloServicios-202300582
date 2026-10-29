@@ -1,0 +1,34 @@
+{
+  "faq": {
+    "md5": "53c49ef1aab92572d2b5a37adc9f6fba",
+    "cantidad": 6
+  },
+  "ciclos": {
+    "md5": "0271982ee987235f6f7bfa74b9e6b9b9",
+    "cantidad": 2
+  },
+  "flujos": {
+    "md5": "0c836b009a516c1f95bc18545af51570",
+    "cantidad": 2
+  },
+  "tickets": {
+    "md5": "47eba1cdc3d728a90a04cf322de029f0",
+    "cantidad": 2
+  },
+  "adjuntos": {
+    "md5": "4560982ed1459d63bca497d7b6e426cb",
+    "cantidad": 1
+  },
+  "historial": {
+    "md5": "4355f823b306aefb2d6cbf79bcf31495",
+    "cantidad": 32
+  },
+  "servicios": {
+    "md5": "971163e279c495b48828d5a8c39b6834",
+    "cantidad": 46
+  },
+  "dispositivos": {
+    "md5": "8e1bc54a4cf60f76c312800cf54fe540",
+    "cantidad": 5000
+  }
+}

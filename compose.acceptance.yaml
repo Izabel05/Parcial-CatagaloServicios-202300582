@@ -1,0 +1,67 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: catalogo_aceptacion_test
+      POSTGRES_USER: catalogo_test
+      POSTGRES_PASSWORD: catalogo_test
+    volumes:
+      - acceptance_data:/var/lib/postgresql/data
+      - ./backend/db/00_schema.sql:/docker-entrypoint-initdb.d/00_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalogo_test -d catalogo_aceptacion_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  backend-tests:
+    build: .
+    environment:
+      TEST_DATABASE_URL: postgresql://catalogo_test:catalogo_test@db:5432/catalogo_aceptacion_test
+    volumes:
+      - ./${ACCEPTANCE_EVIDENCE_DIR:-docs/evidencias/aceptacion-local}:/evidence
+    depends_on:
+      db:
+        condition: service_healthy
+    command: python -m unittest -v tests.integration.test_demo
+
+  backend:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://catalogo_test:catalogo_test@db:5432/catalogo_aceptacion_test
+      # Clave PÚBLICA, exclusiva del harness; coincide con los fixtures. Nunca usar en producción.
+      APP_ENCRYPTION_KEY: AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=
+      FRONTEND_ORIGINS: http://127.0.0.1:${ACCEPTANCE_FRONTEND_PORT:-15174}
+    ports:
+      - "127.0.0.1:${ACCEPTANCE_API_PORT:-18001}:8000"
+    volumes:
+      - ./${ACCEPTANCE_EVIDENCE_DIR:-docs/evidencias/aceptacion-local}:/evidence
+    depends_on:
+      db:
+        condition: service_healthy
+    # El harness ya importó y migró. No reimportar al verificar persistencia.
+    command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    environment:
+      VITE_API_URL: http://127.0.0.1:${ACCEPTANCE_API_PORT:-18001}
+    ports:
+      - "127.0.0.1:${ACCEPTANCE_FRONTEND_PORT:-15174}:5173"
+    volumes:
+      - ./frontend:/app
+      - acceptance_node_modules:/app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  acceptance_data:
+  acceptance_node_modules:

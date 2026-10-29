@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from psycopg.errors import UniqueViolation
+from psycopg.errors import UniqueViolation, CheckViolation
 
 from backend.app.models.user import AuthenticatedContext
 from backend.app.repositories.admin_repository import CatalogAdminRepository, OrganizationRepository, UserAdminRepository
@@ -61,7 +61,10 @@ class AdminService:
     def set_user_status(self, actor: AuthenticatedContext, user_id: int, is_active: bool) -> dict[str, Any]:
         if actor.user.id == user_id and not is_active:
             raise AdminOperationError("No se puede desactivar la cuenta administradora actual")
-        user = self._users.set_status(user_id, is_active)
+        try:
+            user = self._users.set_status(user_id, is_active)
+        except CheckViolation as error:
+            raise AdminOperationError("Reasigne o cierre los tickets antes de desactivar al agente") from error
         if user is None:
             raise AdminOperationError("Usuario no encontrado")
         return user
@@ -99,6 +102,8 @@ class AdminService:
             user = self._users.update_user(user_id, params)
         except UniqueViolation as error:
             raise AdminOperationError("El usuario o correo ya existe") from error
+        except CheckViolation as error:
+            raise AdminOperationError("Reasigne o cierre los tickets antes de cambiar el rol o estado del agente") from error
         if user is None:
             raise AdminOperationError("Usuario no encontrado")
         return user
@@ -106,7 +111,10 @@ class AdminService:
     def set_user_role(self, actor: AuthenticatedContext, user_id: int, role: str) -> dict[str, Any]:
         if actor.user.id == user_id and role != "administrador":
             raise AdminOperationError("No se puede retirar el rol administrador de la sesión actual")
-        user = self._users.set_role(user_id, role)
+        try:
+            user = self._users.set_role(user_id, role)
+        except CheckViolation as error:
+            raise AdminOperationError("Reasigne o cierre los tickets antes de cambiar el rol del agente") from error
         if user is None:
             raise AdminOperationError("Usuario no encontrado")
         return user

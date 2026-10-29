@@ -1,0 +1,2 @@
+# Los scripts Bash deben conservar LF al clonar o exportar desde Windows.
+*.sh text eol=lf

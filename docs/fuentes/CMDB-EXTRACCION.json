@@ -1,0 +1,342 @@
+{
+  "fecha": "2026-10-28",
+  "metodo": "Lectura estática; no se ejecutan macros, conexiones ni enlaces externos.",
+  "fuentes": [
+    {
+      "archivo": "data/fuentes/CMDB.xlsx",
+      "sha256": "d182796bb40b492be2cb87e2c5fe19a8f910f2e754183dc48b5e89bd360464dc",
+      "bytes": 11351
+    },
+    {
+      "archivo": "data/fuentes/Service Desk.pptx (1).pdf",
+      "sha256": "265f55d5d364057c19111f39a8fcd8139a9622cc9b2ee52fda26aaa9bf4311d4",
+      "bytes": 375901
+    },
+    {
+      "archivo": "data/fuentes/Tarea_Service_Desk.pdf",
+      "sha256": "0a36d768f0ef305334b4f56ad65e8dda1be0410f6f6e636254ba0090ec29396e",
+      "bytes": 174361
+    }
+  ],
+  "cmdb": {
+    "hojas": [
+      "CMDB"
+    ],
+    "rango_con_datos": "B4:U6",
+    "celdas": [
+      {
+        "celda": "B4",
+        "valor_original": "Nombre del CI",
+        "tipo": "s"
+      },
+      {
+        "celda": "C4",
+        "valor_original": " Tipo de CI",
+        "tipo": "s"
+      },
+      {
+        "celda": "D4",
+        "valor_original": "Descripción",
+        "tipo": "s"
+      },
+      {
+        "celda": "E4",
+        "valor_original": "Número de Serie",
+        "tipo": "s"
+      },
+      {
+        "celda": "F4",
+        "valor_original": "Versión",
+        "tipo": "s"
+      },
+      {
+        "celda": "G4",
+        "valor_original": "Fecha de Adquisición",
+        "tipo": "s"
+      },
+      {
+        "celda": "H4",
+        "valor_original": " Estado Actual",
+        "tipo": "s"
+      },
+      {
+        "celda": "I4",
+        "valor_original": " Relaciones",
+        "tipo": "s"
+      },
+      {
+        "celda": "J4",
+        "valor_original": " Padres/Hijos",
+        "tipo": "s"
+      },
+      {
+        "celda": "K4",
+        "valor_original": "Ubicación Física",
+        "tipo": "s"
+      },
+      {
+        "celda": "L4",
+        "valor_original": " Propietario/Responsable",
+        "tipo": "s"
+      },
+      {
+        "celda": "M4",
+        "valor_original": " Fecha de Cambio",
+        "tipo": "s"
+      },
+      {
+        "celda": "N4",
+        "valor_original": "Descripción del Cambio",
+        "tipo": "s"
+      },
+      {
+        "celda": "O4",
+        "valor_original": "Documentación relacionada",
+        "tipo": "s"
+      },
+      {
+        "celda": "P4",
+        "valor_original": " Enlaces a Incidentes y Problemas",
+        "tipo": "s"
+      },
+      {
+        "celda": "Q4",
+        "valor_original": " Niveles de Seguridad",
+        "tipo": "s"
+      },
+      {
+        "celda": "R4",
+        "valor_original": " Cumplimiento",
+        "tipo": "s"
+      },
+      {
+        "celda": "S4",
+        "valor_original": " Estado de Configuraci√≥n",
+        "tipo": "s"
+      },
+      {
+        "celda": "T4",
+        "valor_original": " N√∫mero de Licencia",
+        "tipo": "s"
+      },
+      {
+        "celda": "U4",
+        "valor_original": " Fecha de Vencimiento",
+        "tipo": "s"
+      },
+      {
+        "celda": "B5",
+        "valor_original": "Servidor1",
+        "tipo": "s"
+      },
+      {
+        "celda": "C5",
+        "valor_original": " Hardware",
+        "tipo": "s"
+      },
+      {
+        "celda": "D5",
+        "valor_original": " Servidor de Aplicaciones",
+        "tipo": "s"
+      },
+      {
+        "celda": "E5",
+        "valor_original": " SN123456",
+        "tipo": "s"
+      },
+      {
+        "celda": "F5",
+        "valor_original": " v1.0",
+        "tipo": "s"
+      },
+      {
+        "celda": "G5",
+        "valor_original": " 2022-01-01",
+        "tipo": "s"
+      },
+      {
+        "celda": "H5",
+        "valor_original": " Activo",
+        "tipo": "s"
+      },
+      {
+        "celda": "I5",
+        "valor_original": " Base de Datos1",
+        "tipo": "s"
+      },
+      {
+        "celda": "J5",
+        "valor_original": " ",
+        "tipo": "s"
+      },
+      {
+        "celda": "K5",
+        "valor_original": " Sala de Servidores 1",
+        "tipo": "s"
+      },
+      {
+        "celda": "L5",
+        "valor_original": " Equipo de Infraestructura",
+        "tipo": "s"
+      },
+      {
+        "celda": "M5",
+        "valor_original": " 2022-02-01",
+        "tipo": "s"
+      },
+      {
+        "celda": "N5",
+        "valor_original": "Actualización de Software",
+        "tipo": "s"
+      },
+      {
+        "celda": "O5",
+        "valor_original": " [Enlace a Manual](url)",
+        "tipo": "s"
+      },
+      {
+        "celda": "P5",
+        "valor_original": " [Enlace a Incidente](url)",
+        "tipo": "s"
+      },
+      {
+        "celda": "Q5",
+        "valor_original": " Alto",
+        "tipo": "s"
+      },
+      {
+        "celda": "R5",
+        "valor_original": " Cumple",
+        "tipo": "s"
+      },
+      {
+        "celda": "S5",
+        "valor_original": " Aprobado",
+        "tipo": "s"
+      },
+      {
+        "celda": "T5",
+        "valor_original": " ABC123",
+        "tipo": "s"
+      },
+      {
+        "celda": "U5",
+        "valor_original": " 2023-01-01",
+        "tipo": "s"
+      },
+      {
+        "celda": "B6",
+        "valor_original": "Aplicación",
+        "tipo": "s"
+      },
+      {
+        "celda": "C6",
+        "valor_original": " Software",
+        "tipo": "s"
+      },
+      {
+        "celda": "D6",
+        "valor_original": "Aplicación de contabilidad",
+        "tipo": "s"
+      },
+      {
+        "celda": "E6",
+        "valor_original": " ",
+        "tipo": "s"
+      },
+      {
+        "celda": "F6",
+        "valor_original": " v2.5",
+        "tipo": "s"
+      },
+      {
+        "celda": "G6",
+        "valor_original": " 2022-03-15",
+        "tipo": "s"
+      },
+      {
+        "celda": "H6",
+        "valor_original": " Activo",
+        "tipo": "s"
+      },
+      {
+        "celda": "I6",
+        "valor_original": " Base de Datos1",
+        "tipo": "s"
+      },
+      {
+        "celda": "J6",
+        "valor_original": " ",
+        "tipo": "s"
+      },
+      {
+        "celda": "K6",
+        "valor_original": " Servidor1",
+        "tipo": "s"
+      },
+      {
+        "celda": "L6",
+        "valor_original": " Equipo de Desarrollo",
+        "tipo": "s"
+      },
+      {
+        "celda": "M6",
+        "valor_original": " 2022-04-01",
+        "tipo": "s"
+      },
+      {
+        "celda": "N6",
+        "valor_original": " Parche de Seguridad",
+        "tipo": "s"
+      },
+      {
+        "celda": "O6",
+        "valor_original": " [Enlace a Documentaci√≥n T√©cnica](url)",
+        "tipo": "s"
+      },
+      {
+        "celda": "P6",
+        "valor_original": " [Enlace a Incidente](url)",
+        "tipo": "s"
+      },
+      {
+        "celda": "Q6",
+        "valor_original": " Medio",
+        "tipo": "s"
+      },
+      {
+        "celda": "R6",
+        "valor_original": " Cumple",
+        "tipo": "s"
+      },
+      {
+        "celda": "S6",
+        "valor_original": " Aprobado",
+        "tipo": "s"
+      },
+      {
+        "celda": "T6",
+        "valor_original": " XYZ456",
+        "tipo": "s"
+      },
+      {
+        "celda": "U6",
+        "valor_original": " 2024-01-01",
+        "tipo": "s"
+      }
+    ],
+    "combinaciones": [],
+    "validaciones": 0,
+    "nombres_definidos": [],
+    "imagenes": 0
+  },
+  "service_desk": {
+    "paginas": 16,
+    "revision_visual": [
+      10,
+      11,
+      15,
+      16
+    ]
+  }
+}

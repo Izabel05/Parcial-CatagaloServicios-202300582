@@ -1,0 +1,68 @@
+
+added 69 packages, and audited 70 packages in 2s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+Running 11 tests using 3 workers
+
+  ✓   1 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (1.1s)
+  ✓   4 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (662ms)
+  ✓   3 tests/e2e/cmdb.spec.js:17:1 › CMDB busca entre 5000 dispositivos y navega ficha y dependencias (2.4s)
+  ✓   5 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (1.0s)
+  ✓   7 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (1.4s)
+  ✓   6 tests/e2e/cmdb.spec.js:31:1 › CMDB consulta es de lectura y administrador mantiene ubicaciones (2.6s)
+  ✓   8 tests/e2e/catalogo.spec.js:83:1 › P04 muestra la jerarquía organizacional y los puestos (1.1s)
+  ✓   2 tests/e2e/desk.spec.js:24:1 › solicitante crea ticket con adjunto y agente atiende sin filtrar notas internas (6.3s)
+  ✓   9 tests/e2e/catalogo.spec.js:93:1 › P09 comunica al usuario el rango mínimo/máximo inválido (998ms)
+  ✓  10 tests/e2e/desk.spec.js:60:1 › consulta no obtiene formularios de escritura en Service Desk (764ms)
+  ✘  11 tests/e2e/desk.spec.js:68:1 › incidente exige evidencias y recorre sus etapas desde el formulario (30.1s)
+
+
+  1) tests/e2e/desk.spec.js:68:1 › incidente exige evidencias y recorre sus etapas desde el formulario 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('region', { name: 'Proceso del ticket' }).getByLabel('categoria', { exact: true })
+
+
+       98 |   await advance('diagnostico',false)
+       99 |   await expect(page.getByRole('alert')).toContainText('Complete:')
+    > 100 |   await workflow.getByLabel('categoria',{exact:true}).selectOption('I0')
+          |                                                       ^
+      101 |   await workflow.getByLabel('interrupcion',{exact:true}).selectOption('false')
+      102 |   await save()
+      103 |   await advance('diagnostico')
+        at /work/tests/e2e/desk.spec.js:100:55
+
+    Error Context: test-results/desk-incidente-exige-evide-1227f--etapas-desde-el-formulario/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/desk-incidente-exige-evide-1227f--etapas-desde-el-formulario/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/desk-incidente-exige-evide-1227f--etapas-desde-el-formulario/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/desk.spec.js:68:1 › incidente exige evidencias y recorre sus etapas desde el formulario 
+  10 passed (38.0s)

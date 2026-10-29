@@ -25,7 +25,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command: python -m unittest tests.integration.test_scenarios
+    command: python -m unittest -v tests.backend.test_importer_rules tests.backend.test_security tests.backend.test_desk_metrics tests.integration.test_cmdb tests.integration.test_desk tests.integration.test_processes tests.integration.test_experience tests.integration.test_demo
 
 volumes:
   postgres_test_data:

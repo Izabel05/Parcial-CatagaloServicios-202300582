@@ -1,0 +1,16 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (656ms)
+  ✓  2 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (569ms)
+  ✓  3 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (609ms)
+  ✓  4 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (797ms)
+  ✓  5 tests/e2e/catalogo.spec.js:83:1 › P04 muestra la jerarquía organizacional y los puestos (648ms)
+  ✓  6 tests/e2e/catalogo.spec.js:93:1 › P09 comunica al usuario el rango mínimo/máximo inválido (782ms)
+
+  6 passed (4.8s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

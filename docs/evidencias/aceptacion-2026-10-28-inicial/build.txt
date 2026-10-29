@@ -1,0 +1,73 @@
+ Image catalogo-aceptacion-tests-backend Building 
+ Image catalogo-aceptacion-tests-backend-tests Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.08kB done
+#1 DONE 0.0s
+
+#2 [backend-tests internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.0s
+
+#3 [backend-tests internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [backend internal] load .dockerignore
+#4 transferring context: 154B done
+#4 DONE 0.0s
+
+#5 [backend-tests internal] load build context
+#5 transferring context: 1.07MB 0.0s done
+#5 DONE 0.2s
+
+#6 [backend-tests 1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.2s done
+#6 DONE 0.2s
+
+#7 [backend 2/8] WORKDIR /app
+#7 CACHED
+
+#8 [backend 3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#8 CACHED
+
+#9 [backend 4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#9 CACHED
+
+#10 [backend 5/8] COPY backend ./backend
+#10 DONE 0.2s
+
+#11 [backend-tests 6/8] COPY data ./data
+#11 DONE 0.0s
+
+#12 [backend 7/8] COPY scripts ./scripts
+#12 DONE 0.0s
+
+#13 [backend 8/8] COPY tests ./tests
+#13 DONE 0.0s
+
+#14 [backend-tests] exporting to image
+#14 exporting layers 0.1s done
+#14 exporting manifest sha256:023422c390e00759ec83391ba1b5a96f834bad3542fbddbcca63349ccbcc3118 done
+#14 exporting config sha256:5ae922fcd799fbf212be0c002f564b826544746315b48dd842ddffed0db3a902 done
+#14 exporting attestation manifest sha256:14907bd8cf35e0facf11a9d77b416057cf831c7861af2af9fb4e3c724aa33496 0.0s done
+#14 exporting manifest list sha256:f4cf5b014a775b3ae3e7e92809aec46f5aab8a8f908138778432f6901abcd6b6 done
+#14 naming to docker.io/library/catalogo-aceptacion-tests-backend-tests:latest done
+#14 unpacking to docker.io/library/catalogo-aceptacion-tests-backend-tests:latest 0.0s done
+#14 DONE 0.2s
+
+#15 [backend] exporting to image
+#15 exporting layers 0.1s done
+#15 exporting manifest sha256:3d506589b78d1f78843131a3cb82f5ff9c20cb15b536fc260d4e868c56adc43d done
+#15 exporting config sha256:a951c2cb2348cf89cb0f91ea6e08e5a6fb53e13dd0158fafeb62450735c7857b 0.0s done
+#15 exporting attestation manifest sha256:c10bcea0b4c1903b806a38f2a091d531fc31c2a597dfbddcbf2ed0bbf4d68305 0.0s done
+#15 exporting manifest list sha256:f0321fc3635593fc9305ab2b6b9801bf558235dfc1765af6821cf103c23796de done
+#15 naming to docker.io/library/catalogo-aceptacion-tests-backend:latest done
+#15 unpacking to docker.io/library/catalogo-aceptacion-tests-backend:latest 0.0s done
+#15 DONE 0.2s
+
+#16 [backend-tests] resolving provenance for metadata file
+#16 DONE 0.0s
+
+#17 [backend] resolving provenance for metadata file
+#17 DONE 0.0s
+ Image catalogo-aceptacion-tests-backend Built 
+ Image catalogo-aceptacion-tests-backend-tests Built 

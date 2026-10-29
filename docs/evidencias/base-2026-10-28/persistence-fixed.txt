@@ -1,0 +1,17 @@
+ Network catalogo-servicios-tests_default Creating 
+ Network catalogo-servicios-tests_default Created 
+ Container catalogo-servicios-tests-db-1 Creating 
+ Container catalogo-servicios-tests-db-1 Created 
+ Container catalogo-servicios-tests-db-1 Starting 
+ Container catalogo-servicios-tests-db-1 Started 
+CREATE TABLE
+INSERT 0 1
+ Container catalogo-servicios-tests-db-1 Restarting 
+ Container catalogo-servicios-tests-db-1 Started 
+P12 OK: los datos persistieron después de reiniciar el contenedor sin eliminar el volumen.
+ Container catalogo-servicios-tests-db-1 Stopping 
+ Container catalogo-servicios-tests-db-1 Stopped 
+ Container catalogo-servicios-tests-db-1 Removing 
+ Container catalogo-servicios-tests-db-1 Removed 
+ Network catalogo-servicios-tests_default Removing 
+ Network catalogo-servicios-tests_default Removed 

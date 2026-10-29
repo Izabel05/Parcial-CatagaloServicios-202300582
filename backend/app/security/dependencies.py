@@ -48,4 +48,4 @@ def require_roles(*allowed_roles: str) -> Callable[..., AuthenticatedContext]:
 
 
 require_administrator = require_roles("administrador")
-require_functional_reader = require_roles("administrador", "consulta")
+require_functional_reader = require_roles("administrador", "consulta", "solicitante", "agente", "aprobador")

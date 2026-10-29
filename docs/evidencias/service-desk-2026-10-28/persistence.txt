@@ -1,0 +1,9 @@
+ Container catalogo-desk-app-frontend-1 Restarting 
+ Container catalogo-desk-app-db-1 Restarting 
+ Container catalogo-desk-app-backend-1 Restarting 
+ Container catalogo-desk-app-db-1 Started 
+ Container catalogo-desk-app-frontend-1 Started 
+ Container catalogo-desk-app-backend-1 Started 
+
+Antes/despues idénticos: {"servicios" : 46, "dispositivos" : 5000, "colas" : 7, "tickets" : 1, "historial" : 19, "comentarios" : 2, "adjuntos" : 1, "contenido_adjuntos" : "9d4a65700c551e460ed98d56a21e08f9", "datos_tickets" : "29acaac34870371b5ad64a67ca25b310"}
+API saludable: {"status": "ok", "database": "ok"}

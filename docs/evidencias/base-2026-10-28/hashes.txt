@@ -1,0 +1,3 @@
+de3b478a5faeeeaebce1aa7726e0e3321188a68e41bbb656e1d17b0c5b74dcf0  data/CatalogoServicios.xlsx
+3d84b980404a415004bef736c68775ea0e06e8b71473a93461a27810d8a42a68  frontend/src/ServiceBrowser.jsx
+95c0d292d0d29dce7a8da9f819f5e5575a4153fc0f36065cc97cd67d68bbd1f3  frontend/tests/e2e/catalogo.spec.js

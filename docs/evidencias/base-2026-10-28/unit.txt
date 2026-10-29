@@ -1,0 +1,16 @@
+ Container catalogo-baseline-7255835-db-1 Running 
+ Container catalogo-baseline-7255835-db-1 Waiting 
+ Container catalogo-baseline-7255835-db-1 Healthy 
+ Container catalogo-baseline-7255835-backend-tests-run-c3698bfe5f49 Creating 
+ Container catalogo-baseline-7255835-backend-tests-run-c3698bfe5f49 Created 
+test_import_controls (tests.backend.test_importer_rules.ImporterRulesTest.test_import_controls) ... ok
+test_incomplete_final_services_are_review (tests.backend.test_importer_rules.ImporterRulesTest.test_incomplete_final_services_are_review) ... ok
+test_observations_cover_conflict_and_explicit_continuation_rule (tests.backend.test_importer_rules.ImporterRulesTest.test_observations_cover_conflict_and_explicit_continuation_rule) ... ok
+test_se12_has_one_canonical_level_and_preserves_codes (tests.backend.test_importer_rules.ImporterRulesTest.test_se12_has_one_canonical_level_and_preserves_codes) ... ok
+test_passwords_are_hashed_and_verified (tests.backend.test_security.SecurityTest.test_passwords_are_hashed_and_verified) ... ok
+test_profile_data_round_trips_with_aes_gcm (tests.backend.test_security.SecurityTest.test_profile_data_round_trips_with_aes_gcm) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.773s
+
+OK

@@ -1,0 +1,43 @@
+Persistencia aplicación OK; conteos y checksums idénticos.
+ Container catalogo-procesos-app-db-1 Restarting 
+ Container catalogo-procesos-app-db-1 Started 
+ Container catalogo-procesos-app-db-1 Running 
+ Container catalogo-procesos-app-backend-1 Running 
+ Container catalogo-procesos-app-frontend-1 Running 
+ Container catalogo-procesos-app-db-1 Waiting 
+ Container catalogo-procesos-app-db-1 Healthy 
+ Container catalogo-procesos-app-backend-1 Waiting 
+ Container catalogo-procesos-app-backend-1 Healthy 
+ Container catalogo-procesos-app-backend-1 Waiting 
+ Container catalogo-procesos-app-frontend-1 Waiting 
+ Container catalogo-procesos-app-db-1 Waiting 
+ Container catalogo-procesos-app-backend-1 Healthy 
+ Container catalogo-procesos-app-db-1 Healthy 
+ Container catalogo-procesos-app-frontend-1 Healthy 
+
+{
+  "flujos": {
+    "md5": "6469d784cc3c3d71e48ce98fa3bb2329",
+    "cantidad": 8
+  },
+  "tickets": {
+    "md5": "ba12f43aaebc155951a0a8356472ee9c",
+    "cantidad": 8
+  },
+  "adjuntos": {
+    "md5": "c5ddb86bad93da0b76c17fec7b2578ff",
+    "cantidad": 4
+  },
+  "historial": {
+    "md5": "c581ffa62abbc1f6016ebaec30a3f6fd",
+    "cantidad": 58
+  },
+  "servicios": {
+    "md5": "88e8073725c2cf5d99706841f66df0d0",
+    "cantidad": 46
+  },
+  "dispositivos": {
+    "md5": "8e1bc54a4cf60f76c312800cf54fe540",
+    "cantidad": 5000
+  }
+}

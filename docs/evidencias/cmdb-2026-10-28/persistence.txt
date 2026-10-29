@@ -1,0 +1,4 @@
+ Container catalogo-cmdb-tests-db-1 Running 
+ Container catalogo-cmdb-tests-db-1 Restarting 
+ Container catalogo-cmdb-tests-db-1 Started 
+Persistencia CMDB OK: {"servicios" : 47, "dispositivos" : 5001, "relaciones" : 4, "historial" : 10032, "datos_ci" : "6789f984488137912370382ec0c27a59"}

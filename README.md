@@ -2,6 +2,19 @@
 
 Repositorio de la parte práctica del examen parcial 2.
 
+El diseño de la ampliación Service Desk se documenta en
+[`docs/MODELO.md`](docs/MODELO.md): fuentes originales, atributos y propuesta
+CMDB. Ese documento distingue el esquema existente de las tablas aún propuestas
+y registra las limitaciones de la jerarquía disponible.
+
+La CMDB implementada se opera desde la pestaña **CMDB**. Consulta
+[`docs/CMDB.md`](docs/CMDB.md) para migraciones, generación reproducible de
+5,000 dispositivos, API, relaciones y pruebas aisladas.
+
+La pestaña **Service Desk** incorpora tickets, colas y permisos. Sigue
+[`docs/SERVICE_DESK.md`](docs/SERVICE_DESK.md) para cuentas de demostración,
+roles combinados, toma de tickets, adjuntos y pruebas.
+
 ## Estructura
 
 - `frontend/`: aplicación web cliente basada en React y Vite.
@@ -228,3 +241,23 @@ docker compose up --build -d
 El esquema `backend/db/00_schema.sql` se ejecuta cuando PostgreSQL inicia con un volumen vacío. La carga de datos siempre la realiza el importador y queda registrada en `import_runs` e `import_observations`.
 
 La implementación del backend se mantiene separada por configuración, modelos, repositorios, servicios, controladores, rutas y esquemas para facilitar las pruebas y el mantenimiento.
+
+Los siete procesos Service Desk ya tienen estados y reglas propios en el backend:
+aprobaciones, evidencias de cambios, incidentes I0–I6, eventos E0–E3, problemas,
+accesos y cumplimiento de solicitudes. Instrucciones y recorridos:
+[docs/PROCESOS.md](docs/PROCESOS.md).
+
+Service Desk separa **Portal del solicitante**, **Consola del agente** y
+**Administración**. Las pestañas **FAQ** y **Tablero** incorporan autoservicio y
+cantidades/tiempos con objetivos en minutos calendario. Consulte
+[pantallas y cálculo de tiempos](docs/PANTALLAS_Y_TIEMPOS.md) para ámbitos,
+pausas, reaperturas y objetivos por ciclo.
+
+Para evaluar todos los roles y procesos con **37 tickets, siete colas y 5,000
+dispositivos** ejecute `docker compose exec backend python scripts/prepare_demo.py`.
+La carga es reproducible y no restablece tickets existentes. Claves, recorridos y
+repetición: [DEMOSTRACION.md](docs/DEMOSTRACION.md).
+
+La aceptación P01–P18 y las regresiones del parcial se ejecutan con
+`bash scripts/run_acceptance.sh`, en una base separada. Matriz y formato de
+evidencia: [PRUEBAS.md](docs/PRUEBAS.md).

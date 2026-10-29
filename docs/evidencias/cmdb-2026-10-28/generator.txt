@@ -1,0 +1,1 @@
+{"semilla": 202300582, "version": "hardware-v1", "lote_id": 1, "dispositivos_lote": 5000, "creados": 5000, "actualizados": 0, "clasificacion": "Hardware", "jerarquia_multinivel_verificada": false}

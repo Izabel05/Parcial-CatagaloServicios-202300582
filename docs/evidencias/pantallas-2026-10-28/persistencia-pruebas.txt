@@ -1,0 +1,5 @@
+ Container catalogo-pantallas-tests-db-1 Starting 
+ Container catalogo-pantallas-tests-db-1 Started 
+ Container catalogo-pantallas-tests-db-1 Restarting 
+ Container catalogo-pantallas-tests-db-1 Started 
+Persistencia de pantallas y tiempos OK: {"faq": {"md5": "4b7ef350def4b62bbb55ddef4c62c803", "cantidad": 6}, "ciclos": {"md5": "a2c646d710b8d365aa4bcc7beeb3dc6e", "cantidad": 18}, "flujos": {"md5": "07286b56647c29a5a216edfb9e23a432", "cantidad": 8}, "tickets": {"md5": "775f610c50fabdd0c605f123ea001aad", "cantidad": 17}, "adjuntos": {"md5": "be15d9bcc7acd6b9d5d509522b478c9a", "cantidad": 2}, "vinculos": {"md5": "8d41d4ee3feca0277c3fb4492f899878", "cantidad": 1}, "historial": {"md5": "d3eb48df470a897867058928efc9f0e8", "cantidad": 58}, "servicios": {"md5": "0db2e83cb4ea9ad81f9ff8bd49d5146d", "cantidad": 47}}

@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import AdminPanel from './AdminPanel.jsx'
 import OrganizationPanel from './OrganizationPanel.jsx'
 import ServiceBrowser from './ServiceBrowser.jsx'
+import CmdbPanel from './CmdbPanel.jsx'
+import DeskWorkspace from './DeskWorkspace.jsx'
+import FaqPanel from './FaqPanel.jsx'
+import DeskDashboard from './DeskDashboard.jsx'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 
@@ -110,12 +114,19 @@ function App() {
         <button role="tab" type="button" className={activeTab === 'resumen' ? 'active-tab' : ''} aria-selected={activeTab === 'resumen'} aria-controls="dashboard-panel" onClick={() => setActiveTab('resumen')}>Resumen</button>
         <button role="tab" type="button" className={activeTab === 'servicios' ? 'active-tab' : ''} aria-selected={activeTab === 'servicios'} aria-controls="dashboard-panel" onClick={() => setActiveTab('servicios')}>Servicios</button>
         <button role="tab" type="button" className={activeTab === 'organizacion' ? 'active-tab' : ''} aria-selected={activeTab === 'organizacion'} aria-controls="dashboard-panel" onClick={() => setActiveTab('organizacion')}>Organización</button>
+        <button role="tab" type="button" className={activeTab === 'cmdb' ? 'active-tab' : ''} aria-selected={activeTab === 'cmdb'} aria-controls="dashboard-panel" onClick={() => setActiveTab('cmdb')}>CMDB</button>
+        <button role="tab" type="button" className={activeTab === 'desk' ? 'active-tab' : ''} aria-selected={activeTab === 'desk'} aria-controls="dashboard-panel" onClick={() => setActiveTab('desk')}>Service Desk</button>
+        {['faq','tablero'].map(key=><button key={key} role="tab" type="button" className={activeTab===key?'active-tab':''} aria-selected={activeTab===key} aria-controls="dashboard-panel" onClick={()=>setActiveTab(key)}>{key==='faq'?'FAQ':'Tablero'}</button>)}
         {user.role === 'administrador' && <button role="tab" type="button" className={activeTab === 'usuarios' ? 'active-tab' : ''} aria-selected={activeTab === 'usuarios'} aria-controls="dashboard-panel" onClick={() => setActiveTab('usuarios')}>Usuarios</button>}
       </nav>
       <section id="dashboard-panel" className="dashboard-content" role="tabpanel" aria-live="polite">
         {activeTab === 'resumen' && <DashboardSummary user={user} onNavigate={setActiveTab} />}
         {activeTab === 'servicios' && <ServiceBrowser token={token} role={user.role} />}
         {activeTab === 'organizacion' && <OrganizationPanel token={token} role={user.role} />}
+        {activeTab === 'cmdb' && <CmdbPanel token={token} role={user.role} />}
+        {activeTab === 'desk' && <DeskWorkspace token={token} />}
+        {activeTab === 'faq' && <FaqPanel token={token} />}
+        {activeTab === 'tablero' && <DeskDashboard token={token} />}
         {activeTab === 'usuarios' && user.role === 'administrador' && <AdminPanel token={token} />}
       </section>
     </main>

@@ -1,0 +1,4 @@
+ Container catalogo-desk-tests-db-1 Running 
+ Container catalogo-desk-tests-db-1 Restarting 
+ Container catalogo-desk-tests-db-1 Started 
+Persistencia Service Desk OK: {"tickets" : 11, "colas" : 4, "historial" : 39, "comentarios" : 2, "adjuntos" : 2, "datos" : "070718f5b83c504fd70f7a377f3726c9", "archivos" : "1e12a78127cdd2e22ce4dc20ef1712df"}

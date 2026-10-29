@@ -1,0 +1,89 @@
+Unable to find image 'mcr.microsoft.com/playwright:v1.63.0-noble' locally
+v1.63.0-noble: Pulling from playwright
+1b189482e65c: Pulling fs layer
+0926a8eb0e60: Pulling fs layer
+d8cf7dc1ff62: Pulling fs layer
+a2ac83a9a562: Pulling fs layer
+74c72610aa2d: Pulling fs layer
+b4dfe9b5d621: Pulling fs layer
+e2bfec3c8017: Pulling fs layer
+74c72610aa2d: Download complete
+0926a8eb0e60: Download complete
+0926a8eb0e60: Pull complete
+1b189482e65c: Download complete
+e2bfec3c8017: Download complete
+e2bfec3c8017: Pull complete
+74c72610aa2d: Pull complete
+b4dfe9b5d621: Download complete
+a2ac83a9a562: Download complete
+d8cf7dc1ff62: Download complete
+d8cf7dc1ff62: Pull complete
+b4dfe9b5d621: Pull complete
+a2ac83a9a562: Pull complete
+1b189482e65c: Pull complete
+Digest: sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+Status: Downloaded newer image for mcr.microsoft.com/playwright:v1.63.0-noble
+
+added 69 packages, and audited 70 packages in 2s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (666ms)
+  ✓  2 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (584ms)
+  ✓  3 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (606ms)
+  ✓  4 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (693ms)
+  ✓  5 tests/e2e/catalogo.spec.js:62:1 › P04 muestra la jerarquía organizacional y los puestos (626ms)
+  ✘  6 tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido (650ms)
+
+
+  1) tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido ─────
+
+    Error: locator.fill: Error: strict mode violation: getByPlaceholder('Código') resolved to 2 elements:
+        1) <input value="" name="search" placeholder="Código o nombre" aria-label="Buscar por código o nombre"/> aka getByRole('textbox', { name: 'Buscar por código o nombre' })
+        2) <input value="" required="" name="code" placeholder="Código"/> aka getByRole('textbox', { name: 'Código', exact: true })
+
+    Call log:
+      - waiting for getByPlaceholder('Código')
+
+
+      74 |   await openServices(page)
+      75 |   await page.getByRole('heading', { name: 'Nuevo servicio' }).scrollIntoViewIfNeeded()
+    > 76 |   await page.getByPlaceholder('Código').fill(`E2E-${Date.now()}`)
+         |                                         ^
+      77 |   await page.getByPlaceholder('Nombre').fill('Validación E2E')
+      78 |   await page.getByPlaceholder('Mínimo opcional').fill('10')
+      79 |   await page.getByPlaceholder('Máximo opcional').fill('1')
+        at /work/tests/e2e/catalogo.spec.js:76:41
+
+    Error Context: test-results/catalogo-P09-comunica-al-u-e226a-ango-mínimo-máximo-inválido/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/catalogo-P09-comunica-al-u-e226a-ango-mínimo-máximo-inválido/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/catalogo-P09-comunica-al-u-e226a-ango-mínimo-máximo-inválido/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/catalogo.spec.js:72:1 › P09 comunica al usuario el rango mínimo/máximo inválido ──────
+  5 passed (4.6s)

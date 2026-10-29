@@ -21,7 +21,7 @@ def main() -> None:
     parser.add_argument("--email", required=True)
     parser.add_argument("--display-name", required=True)
     parser.add_argument("--phone", default="")
-    parser.add_argument("--role", choices=("administrador", "consulta"), default="consulta")
+    parser.add_argument("--role", choices=("administrador", "consulta", "solicitante", "agente", "aprobador"), default="consulta")
     parser.add_argument("--puesto-id", required=True, type=int)
     parser.add_argument("--database-url", default=os.getenv("DATABASE_URL"))
     args = parser.parse_args()

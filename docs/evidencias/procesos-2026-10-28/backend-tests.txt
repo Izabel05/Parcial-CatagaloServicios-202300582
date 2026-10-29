@@ -1,0 +1,157 @@
+ Image catalogo-procesos-tests-backend-tests Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 598B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 154B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 45.96kB done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.0s done
+#6 DONE 0.0s
+
+#7 [3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#7 CACHED
+
+#8 [2/8] WORKDIR /app
+#8 CACHED
+
+#9 [4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#9 CACHED
+
+#10 [5/8] COPY backend ./backend
+#10 DONE 0.4s
+
+#11 [6/8] COPY data ./data
+#11 DONE 0.0s
+
+#12 [7/8] COPY scripts ./scripts
+#12 DONE 0.0s
+
+#13 [8/8] COPY tests ./tests
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers 0.1s done
+#14 exporting manifest sha256:61067c9c4201698e4694795902dcf7cf7096182c5ce7e846c86aac5216b5b8e4 done
+#14 exporting config sha256:59942f4aba9f11c4267992632cbe5da569ea4244d428a430b640c84faff7fe42 done
+#14 exporting attestation manifest sha256:e8978410e7e26964fe1d6a370d83c27281b9febd67e6d2c225b47446c38ef824 0.0s done
+#14 exporting manifest list sha256:e097bd26f244ebe991f2e5da9512e70d666e186db972b739d85620cc144073fd done
+#14 naming to docker.io/library/catalogo-procesos-tests-backend-tests:latest done
+#14 unpacking to docker.io/library/catalogo-procesos-tests-backend-tests:latest 0.0s done
+#14 DONE 0.2s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image catalogo-procesos-tests-backend-tests Built 
+ Container catalogo-procesos-tests-db-1 Running 
+ Container catalogo-procesos-tests-backend-tests-1 Recreate 
+ Container catalogo-procesos-tests-backend-tests-1 Recreated 
+Attaching to backend-tests-1, db-1
+ Container catalogo-procesos-tests-db-1 Waiting 
+ Container catalogo-procesos-tests-db-1 Healthy 
+ Container catalogo-procesos-tests-backend-tests-1 Starting 
+ Container catalogo-procesos-tests-backend-tests-1 Started 
+backend-tests-1  | test_import_controls (tests.backend.test_importer_rules.ImporterRulesTest.test_import_controls) ... ok
+backend-tests-1  | test_incomplete_final_services_are_review (tests.backend.test_importer_rules.ImporterRulesTest.test_incomplete_final_services_are_review) ... ok
+backend-tests-1  | test_observations_cover_conflict_and_explicit_continuation_rule (tests.backend.test_importer_rules.ImporterRulesTest.test_observations_cover_conflict_and_explicit_continuation_rule) ... ok
+backend-tests-1  | test_se12_has_one_canonical_level_and_preserves_codes (tests.backend.test_importer_rules.ImporterRulesTest.test_se12_has_one_canonical_level_and_preserves_codes) ... ok
+backend-tests-1  | test_passwords_are_hashed_and_verified (tests.backend.test_security.SecurityTest.test_passwords_are_hashed_and_verified) ... ok
+backend-tests-1  | test_profile_data_round_trips_with_aes_gcm (tests.backend.test_security.SecurityTest.test_profile_data_round_trips_with_aes_gcm) ... ok
+db-1             | 2026-10-28 21:16:53.986 UTC [613] ERROR:  duplicate key value violates unique constraint "empresas_codigo_key"
+db-1             | 2026-10-28 21:16:53.986 UTC [613] DETAIL:  Key (codigo)=(P04) already exists.
+db-1             | 2026-10-28 21:16:53.986 UTC [613] STATEMENT:  INSERT INTO empresas (codigo, nombre, activo)
+db-1             | 	                    VALUES ($1, $2, $3) RETURNING id, codigo, nombre, activo, created_at
+backend-tests-1  | test_P01_to_P11_auth_hierarchy_catalog_and_import (tests.integration.test_cmdb.CmdbIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import) ... ok
+backend-tests-1  | {"cmdb_generar_y_repetir_5000_segundos": 3.776, "entorno": "Docker Python 3.12/PostgreSQL 16"}
+backend-tests-1  | test_cmdb_01_generacion_5000_idempotente (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_01_generacion_5000_idempotente) ... ok
+backend-tests-1  | {"cmdb_busqueda_y_detalle_segundos": 0.0951, "dispositivos": 5000}
+backend-tests-1  | test_cmdb_02_permisos_filtros_y_detalle (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_02_permisos_filtros_y_detalle) ... ok
+db-1             | 2026-10-28 21:17:00.411 UTC [707] ERROR:  duplicate key value violates unique constraint "cmdb_clasificaciones_codigo_key"
+db-1             | 2026-10-28 21:17:00.411 UTC [707] DETAIL:  Key (codigo)=(TEST-ROOT) already exists.
+db-1             | 2026-10-28 21:17:00.411 UTC [707] STATEMENT:  INSERT INTO "cmdb_clasificaciones" ("codigo","nombre","padre_id","activo") VALUES ($1,$2,$3,$4) RETURNING *
+backend-tests-1  | test_cmdb_03_clasificaciones_y_ubicaciones (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_03_clasificaciones_y_ubicaciones) ... ok
+db-1             | 2026-10-28 21:17:00.867 UTC [742] ERROR:  duplicate key value violates unique constraint "cmdb_relacion_activa"
+db-1             | 2026-10-28 21:17:00.867 UTC [742] DETAIL:  Key (origen_ci_id, destino_ci_id, tipo)=(1, 2, conectado_a) already exists.
+db-1             | 2026-10-28 21:17:00.867 UTC [742] STATEMENT:  INSERT INTO "cmdb_relaciones" ("origen_ci_id","destino_ci_id","tipo","justificacion","activo","created_by") VALUES ($1,$2,$3,$4,$5,$6) RETURNING *
+backend-tests-1  | test_cmdb_04_relaciones_ciclos_e_impacto (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_04_relaciones_ciclos_e_impacto) ... ok
+db-1             | 2026-10-28 21:17:01.180 UTC [765] ERROR:  duplicate key value violates unique constraint "cmdb_dispositivos_etiqueta_key"
+db-1             | 2026-10-28 21:17:01.180 UTC [765] DETAIL:  Key (etiqueta)=(MANUAL-TAG) already exists.
+db-1             | 2026-10-28 21:17:01.180 UTC [765] STATEMENT:  INSERT INTO cmdb_dispositivos(ci_id,etiqueta) VALUES ($1,$2)
+db-1             | 	            ON CONFLICT(ci_id) DO UPDATE SET etiqueta=EXCLUDED.etiqueta RETURNING *
+backend-tests-1  | test_cmdb_05_mantenimiento_ci_y_referencias (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_05_mantenimiento_ci_y_referencias) ... ok
+backend-tests-1  | test_cmdb_06_ciclos_concurrentes (tests.integration.test_cmdb.CmdbIntegrationTest.test_cmdb_06_ciclos_concurrentes) ... ok
+db-1             | 2026-10-28 21:17:07.671 UTC [932] ERROR:  duplicate key value violates unique constraint "empresas_codigo_key"
+db-1             | 2026-10-28 21:17:07.671 UTC [932] DETAIL:  Key (codigo)=(P04) already exists.
+db-1             | 2026-10-28 21:17:07.671 UTC [932] STATEMENT:  INSERT INTO empresas (codigo, nombre, activo)
+db-1             | 	                    VALUES ($1, $2, $3) RETURNING id, codigo, nombre, activo, created_at
+backend-tests-1  | test_P01_to_P11_auth_hierarchy_catalog_and_import (tests.integration.test_desk.DeskIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import) ... ok
+backend-tests-1  | test_sd_01_referencias_y_aislamiento (tests.integration.test_desk.DeskIntegrationTest.test_sd_01_referencias_y_aislamiento) ... ok
+backend-tests-1  | test_sd_02_consulta_no_se_eleva (tests.integration.test_desk.DeskIntegrationTest.test_sd_02_consulta_no_se_eleva) ... ok
+backend-tests-1  | test_sd_03_tomar_atomico_y_orden (tests.integration.test_desk.DeskIntegrationTest.test_sd_03_tomar_atomico_y_orden) ... ok
+db-1             | 2026-10-28 21:17:10.672 UTC [1059] ERROR:  Reasigne o cierre los tickets antes de desactivar o cambiar el rol del agente
+db-1             | 2026-10-28 21:17:10.672 UTC [1059] CONTEXT:  PL/pgSQL function sd_proteger_usuario_asignado() line 5 at RAISE
+db-1             | 2026-10-28 21:17:10.672 UTC [1059] STATEMENT:  UPDATE users SET is_active=$1, updated_at=CURRENT_TIMESTAMP
+db-1             | 	                WHERE id=$2 RETURNING id, full_name AS name, username, email, role, is_active, puesto_id, created_at
+backend-tests-1  | test_sd_04_transferencia_escalamiento_y_bajas (tests.integration.test_desk.DeskIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas) ... ok
+backend-tests-1  | test_sd_05_notas_adjuntos_y_descarga (tests.integration.test_desk.DeskIntegrationTest.test_sd_05_notas_adjuntos_y_descarga) ... ok
+backend-tests-1  | test_sd_06_vinculos_y_rechazo_de_saltos (tests.integration.test_desk.DeskIntegrationTest.test_sd_06_vinculos_y_rechazo_de_saltos) ... ok
+backend-tests-1  | test_sd_07_concesion_directa_revocacion_y_edicion (tests.integration.test_desk.DeskIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion) ... ok
+db-1             | 2026-10-28 21:17:18.960 UTC [1349] ERROR:  duplicate key value violates unique constraint "empresas_codigo_key"
+db-1             | 2026-10-28 21:17:18.960 UTC [1349] DETAIL:  Key (codigo)=(P04) already exists.
+db-1             | 2026-10-28 21:17:18.960 UTC [1349] STATEMENT:  INSERT INTO empresas (codigo, nombre, activo)
+db-1             | 	                    VALUES ($1, $2, $3) RETURNING id, codigo, nombre, activo, created_at
+backend-tests-1  | test_P01_to_P11_auth_hierarchy_catalog_and_import (tests.integration.test_processes.ProcessIntegrationTest.test_P01_to_P11_auth_hierarchy_catalog_and_import) ... ok
+backend-tests-1  | test_p01_cambio_aprobacion_pruebas_reversion_y_reapertura (tests.integration.test_processes.ProcessIntegrationTest.test_p01_cambio_aprobacion_pruebas_reversion_y_reapertura) ... ok
+backend-tests-1  | test_p02_nuevo_servicio_sin_duplicados (tests.integration.test_processes.ProcessIntegrationTest.test_p02_nuevo_servicio_sin_duplicados) ... ok
+backend-tests-1  | test_p03_incidentes_categorias_y_evidencias (tests.integration.test_processes.ProcessIntegrationTest.test_p03_incidentes_categorias_y_evidencias) ... ok
+backend-tests-1  | test_p04_eventos_idempotentes_y_cola_correcta (tests.integration.test_processes.ProcessIntegrationTest.test_p04_eventos_idempotentes_y_cola_correcta) ... ok
+backend-tests-1  | test_p05_evento_vincula_incidente_existente (tests.integration.test_processes.ProcessIntegrationTest.test_p05_evento_vincula_incidente_existente) ... ok
+backend-tests-1  | test_p06_problema_causa_raiz_y_cambio (tests.integration.test_processes.ProcessIntegrationTest.test_p06_problema_causa_raiz_y_cambio) ... ok
+backend-tests-1  | test_p07_acceso_impide_autoaprobacion_beneficiario (tests.integration.test_processes.ProcessIntegrationTest.test_p07_acceso_impide_autoaprobacion_beneficiario) ... ok
+backend-tests-1  | test_p08_tecnologia_solo_solicitante_confirma (tests.integration.test_processes.ProcessIntegrationTest.test_p08_tecnologia_solo_solicitante_confirma) ... ok
+backend-tests-1  | test_p09_consulta_bloqueada_en_todas_operaciones (tests.integration.test_processes.ProcessIntegrationTest.test_p09_consulta_bloqueada_en_todas_operaciones) ... ok
+backend-tests-1  | test_p10_creacion_catalogo_y_reintento (tests.integration.test_processes.ProcessIntegrationTest.test_p10_creacion_catalogo_y_reintento) ... ok
+backend-tests-1  | test_p11_categoria_justificada_y_creador_no_aprueba (tests.integration.test_processes.ProcessIntegrationTest.test_p11_categoria_justificada_y_creador_no_aprueba) ... ok
+backend-tests-1  | test_sd_01_referencias_y_aislamiento (tests.integration.test_processes.ProcessIntegrationTest.test_sd_01_referencias_y_aislamiento) ... ok
+backend-tests-1  | test_sd_02_consulta_no_se_eleva (tests.integration.test_processes.ProcessIntegrationTest.test_sd_02_consulta_no_se_eleva) ... ok
+backend-tests-1  | test_sd_03_tomar_atomico_y_orden (tests.integration.test_processes.ProcessIntegrationTest.test_sd_03_tomar_atomico_y_orden) ... ok
+db-1             | 2026-10-28 21:17:35.543 UTC [2429] ERROR:  Reasigne o cierre los tickets antes de desactivar o cambiar el rol del agente
+db-1             | 2026-10-28 21:17:35.543 UTC [2429] CONTEXT:  PL/pgSQL function sd_proteger_usuario_asignado() line 5 at RAISE
+db-1             | 2026-10-28 21:17:35.543 UTC [2429] STATEMENT:  UPDATE users SET is_active=$1, updated_at=CURRENT_TIMESTAMP
+db-1             | 	                WHERE id=$2 RETURNING id, full_name AS name, username, email, role, is_active, puesto_id, created_at
+backend-tests-1  | test_sd_04_transferencia_escalamiento_y_bajas (tests.integration.test_processes.ProcessIntegrationTest.test_sd_04_transferencia_escalamiento_y_bajas) ... ok
+backend-tests-1  | test_sd_05_notas_adjuntos_y_descarga (tests.integration.test_processes.ProcessIntegrationTest.test_sd_05_notas_adjuntos_y_descarga) ... ok
+backend-tests-1  | test_sd_06_vinculos_y_rechazo_de_saltos (tests.integration.test_processes.ProcessIntegrationTest.test_sd_06_vinculos_y_rechazo_de_saltos) ... ok
+backend-tests-1  | test_sd_07_concesion_directa_revocacion_y_edicion (tests.integration.test_processes.ProcessIntegrationTest.test_sd_07_concesion_directa_revocacion_y_edicion) ... ok
+backend-tests-1  | 
+backend-tests-1  | ----------------------------------------------------------------------
+backend-tests-1  | Ran 40 tests in 57.139s
+backend-tests-1  | 
+backend-tests-1  | OK
+[Kbackend-tests-1 exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container catalogo-procesos-tests-backend-tests-1 Stopping 
+ Container catalogo-procesos-tests-backend-tests-1 Stopped 
+ Container catalogo-procesos-tests-db-1 Stopping 
+db-1             | 2026-10-28 21:17:37.498 UTC [1] LOG:  received fast shutdown request
+db-1             | 2026-10-28 21:17:37.499 UTC [1] LOG:  aborting any active transactions
+db-1             | 2026-10-28 21:17:37.501 UTC [1] LOG:  background worker "logical replication launcher" (PID 31) exited with exit code 1
+db-1             | 2026-10-28 21:17:37.502 UTC [26] LOG:  shutting down
+db-1             | 2026-10-28 21:17:37.503 UTC [26] LOG:  checkpoint starting: shutdown immediate
+db-1             | 2026-10-28 21:17:37.550 UTC [26] LOG:  checkpoint complete: wrote 740 buffers (4.5%); 0 WAL file(s) added, 0 removed, 2 recycled; write=0.010 s, sync=0.025 s, total=0.048 s; sync files=799, longest=0.002 s, average=0.001 s; distance=38471 kB, estimate=38471 kB; lsn=0/AFFFFB0, redo lsn=0/AFFFFB0
+db-1             | 2026-10-28 21:17:37.558 UTC [1] LOG:  database system is shut down
+ Container catalogo-procesos-tests-db-1 Stopped 
+[Kdb-1 exited with code 0

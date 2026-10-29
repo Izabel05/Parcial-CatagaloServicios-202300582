@@ -1,0 +1,5 @@
+ Container catalogo-procesos-tests-db-1 Starting 
+ Container catalogo-procesos-tests-db-1 Started 
+ Container catalogo-procesos-tests-db-1 Restarting 
+ Container catalogo-procesos-tests-db-1 Started 
+Persistencia de procesos OK: {"flujos": {"md5": "4c4a4de2ebbe8affb9c234dd6b5e303a", "cantidad": 29}, "tickets": {"md5": "f5ec2d68e298a0646a4b2e81cab5a964", "cantidad": 36}, "adjuntos": {"md5": "115f1e311cec7b2974f496c126bc18e7", "cantidad": 2}, "vinculos": {"md5": "b0163e93c23588eef30ef9cadf64fb52", "cantidad": 6}, "historial": {"md5": "d66c19fe449e38482e6ac76178414f46", "cantidad": 276}, "servicios": {"md5": "c66747324b934cfcb1ea9ea5730d330b", "cantidad": 48}, "aprobaciones": {"md5": "ec8185f368d44be2cc3363f07d40d543", "cantidad": 7}, "correlaciones": {"md5": "0274a607aacb51714b293ae75f0d6feb", "cantidad": 3}, "notificaciones": {"md5": "48a675cddd55e1ce915de618f12b4639", "cantidad": 3}}

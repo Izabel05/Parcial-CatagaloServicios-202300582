@@ -33,7 +33,13 @@ async function apiRequest(path, token, options = {}) {
     ...options,
   })
   const body = await response.json().catch(() => null)
-  if (!response.ok) throw new Error(body?.detail ?? 'No fue posible completar la operación')
+  if (!response.ok) {
+    const detail = body?.detail
+    const message = Array.isArray(detail)
+      ? detail.map((error) => error.msg).filter(Boolean).join('; ')
+      : typeof detail === 'string' ? detail : ''
+    throw new Error(message || 'No fue posible completar la operación')
+  }
   return body
 }
 
@@ -67,13 +73,15 @@ function ServiceBrowser({ token, role }) {
   }, [token])
 
   useEffect(() => {
+    let current = true
     const query = new URLSearchParams({ page: String(pageData.page), page_size: '10' })
     Object.entries(filters).forEach(([key, value]) => { if (value !== '') query.set(key, value) })
     setLoading(true)
     apiRequest(`/api/v1/services?${query.toString()}`, token)
-      .then((result) => setPageData(result))
-      .catch((requestError) => setError(requestError.message))
-      .finally(() => setLoading(false))
+      .then((result) => { if (current) setPageData(result) })
+      .catch((requestError) => { if (current) setError(requestError.message) })
+      .finally(() => { if (current) setLoading(false) })
+    return () => { current = false }
   }, [token, filters, pageData.page])
 
   function updateDraft(event) {
