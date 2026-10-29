@@ -42,7 +42,7 @@ a tu repositorio y clonar, o transferirlos sin publicar mediante un bundle:
 En Windows, desde la raíz del proyecto:
 
 ```powershell
-git bundle create ../service-desk-entrega.bundle --all
+git bundle create ../service-desk-entrega.bundle main
 ```
 
 Copia ese archivo a Fedora y clónalo allí:
