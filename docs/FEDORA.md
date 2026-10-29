@@ -48,7 +48,7 @@ git bundle create ../service-desk-entrega.bundle main
 Copia ese archivo a Fedora y clónalo allí:
 
 ```bash
-git clone /ruta/al/service-desk-entrega.bundle Parcial-CatagaloServicios-202300582
+git clone -b main /ruta/al/service-desk-entrega.bundle Parcial-CatagaloServicios-202300582
 cd Parcial-CatagaloServicios-202300582
 git log -5 --oneline
 git status --short
