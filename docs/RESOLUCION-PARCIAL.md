@@ -1,5 +1,9 @@
 # Resolución del parcial: Catálogo de Servicios de TI
 
+> Documento histórico del parcial 2. Su alcance excluía tickets; la solución
+> vigente se explica en [RESOLUCION.md](RESOLUCION.md). No usar este histórico
+> como guía de preparación de Service Desk.
+
 **Asignatura:** Software Avanzado
 **Fecha de actualización:** 2026-10-02
 **Repositorio:** `Parcial-CatagaloServicios-202300582`

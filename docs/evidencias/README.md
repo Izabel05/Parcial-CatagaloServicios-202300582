@@ -27,6 +27,11 @@ La [demostración y aceptación P01–P18](DEMO-ACEPTACION-2026-10-28.md) regist
 37 tickets reproducibles, 5,000 dispositivos, 63 pruebas backend, 15 E2E y
 reinicio de contenedores con snapshots idénticos.
 
+La [verificación del cierre](CIERRE-2026-10-28.md) vuelve a ejecutar aceptación,
+Compose y generación sobre el commit `4b13cab`, tras las actualizaciones de
+contexto y la preparación de Fedora. Las capturas sugeridas para el equipo
+destino están en [ENTREGA](../ENTREGA.md).
+
 ## Organización de las fotografías
 
 - `../Imagenes/DockerEjecucion.png`: construcción y arranque saludable de Docker.
@@ -40,7 +45,8 @@ reinicio de contenedores con snapshots idénticos.
   prueba aprobada. La nueva captura de integración la reemplaza para ese
   escenario, pero todavía falta una captura de las pruebas unitarias.
 
-La explicación y las imágenes están integradas en
-[`docs/RESOLUCION.md`](../RESOLUCION.md). Antes de subir nuevas capturas,
+Esas fotografías son históricas del parcial; no son la corrida actual de
+aceptación. La explicación original está en
+[RESOLUCION-PARCIAL.md](../RESOLUCION-PARCIAL.md). Antes de subir nuevas capturas,
 verifica que no aparezcan contraseñas demo, claves AES, tokens ni valores
 completos del archivo `.env`.

@@ -1,0 +1,114 @@
+{
+  "service_level_1": {
+    "cantidad": 12,
+    "huella": "a350ec35dda690b50cb5742cda5a0d69"
+  },
+  "services": {
+    "cantidad": 47,
+    "huella": "a18f7f60337f456147d90aed0fcbcddb"
+  },
+  "cmdb_ci": {
+    "cantidad": 5000,
+    "huella": "08ce8c96d77c455d4f6f27e54e4a173d"
+  },
+  "cmdb_dispositivos": {
+    "cantidad": 5000,
+    "huella": "0dd7d0d8bcc7a2ec9c186794eddcf56d"
+  },
+  "cmdb_clasificaciones": {
+    "cantidad": 2,
+    "huella": "1ef0943dfa2c16658c615ba3a9a65316"
+  },
+  "cmdb_relaciones": {
+    "cantidad": 2,
+    "huella": "00bf65e6ff78c13e56ed2f56945ff13d"
+  },
+  "cmdb_ci_servicios": {
+    "cantidad": 5000,
+    "huella": "870f20da83cbbb5de8dd83941a89fca2"
+  },
+  "cmdb_ubicaciones": {
+    "cantidad": 1,
+    "huella": "485e06243bd56a894da5d9fb03baebbe"
+  },
+  "cmdb_lotes_sinteticos": {
+    "cantidad": 1,
+    "huella": "7efc84c720080491c0ded1b5c1e80e9e"
+  },
+  "cmdb_auditoria": {
+    "cantidad": 15006,
+    "huella": "2e05643d4f2a205da81d73c0c2c59949"
+  },
+  "sd_colas": {
+    "cantidad": 7,
+    "huella": "ef52d19653ef2d5674283dfd90123e98"
+  },
+  "sd_tickets": {
+    "cantidad": 37,
+    "huella": "4dfdc70b74e5889bfe7e0621442838c4"
+  },
+  "sd_historial": {
+    "cantidad": 231,
+    "huella": "3a10eb4af9b740772f3e7029de5be095"
+  },
+  "sd_aprobaciones": {
+    "cantidad": 6,
+    "huella": "391ac8f0f9df3f996a8ea7a841844f42"
+  },
+  "sd_comentarios": {
+    "cantidad": 0,
+    "huella": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "sd_adjuntos": {
+    "cantidad": 0,
+    "huella": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "sd_ticket_ci": {
+    "cantidad": 37,
+    "huella": "d94d145b785b544885a16e8f7707d1be"
+  },
+  "sd_ticket_vinculos": {
+    "cantidad": 12,
+    "huella": "caad156141051b62d82bb80d696d3c82"
+  },
+  "sd_permisos_cola": {
+    "cantidad": 42,
+    "huella": "c7f645c1c11a5b1c126db4bca4d708d8"
+  },
+  "sd_cola_responsables": {
+    "cantidad": 7,
+    "huella": "740b370db5d4dc7aa2b2896e51b137a9"
+  },
+  "sd_roles_usuario": {
+    "cantidad": 0,
+    "huella": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "sd_ciclos_tiempo": {
+    "cantidad": 37,
+    "huella": "0a02b7c0846dce65b481d1514722623f"
+  },
+  "sd_procesos_ticket": {
+    "cantidad": 37,
+    "huella": "32fbff7fefc9b63a706aaa5dfbc61119"
+  },
+  "sd_evento_incidente": {
+    "cantidad": 2,
+    "huella": "aad6e4bd9269184403d5fc49b078920c"
+  },
+  "sd_notificaciones": {
+    "cantidad": 2,
+    "huella": "052249daa0aab113167b173aca3bc189"
+  },
+  "sd_faq": {
+    "cantidad": 5,
+    "huella": "343c92c2dc6521a832f15080bba72d3a"
+  },
+  "sd_demo_lotes": {
+    "cantidad": 1,
+    "huella": "d97b844daaad279439b5774babc30c7b"
+  },
+  "sd_demo_tickets": {
+    "cantidad": 37,
+    "huella": "e63c63c35b3d3da8cb1e8e44992ef9b1"
+  }
+}

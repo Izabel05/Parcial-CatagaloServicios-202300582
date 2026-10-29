@@ -80,6 +80,7 @@ fuera de Git. No existe contraseña fija de evaluación versionada.
 | [FEDORA](docs/FEDORA.md) | Instalación, arranque, pruebas y recuperación en el equipo destino. |
 | [ENTREGA](docs/ENTREGA.md) | Lista de entrega, capturas y defensa individual. |
 | [Resultados reales](docs/evidencias/DEMO-ACEPTACION-2026-10-28.md) | 18 escenarios, 63 métodos y 15 E2E de la ampliación. |
+| [Verificación del cierre](docs/evidencias/CIERRE-2026-10-28.md) | Repetición de aceptación y Compose sobre un commit del cierre. |
 
 Estructura: `frontend/` cliente, `backend/app/services/` reglas,
 `backend/app/repositories/` SQL, `backend/db/migrations/` migraciones,

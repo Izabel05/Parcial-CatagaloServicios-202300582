@@ -7,6 +7,10 @@ sus métodos originales se conservan como regresiones y no se renumeran.
 Resultados reales de esta ejecución:
 [18 escenarios, 63 métodos y persistencia](evidencias/DEMO-ACEPTACION-2026-10-28.md).
 
+Tras versionar el cierre y adaptar montajes para Fedora se ejecutó de nuevo la
+aceptación completa sobre `4b13cab4475c072c38a8da6e43ee81852205251c`, sin cambios
+en código: [verificación del cierre](evidencias/CIERRE-2026-10-28.md).
+
 ## Ejecutar sin instalar Python ni Node en el anfitrión
 
 Con Docker Compose y Bash (Linux, WSL o Git Bash), desde la raíz del repositorio:

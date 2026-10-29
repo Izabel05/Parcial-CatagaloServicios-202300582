@@ -56,6 +56,12 @@ Estas comparaciones son refinamientos dentro de instrucciones reales, no dos
 experimentos A/B con respuestas iniciales que no se conservaron. Se comprueba
 el resultado final y se declara la diferencia de evidencia disponible.
 
+Durante el cierre, R8 agrega un resultado nuevo comprobable: el README anterior
+intentaba reemplazar un marcador distinto al que tenía `.env.example` y generaba
+Base64 convencional. Se precisó la preparación desde clon limpio: reemplazar la
+línea completa y generar Base64 URL-safe dentro de un contenedor. La guía vigente
+y el arranque de cierre verifican esta corrección; la clave no se guarda en Git.
+
 ## Context Engineering
 
 `AGENTS.md` regula capas, seguridad y pruebas. El contexto de trabajo se mantiene
@@ -113,7 +119,24 @@ No se afirma que este límite estuviera configurado en el agente original.
 - **Intervención humana:** solicitud de conservar la base y revisión de resultados;
   el alumno puede reproducir la regresión. No fue un fallo introducido para la demo.
 
-### L2 — permisos: consulta mantiene lectura con concesiones de cola
+### L2 — datos de fuente: jerarquía CMDB no disponible
+
+- **Objetivo/entrada:** R2, jerarquía exacta de la lección 22 y del Excel CMDB.
+- **Propuesta/cambio:** inspeccionar hojas/celdas y diapositivas antes de modelar
+  los niveles; buscar si existía otro material que explicara el árbol.
+- **Ejecución/evaluación:** Excel con 20 atributos y dos ejemplos, diapositivas
+  sin árbol de clasificación. Una propuesta multinivel no tendría respaldo.
+- **Corrección:** consultar al usuario, quien confirmó «lo que te eh dado
+  coresponde a la leccion 22 es lo de CMDB.xlsx». Ajustar el modelo a las
+  etiquetas verificables Hardware/Software y documentar niveles no acreditados.
+- **Nueva verificación/salida:** extracción con celdas C5/C6 y hash de fuente;
+  P04 aprueba correspondencia disponible y rechazos de padres/ciclos. No se
+  presenta como verificación de un árbol ausente. MODELO y casos.json conservan
+  el límite, y el generador reporta `jerarquia_multinivel_verificada=false`.
+- **Intervención humana:** aclaración explícita del usuario; no se sustituyó el
+  material por otro archivo sin autorización. No hubo datos inventados para la demo.
+
+### L adicional — permisos: consulta mantiene lectura con concesiones de cola
 
 - **Objetivo/entrada:** R4, usuario consulta incluso si tiene permisos adicionales.
 - **Propuesta/cambio:** permisos efectivos por rol/usuario, con veto de escritura

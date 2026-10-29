@@ -1,0 +1,3 @@
+ Container catalogo-aceptacion-tests-backend-tests-run-6a65e79f2d43 Creating 
+ Container catalogo-aceptacion-tests-backend-tests-run-6a65e79f2d43 Created 
+{"APROBADO": 18, "FALLIDO": 0}
