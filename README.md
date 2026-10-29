@@ -4,6 +4,9 @@ Ampliación del parcial 2 de Software Avanzado: React/Vite, FastAPI y PostgreSQL
 Conserva autenticación, organización, usuarios y catálogo original 12/46; añade
 CMDB y siete procesos con colas, permisos, auditoría, FAQ y tablero.
 
+Auditoría final: **P01–P18, 71 pruebas backend y 18 E2E aprobadas**.
+[Hallazgos corregidos y evidencia](docs/AUDITORIA.md).
+
 ## Arranque desde un clon limpio
 
 Se necesitan Git, Docker Engine con Compose y Bash. Python, PostgreSQL y Node se
@@ -44,8 +47,9 @@ repetir con la misma semilla no duplica el lote ni restablece su avance.
 Abrir [frontend](http://localhost:5173), [salud API](http://localhost:8000/health)
 y [Swagger](http://localhost:8000/docs). Puertos del Compose principal:
 5173 frontend, 8000 API y `${POSTGRES_PORT:-5432}` PostgreSQL. Las variables
-`BACKEND_PORT`/`VITE_API_URL` del ejemplo no cambian por sí solas los puertos
-fijos del Compose principal; ante conflicto seguir FEDORA.md.
+`BACKEND_PORT`, `FRONTEND_PORT` y `POSTGRES_PORT` configuran los puertos de
+Compose, publicados en loopback. Si cambias API/frontend, ajusta también
+`VITE_API_URL` y `FRONTEND_ORIGINS` como explica FEDORA.md.
 
 ## Pruebas y operación
 
@@ -75,6 +79,7 @@ fuera de Git. No existe contraseña fija de evaluación versionada.
 | [SERVICE_DESK](docs/SERVICE_DESK.md) / [PROCESOS](docs/PROCESOS.md) | Base común y siete flujos, permisos y transiciones. |
 | [PANTALLAS_Y_TIEMPOS](docs/PANTALLAS_Y_TIEMPOS.md) | Portal, consola, FAQ y métricas calendario. |
 | [FRONTEND](docs/FRONTEND.md) | Diseño actualizado, navegación adaptable y reproducción de capturas. |
+| [AUDITORIA](docs/AUDITORIA.md) | Cumplimiento, correcciones de permisos/CMDB, dependencias y resultados vigentes. |
 | [Galería de 23 capturas](docs/evidencias/FRONTEND-2026-10-28.md) | Siete procesos, roles, CMDB, portal, FAQ, tablero y móvil; 16 E2E aprobadas. |
 | [IA](docs/IA.md) | Ocho solicitudes reales, contexto, harness y ciclos de corrección. |
 | [PRUEBAS](docs/PRUEBAS.md) | Matriz P01–P18, aislamiento y comandos. |

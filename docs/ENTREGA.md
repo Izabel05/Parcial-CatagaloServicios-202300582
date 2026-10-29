@@ -2,7 +2,7 @@
 
 ## Contenido listo y límites
 
-Se incluyen código, siete migraciones, Dockerfile/Compose, fuentes originales,
+Se incluyen código, ocho migraciones, Dockerfile/Compose, fuentes originales,
 importadores, generadores, pruebas y los documentos exigidos. El registro
 anterior de 18 escenarios, 63 métodos y 15 E2E conserva su procedencia.
 Los commits de cierre documentan el trabajo ahora; no alteran el historial pasado.

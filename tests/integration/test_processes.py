@@ -118,6 +118,24 @@ class ProcessIntegrationTest(base.DeskIntegrationTest):
             self.data(ticket,{'categoria':'E2' if category in ('E0','E1') else 'E0'},expected=409)
             self.advance(ticket,'resuelto','cerrado')
 
+    def test_p12_notificacion_visible_y_correlacion_estable(self):
+        incident=self.new('incidentes');event=self.new('eventos')
+        self.data(event,{'categoria':'E2','evaluacion':'Notificación verificable','incidente_id':incident})
+        self.advance(event,'clasificacion','evaluacion','respondido')
+        detail=self.call('GET',f'/tickets/{event}').json()
+        self.assertEqual(len(detail['notificaciones']),1)
+        notification=detail['notificaciones'][0]
+        self.assertEqual(notification['incidente_id'],incident)
+        self.assertTrue(notification['incidente_numero'].startswith('SD-'))
+        self.assertTrue(notification['fecha']);self.assertTrue(notification['mensaje'])
+        self.call('POST',f'/tickets/{event}/proceso/incidente')
+        self.assertEqual(self.call('GET',f'/tickets/{event}').json()['notificaciones'][0]['id'],notification['id'])
+        other=next(s['id'] for s in self.client.get('/api/v1/services?page_size=100',headers=self.admin).json()['items'] if s['active'] and s['id']!=self.service)
+        edit={'titulo':detail['titulo'],'descripcion':detail['descripcion'],'servicio_id':other,'ci_ids':[self.ci],'motivo':'No romper correlación'}
+        self.call('PUT',f'/tickets/{event}',edit,expected=409)
+        self.call('PUT',f'/tickets/{event}',{**edit,'servicio_id':self.service,'ci_ids':[],'motivo_sin_ci':'Cambio posterior'},expected=409)
+        self.assertEqual(self.call('GET',f'/tickets/{event}').json()['servicio_id'],self.service)
+
     def test_p05_evento_vincula_incidente_existente(self):
         incident=self.new('incidentes');event=self.new('eventos')
         self.data(event,{'categoria':'E2','evaluacion':'Coincide con incidente activo','incidente_id':incident})

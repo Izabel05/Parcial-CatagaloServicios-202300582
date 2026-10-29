@@ -1,0 +1,6 @@
+{
+  "archivos_revisados": 436,
+  "sin_env_de_trabajo_dumps_ni_claves_privadas": true,
+  "enlaces_locales_documentacion_validos": true,
+  "alcance": "Nombres de archivos y marcadores PEM; no certifica ausencia de todo secreto."
+}

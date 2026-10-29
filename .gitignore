@@ -1,4 +1,7 @@
 .env
+.env.*
+!.env.example
+*.dump
 .e2e.env
 .demo-*
 .demo/

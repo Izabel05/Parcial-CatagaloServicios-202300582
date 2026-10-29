@@ -20,6 +20,42 @@ async function login(page,user,password){
  await expect(page.getByRole('heading',{name:'Service Desk',exact:true})).toBeVisible()
 }
 
+test('CMDB permite consultar tickets asociados y su bitácora',async({page})=>{
+ test.skip(!process.env.E2E_AGENT_PASSWORD,'Requiere agente y datos demo')
+ await login(page,process.env.E2E_AGENT_USER,process.env.E2E_AGENT_PASSWORD)
+ await page.getByRole('tab',{name:'CMDB',exact:true}).click()
+ await page.getByLabel('Buscar CI',{exact:true}).fill('000001')
+ await page.getByRole('button',{name:'Aplicar filtros CMDB'}).click()
+ await expect(page.getByText('1 resultados · página 1',{exact:true})).toBeVisible()
+ await page.getByRole('button',{name:/SYN-hardware-v1-.*-000001/}).click()
+ const history=page.getByRole('region',{name:'Tickets del CI',exact:true})
+ const first=history.getByRole('button',{name:/^SD-\d+$/}).first()
+ await expect(first).toBeVisible();await first.click()
+ await expect(history.getByRole('region',{name:'Ticket asociado al CI'})).toBeVisible()
+ await history.getByText('Bitácora del ticket asociado',{exact:true}).click()
+ await expect(history.getByText(/crear_ticket/).first()).toBeVisible()
+ await history.screenshot({path:'test-results/auditoria-ci-tickets.png'})
+})
+
+test('evento muestra notificación persistente y abre su incidente',async({page})=>{
+ test.skip(!process.env.E2E_AGENT_PASSWORD,'Requiere agente y datos demo')
+ await login(page,process.env.E2E_AGENT_USER,process.env.E2E_AGENT_PASSWORD)
+ const title='[DEMO 202300582] eventos 04'
+ await page.getByLabel('Número o título',{exact:true}).fill(title)
+ await page.getByRole('button',{name:'Filtrar tickets',exact:true}).click()
+ const list=page.getByRole('region',{name:'Búsqueda de tickets'})
+ await expect(list.getByText(title,{exact:true})).toBeVisible()
+ await expect(list.getByRole('button',{name:/^SD-\d+$/})).toHaveCount(1)
+ await list.getByRole('button',{name:/^SD-\d+$/}).click()
+ const detail=page.getByRole('region',{name:'Ficha de ticket'})
+ await expect(detail.getByRole('heading').first()).toContainText(title)
+ const notifications=detail.getByRole('region',{name:'Notificaciones del evento'})
+ await expect(notifications.getByText(/Evento asociado a incidente/)).toBeVisible()
+ await detail.screenshot({path:'test-results/auditoria-evento-notificacion.png'})
+ await notifications.getByRole('button',{name:/Consultar incidente SD-/}).click()
+ await expect(detail.getByRole('heading').first()).toContainText('incidentes 07')
+})
+
 test('solicitante tiene portal propio, FAQ y tablero calendario',async({page})=>{
  test.skip(!process.env.E2E_REQUESTER_PASSWORD,'Requiere solicitante demo')
  await login(page,process.env.E2E_REQUESTER_USER,process.env.E2E_REQUESTER_PASSWORD)

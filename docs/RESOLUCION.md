@@ -85,9 +85,9 @@ desarrollo usan etiquetas SELinux compartidas `z` para compatibilidad con Fedora
 
 ## Pruebas y resultados observados
 
-La base del parcial se midió antes de ampliar. La aceptación final de la
-ampliación registró **63 métodos sin omisiones, 18 escenarios P01–P18 aprobados,
-15 E2E y compilación React**. P18 comparó snapshots tras reiniciar BD/API/frontend.
+La base del parcial se midió antes de ampliar. Tras la auditoría se registraron
+**71 métodos sin omisiones, 18 escenarios P01–P18 aprobados,
+18 E2E y compilación React**. P18 comparó snapshots tras reiniciar BD/API/frontend.
 La demostración prepara siete colas, seis cuentas, 37 tickets y 5,000 dispositivos
 únicos. Repetir la semilla conserva IDs y avance del evaluador.
 
@@ -95,7 +95,8 @@ Los resultados anteriores corresponden al código identificado por sus manifiest
 y commit base, con árbol modificado. Los commits de cierre no se atribuyen
 retroactivamente a esas ejecuciones. Evidencia completa:
 [DEMO-ACEPTACION](evidencias/DEMO-ACEPTACION-2026-10-28.md) y
-[PRUEBAS](PRUEBAS.md). La validación del cierre se registra por separado.
+[PRUEBAS](PRUEBAS.md). Los checkpoints anteriores de 63 métodos y 15/16 E2E
+conservan su fecha y versión. La validación vigente es [AUDITORIA](AUDITORIA.md).
 
 ## Limitaciones explícitas y reproducción
 
@@ -108,8 +109,9 @@ no inventan objetivos antiguos desconocidos.
 No se ha ejecutado físicamente esta aplicación en el futuro equipo Fedora;
 la guía incluye el procedimiento para hacerlo y conservar su evidencia. Los
 resultados remotos no se presentan como resultados de Fedora. Las advertencias
-de dependencias de desarrollo conservadas en logs no se ocultan ni se consideran
-pruebas funcionales fallidas; su actualización requiere una validación separada.
+de dependencias conservadas en logs antiguos no se ocultan: la auditoría posterior
+actualiza Vite, FastAPI/Starlette y Cryptography, y repite aceptación e interfaz.
+Sus resultados vigentes y límites se detallan en [AUDITORIA](AUDITORIA.md).
 
 Instalación y recuperación: [FEDORA](FEDORA.md). Datos y recorridos:
 [DEMOSTRACION](DEMOSTRACION.md). Uso de IA y defensa: [IA](IA.md) y

@@ -177,9 +177,11 @@ reemplaza tablas. No borres tu instalación para probar la restauración.
   proyecto propia. No desactives SELinux ni relabeles todo `/home`. Consulta
   [etiquetas de montajes Docker](https://docs.docker.com/engine/storage/bind-mounts/#configure-the-selinux-label)
   y revisa `ls -Zd backend data frontend` si hay un error de acceso.
-- **Puerto ocupado:** el principal usa 8000/5173; libera el proceso que lo ocupa
-  o adapta los puertos y la URL del frontend/origen CORS de forma coherente.
-  PostgreSQL permite `POSTGRES_PORT=5433` en `.env`. Aceptación permite
+- **Puerto ocupado:** puedes usar `BACKEND_PORT=18000`, `FRONTEND_PORT=15173`,
+  `VITE_API_URL=http://localhost:18000` y `FRONTEND_ORIGINS=http://localhost:15173`
+  en `.env`; después ejecuta `docker compose up -d --wait` para recrear los
+  servicios con esa configuración. PostgreSQL permite `POSTGRES_PORT=5433`.
+  Los puertos se publican solo en loopback. Aceptación permite
   `ACCEPTANCE_API_PORT`/`ACCEPTANCE_FRONTEND_PORT`; son puertos distintos.
 - **API unhealthy:** revisa logs de backend y db; comprueba clave válida y
   credenciales. No elimines el volumen como primera solución.

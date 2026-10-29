@@ -1,0 +1,4 @@
+NAME                                IMAGE                            COMMAND                  SERVICE    CREATED          STATUS                    PORTS
+catalogo-auditoria-app-backend-1    catalogo-auditoria-app-backend   "sh -c 'python -m ba…"   backend    2 minutes ago    Up 2 minutes (healthy)    127.0.0.1:18004->8000/tcp
+catalogo-auditoria-app-db-1         postgres:16-alpine               "docker-entrypoint.s…"   db         12 minutes ago   Up 12 minutes (healthy)   127.0.0.1:55434->5432/tcp
+catalogo-auditoria-app-frontend-1   node:22-alpine                   "docker-entrypoint.s…"   frontend   12 minutes ago   Up 11 minutes (healthy)   127.0.0.1:15177->5173/tcp

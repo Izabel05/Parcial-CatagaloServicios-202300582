@@ -42,6 +42,10 @@ export default function DeskTicket({ticket,mode,queues,users,services,me,token,a
       <label>Prioridad edición<input type="number" min="1" max="4" value={editing.prioridad} onChange={e=>setEditing({...editing,prioridad:Number(e.target.value)})}/></label><button>Guardar edición ticket</button><button type="button" onClick={()=>setEditing(null)}>Cancelar edición</button>
     </form>}
     <ProcessPanel key={`${ticket.id}-${ticket.flujo?.updated_at}`} {...{ticket,users,services,queues,me,api,act,refresh,support,can}}/>
+    {ticket.notificaciones?.length>0&&<section aria-label="Notificaciones del evento"><h4>Notificaciones del evento</h4>
+      <ul>{ticket.notificaciones.map(n=><li key={n.id}><strong>{new Date(n.fecha).toLocaleString()}</strong> · {n.mensaje}
+        {n.incidente_id?<button type="button" onClick={()=>open(n.incidente_id)}>Consultar incidente {n.incidente_numero}</button>:<span> · Incidente fuera de tu ámbito de consulta</span>}
+      </li>)}</ul></section>}
     <h4>Comentarios y notas</h4><ul aria-label="Comentarios del ticket">{ticket.comentarios.map(c=><li key={c.id}>{c.interno?'Nota interna':'Público'} · {c.actor} · {c.fecha}: {c.texto}</li>)}</ul>
     {!readonly&&(ticket.solicitante_id===me.id||support&&can('atender'))&&<form onSubmit={e=>{e.preventDefault();mutate('comentarios',{texto:text,interno:internal});setText('')}}>
       <label>Comentario<textarea required value={text} onChange={e=>setText(e.target.value)}/></label>

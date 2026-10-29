@@ -1,0 +1,13 @@
+
+> catalogo-servicios-frontend@0.1.0 build
+> vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 44 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.28 kB
+dist/assets/index-B_X-lmeO.css   23.18 kB │ gzip:  5.69 kB
+dist/assets/index-BMjNVEeJ.js   312.43 kB │ gzip: 91.43 kB
+✓ built in 1.81s

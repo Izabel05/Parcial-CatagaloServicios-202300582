@@ -1,0 +1,80 @@
+
+added 69 packages, and audited 70 packages in 2s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+Running 18 tests using 3 workers
+
+  ✓   2 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (1.3s)
+  ✓   1 tests/e2e/cmdb.spec.js:17:1 › CMDB busca entre 5000 dispositivos y navega ficha y dependencias (2.2s)
+  ✓   4 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (954ms)
+  ✓   6 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (1.4s)
+  ✓   5 tests/e2e/cmdb.spec.js:31:1 › CMDB consulta es de lectura y administrador mantiene ubicaciones (2.9s)
+  ✓   7 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (2.1s)
+  ✓   9 tests/e2e/catalogo.spec.js:83:1 › P04 muestra la jerarquía organizacional y los puestos (1.2s)
+  ✓   8 tests/e2e/experience.spec.js:3:1 › navegación móvil mantiene el portal y sus controles dentro de la pantalla (1.8s)
+  ✓  10 tests/e2e/catalogo.spec.js:93:1 › P09 comunica al usuario el rango mínimo/máximo inválido (1.5s)
+  ✓   3 tests/e2e/desk.spec.js:24:1 › solicitante crea ticket con adjunto y agente atiende sin filtrar notas internas (8.5s)
+  ✓  11 tests/e2e/experience.spec.js:23:1 › CMDB permite consultar tickets asociados y su bitácora (2.3s)
+  ✓  12 tests/e2e/desk.spec.js:60:1 › consulta no obtiene formularios de escritura en Service Desk (974ms)
+  ✘  13 tests/e2e/experience.spec.js:40:1 › evento muestra notificación persistente y abre su incidente (1.6s)
+  ✓  15 tests/e2e/experience.spec.js:58:1 › solicitante tiene portal propio, FAQ y tablero calendario (2.0s)
+  ✓  16 tests/e2e/experience.spec.js:79:1 › agente usa consola y separa su portal de la atención (2.1s)
+  ✓  14 tests/e2e/desk.spec.js:68:1 › incidente exige evidencias y recorre sus etapas desde el formulario (7.4s)
+  ✓  17 tests/e2e/experience.spec.js:92:1 › administración publica FAQ sin mostrar borradores al autoservicio (2.4s)
+  ✓  18 tests/e2e/experience.spec.js:119:1 › consulta ve tablero y FAQ sin administración (832ms)
+
+
+  1) tests/e2e/experience.spec.js:40:1 › evento muestra notificación persistente y abre su incidente 
+
+    Error: locator.click: Error: strict mode violation: getByRole('region', { name: 'Búsqueda de tickets' }).getByRole('button', { name: /^SD-\d+$/ }) resolved to 25 elements:
+        1) <button>SD-00000009</button> aka getByRole('button', { name: 'SD-00000009' })
+        2) <button>SD-00000010</button> aka getByRole('button', { name: 'SD-00000010' })
+        3) <button>SD-00000011</button> aka getByRole('button', { name: 'SD-00000011' })
+        4) <button>SD-00000012</button> aka getByRole('button', { name: 'SD-00000012' })
+        5) <button>SD-00000016</button> aka getByRole('button', { name: 'SD-00000016' })
+        6) <button>SD-00000001</button> aka getByRole('button', { name: 'SD-00000001' })
+        7) <button>SD-00000002</button> aka getByRole('button', { name: 'SD-00000002' })
+        8) <button>SD-00000003</button> aka getByRole('button', { name: 'SD-00000003' })
+        9) <button>SD-00000004</button> aka getByRole('button', { name: 'SD-00000004' })
+        10) <button>SD-00000005</button> aka getByRole('button', { name: 'SD-00000005' })
+        ...
+
+    Call log:
+      - waiting for getByRole('region', { name: 'Búsqueda de tickets' }).getByRole('button', { name: /^SD-\d+$/ })
+
+
+      46 |  const list=page.getByRole('region',{name:'Búsqueda de tickets'})
+      47 |  await expect(list.getByText(title,{exact:true})).toBeVisible()
+    > 48 |  await list.getByRole('button',{name:/^SD-\d+$/}).click()
+         |                                                   ^
+      49 |  const detail=page.getByRole('region',{name:'Ficha de ticket'})
+      50 |  await expect(detail.getByRole('heading').first()).toContainText(title)
+      51 |  const notifications=detail.getByRole('region',{name:'Notificaciones del evento'})
+        at /work/tests/e2e/experience.spec.js:48:51
+
+    Error Context: test-results/experience-evento-muestra--0d33f-istente-y-abre-su-incidente/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/experience-evento-muestra--0d33f-istente-y-abre-su-incidente/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/experience-evento-muestra--0d33f-istente-y-abre-su-incidente/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/experience.spec.js:40:1 › evento muestra notificación persistente y abre su incidente 
+  17 passed (19.7s)

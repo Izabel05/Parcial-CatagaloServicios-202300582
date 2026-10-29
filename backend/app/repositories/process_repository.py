@@ -10,6 +10,9 @@ class ProcessRepository:
         self.connection.execute('INSERT INTO sd_procesos_ticket(ticket_id,estado) VALUES (%s,%s) ON CONFLICT DO NOTHING', (ticket_id, initial))
         return self.connection.execute('SELECT * FROM sd_procesos_ticket WHERE ticket_id=%s FOR UPDATE', (ticket_id,)).fetchone()
 
+    def read(self, ticket_id):
+        return self.connection.execute('SELECT * FROM sd_procesos_ticket WHERE ticket_id=%s', (ticket_id,)).fetchone()
+
     def update(self, ticket_id, state, data, version, service_id=None):
         self.connection.execute('UPDATE sd_tickets SET updated_at=CURRENT_TIMESTAMP WHERE id=%s', (ticket_id,))
         return self.connection.execute('''UPDATE sd_procesos_ticket SET estado=%s,datos=%s,version=%s,

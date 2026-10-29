@@ -1,0 +1,13 @@
+{
+  "verificado_utc": "2026-10-29T05:34:00.205092+00:00",
+  "commit_base": "46c978d3445c0ac660c67831205485de8a5c9f80",
+  "arbol_modificado": true,
+  "archivos_codigo": 140,
+  "huellas_local_servidor_iguales": true,
+  "backend": 71,
+  "escenarios_aprobados": 18,
+  "omisiones": 0,
+  "snapshots_iguales": true,
+  "npm_avisos": 0,
+  "python_avisos": 0
+}

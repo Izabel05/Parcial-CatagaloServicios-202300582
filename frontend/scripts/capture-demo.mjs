@@ -48,6 +48,7 @@ async function ticket(process,index) {
  const region=page.getByRole('region',{name:'Búsqueda de tickets'})
  await expect(region.getByText(title,{exact:true})).toBeVisible()
  await expect(region.getByRole('button',{name:/^SD-\d+$/})).toHaveCount(1)
+ await expect(region.getByRole('button',{name:/^SD-\d+$/})).toHaveCount(1)
  await region.getByRole('button',{name:/^SD-\d+$/}).click()
  const detail=page.getByRole('region',{name:'Ficha de ticket',exact:true})
  await expect(detail.getByRole('heading').first()).toContainText(title)

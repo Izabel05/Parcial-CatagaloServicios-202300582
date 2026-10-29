@@ -173,3 +173,16 @@ dispositivos activos en una instalación de aplicación aislada. Sus pruebas
 comprueban búsqueda, ficha, dependencias, lectura por consulta y mantenimiento
 de una ubicación por administrador. Los resultados reales y el entorno se
 registran en `docs/evidencias/CMDB-2026-10-28.md`.
+
+## Tickets asociados a un CI
+
+La ficha incluye historial paginado por `GET /api/v1/cmdb/ci/{id}/tickets`, con
+`page` y `page_size` (máximo 100). Se ordena por fecha e ID descendentes y solo
+cuenta/devuelve tickets propios o de colas consultables; administrador conserva
+su ámbito autorizado. El total no revela tickets de otras colas. Un CI inexistente
+devuelve 404 y una petición sin sesión, 401.
+
+Desde la lista se abre una consulta de ticket y su bitácora ya filtrada por los
+permisos habituales de Service Desk. No se duplican operaciones de atención en
+CMDB. La migración 008 indexa `(ci_id,ticket_id)` para esta consulta; no altera
+las migraciones aplicadas. Pruebas y resultados: [AUDITORIA](AUDITORIA.md).

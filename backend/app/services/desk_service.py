@@ -193,6 +193,9 @@ class DeskService:
                 raise DeskError('Servicio inexistente o inactivo')
             self.validate_ci(repo,ci_ids)
             ticket = repo.save('ticket',{**values,'solicitante_id':requester,'creador_id':actor})
+            from backend.app.repositories.process_repository import ProcessRepository
+            from backend.app.services.process_rules import INITIAL
+            ProcessRepository(repo.connection).get(ticket['id'],INITIAL[queue['proceso']])
             from backend.app.repositories.experience_repository import ExperienceRepository
             ExperienceRepository(repo.connection).begin_cycle(ticket)
             repo.replace_ci(ticket['id'],ci_ids)
@@ -226,6 +229,9 @@ class DeskService:
             if flow['estado']=='pendiente_aprobacion' or store.approval(ticket_id,flow['version']):
                 raise DeskError('Reabra el proceso para modificar los datos sometidos a aprobación')
             old_ci=repo.cis(ticket_id)
+            if process=='eventos' and store.event_incident(ticket_id) and (
+                    values['servicio_id']!=before['servicio_id'] or sorted(set(ci_ids))!=sorted(c['id'] for c in old_ci)):
+                raise DeskError('El evento ya está correlacionado; conserve su servicio y CI para mantener la trazabilidad')
             after=repo.save('ticket',{**values,'updated_at':datetime.now(timezone.utc)},ticket_id)
             repo.replace_ci(ticket_id,ci_ids)
             repo.audit(actor,'editar_ticket',{**before,'ci':old_ci},
@@ -237,6 +243,14 @@ class DeskService:
             user = self.user(repo,actor)
             allowed = [q['id'] for q in repo.queues() if self.can(repo,user,q['id'],'consultar')]
             return repo.list_tickets(actor,allowed,user['role']=='administrador',filters,page,size)
+
+    def tickets_for_ci(self, actor, ci_id, page=1, size=25):
+        with self.repository.transaction() as repo:
+            user=self.user(repo,actor)
+            if not repo.reference('ci',ci_id): raise DeskMissing('CI no encontrado')
+            allowed=[q['id'] for q in repo.queues() if self.can(repo,user,q['id'],'consultar')]
+            return repo.list_tickets(actor,allowed,user['role']=='administrador',
+                                     {'ci_id':ci_id,'recientes':True},page,size)
 
     def detail(self, actor, ticket_id, scope='visibles'):
         with self.repository.transaction() as repo:
@@ -259,11 +273,19 @@ class DeskService:
                     pass
             from backend.app.repositories.process_repository import ProcessRepository
             from backend.app.services.process_rules import INITIAL, successors
-            flow = ProcessRepository(repo.connection).get(ticket_id,INITIAL[queue['proceso']])
+            flow = ProcessRepository(repo.connection).read(ticket_id)
+            if flow is None:
+                # Compatibilidad de lectura con registros heredados incompletos; GET no escribe.
+                flow={'ticket_id':ticket_id,'estado':ticket['estado'] if ticket['estado'] in ('resuelto','cerrado') else INITIAL[queue['proceso']],
+                      'datos':{},'version':1,'servicio_resultado_id':None,'updated_at':ticket['updated_at']}
+            details=repo.details(ticket_id,self.internal(repo,user,ticket))
+            visible={link['otro_id']:link['otro_numero'] for link in links}
+            details['notificaciones']=[{**n,'incidente_id':n['incidente_id'] if n['incidente_id'] in visible else None,
+                'incidente_numero':visible.get(n['incidente_id'])} for n in details['notificaciones']]
             return {**ticket,'flujo':{**flow,'transiciones':successors(queue['proceso'],flow['estado'])},'proceso':queue['proceso'],'tipo':TYPE_MAP[queue['proceso']],
                     'level_1_code':service['level_1_code'],'cola_nombre':queue['nombre'],
                     'ci':repo.cis(ticket_id),'vinculos':links,
-                    **repo.details(ticket_id,self.internal(repo,user,ticket))}
+                    **details}
 
     def assign(self, actor, ticket_id, target=None, reason='Tomar ticket'):
         with self.repository.transaction(True) as repo:

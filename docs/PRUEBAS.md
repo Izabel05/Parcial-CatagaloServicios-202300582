@@ -4,7 +4,11 @@ Los identificadores **P01–P18 de Service Desk** corresponden a las páginas 7�
 del enunciado de la tarea. Son distintos de los P01–P12 del parcial anterior;
 sus métodos originales se conservan como regresiones y no se renumeran.
 
-Resultados reales de esta ejecución:
+Resultado vigente tras la auditoría: **71 métodos backend, P01–P18 y 18 E2E
+aprobados sin omisiones**. Registros y límites:
+[AUDITORIA](AUDITORIA.md) y [evidencia final](evidencias/AUDITORIA-2026-10-28.md).
+
+Resultados reales de las fases anteriores:
 [18 escenarios, 63 métodos y persistencia](evidencias/DEMO-ACEPTACION-2026-10-28.md).
 
 Tras versionar el cierre y adaptar montajes para Fedora se ejecutó de nuevo la

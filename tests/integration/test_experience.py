@@ -2,6 +2,20 @@ from tests.integration import test_desk as base
 
 
 class ExperienceIntegrationTest(base.DeskIntegrationTest):
+    def test_ex07_concesion_directa_habilita_consulta_sin_elevar_atencion(self):
+        ticket=self.ticket();queue=self.queues[0]['id']
+        before=next(q['permisos'] for q in self.call('GET','/colas',actor='admin').json() if q['id']==queue)
+        grants=before+[{'usuario_id':self.ids['sol2'],'permiso':p} for p in ('consultar','atender')]
+        self.call('PUT',f'/colas/{queue}/permisos',{'permisos':grants},actor='admin')
+        try:
+            spaces=self.call('GET','/espacios',actor='sol2').json()
+            self.assertTrue(spaces['consola']);self.assertFalse(spaces['administracion'])
+            self.call('GET',f"/tickets/{ticket['id']}?ambito=colas",actor='sol2')
+            self.call('POST',f"/tickets/{ticket['id']}/tomar",actor='sol2',expected=403)
+        finally:
+            self.call('PUT',f'/colas/{queue}/permisos',{'permisos':before},actor='admin')
+        self.assertFalse(self.call('GET','/espacios',actor='sol2').json()['consola'])
+
     def test_ex01_portal_y_consola_aislados_en_servidor(self):
         a=self.ticket();b=self.ticket(solicitante_id=None)
         own=self.call('GET','/tickets?ambito=propios',actor='ag1').json()

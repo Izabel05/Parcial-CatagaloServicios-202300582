@@ -79,3 +79,16 @@ commits creados antes de las ejecuciones del 28 de octubre.
 - **Verificación:** 16 E2E, compilación, 23 capturas y 138 huellas coincidentes.
 - **Commit de código:** `d40a42a702a2c49a3afbd78c34cb6f37acdbe55e`.
 - **Fuentes:** [diseño](../FRONTEND.md) y [resultados](../evidencias/FRONTEND-2026-10-28.md).
+
+## SD-5 — auditoría antes de publicar
+
+- **Solicitud:** auditar, completar faltantes y después hacer commit y push.
+- **Cambio:** historial de tickets por CI con permisos, notificaciones visibles,
+  lecturas sin escrituras, correlación estable y consola por permisos efectivos;
+  dependencias corregidas, arranque configurable y fuente original del parcial.
+- **Motivo:** corregir diferencias reales entre el enunciado, la API y las vistas,
+  y cerrar los avisos de dependencias antes de publicar.
+- **Verificación:** 71 métodos, P01–P18, 18 E2E, Compose, compilación y reportes
+  npm/pip-audit. Se conservan fallos iniciales y manifiestos, sin retrofechar.
+- **Registro:** [AUDITORIA](../AUDITORIA.md); commit local de cierre y publicación
+  en la rama `main` solicitada por el usuario, sin forzar el historial remoto.

@@ -1,2 +1,4 @@
 # Los scripts Bash deben conservar LF al clonar o exportar desde Windows.
 *.sh text eol=lf
+# Fuente original: conservar sus bytes y saltos de línea al clonar en Linux.
+data/fuentes/Parcial_Practico_2.txt binary

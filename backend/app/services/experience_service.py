@@ -12,7 +12,8 @@ class ExperienceService:
         with self.desk.repository.transaction() as repo:
             user=self.desk.user(repo,actor)
             queues=repo.queues()
-            console=user['role']=='administrador' or bool({'agente','aprobador','consulta'} & set(user['roles']))
+            console=(user['role']=='administrador' or bool({'agente','aprobador','consulta'} & set(user['roles']))
+                     or any(self.desk.can(repo,user,q['id'],'consultar') for q in queues))
             admin=user['role']!='consulta' and (user['role']=='administrador' or any(self.desk.can(repo,user,q['id'],'administrar') for q in queues))
             return {'portal':True,'consola':console,'administracion':admin,'administrador':user['role']=='administrador'}
 

@@ -1,0 +1,187 @@
+ Image catalogo-aceptacion-tests-backend-tests Building 
+ Image catalogo-aceptacion-tests-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.05kB done
+#1 DONE 0.0s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 480B done
+#2 DONE 0.0s
+
+#3 [backend internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [backend internal] load .dockerignore
+#4 transferring context: 251B done
+#4 DONE 0.0s
+
+#5 [backend internal] load build context
+#5 transferring context: 1.10MB 0.0s done
+#5 DONE 0.2s
+
+#6 [backend 1/8] FROM docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17
+#6 resolve docker.io/library/python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17 0.2s done
+#6 DONE 0.2s
+
+#7 [backend-tests 2/8] WORKDIR /app
+#7 CACHED
+
+#8 [backend 3/8] COPY backend/requirements.txt ./backend/requirements.txt
+#8 DONE 0.2s
+
+#9 [backend 4/8] RUN pip install --no-cache-dir -r backend/requirements.txt
+#9 1.477 Collecting fastapi==0.162.0 (from -r backend/requirements.txt (line 1))
+#9 1.614   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#9 1.693 Collecting starlette==1.10.0 (from -r backend/requirements.txt (line 2))
+#9 1.731   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#9 1.795 Collecting uvicorn==0.36.0 (from uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 1.832   Downloading uvicorn-0.36.0-py3-none-any.whl.metadata (6.6 kB)
+#9 1.885 Collecting pydantic-settings==2.10.1 (from -r backend/requirements.txt (line 4))
+#9 1.923   Downloading pydantic_settings-2.10.1-py3-none-any.whl.metadata (3.4 kB)
+#9 1.977 Collecting psycopg<4,>=3.2 (from psycopg[binary]<4,>=3.2->-r backend/requirements.txt (line 5))
+#9 2.016   Downloading psycopg-3.3.6-py3-none-any.whl.metadata (4.4 kB)
+#9 2.071 Collecting openpyxl<4,>=3.1 (from -r backend/requirements.txt (line 6))
+#9 2.108   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+#9 2.161 Collecting argon2-cffi<26,>=23.1 (from -r backend/requirements.txt (line 7))
+#9 2.198   Downloading argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+#9 2.481 Collecting cryptography==50.0.2 (from -r backend/requirements.txt (line 8))
+#9 2.517   Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+#9 2.567 Collecting httpx<1,>=0.27 (from -r backend/requirements.txt (line 9))
+#9 2.604   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#9 2.742 Collecting pydantic>=2.9.0 (from fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 2.778   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+#9 2.877 Collecting typing-extensions>=4.8.0 (from fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 2.915   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#9 2.955 Collecting typing-inspection>=0.4.2 (from fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 2.993   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#9 3.036 Collecting annotated-doc>=0.0.2 (from fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 3.075   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#9 3.127 Collecting opentelemetry-api>=1.44.0 (from fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 3.165   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+#9 3.216 Collecting anyio<5,>=4.0.0 (from starlette==1.10.0->-r backend/requirements.txt (line 2))
+#9 3.253   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#9 3.307 Collecting click>=7.0 (from uvicorn==0.36.0->uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 3.344   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#9 3.387 Collecting h11>=0.8 (from uvicorn==0.36.0->uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 3.425   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#9 3.483 Collecting python-dotenv>=0.21.0 (from pydantic-settings==2.10.1->-r backend/requirements.txt (line 4))
+#9 3.520   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+#9 3.640 Collecting cffi>=2.0.0 (from cryptography==50.0.2->-r backend/requirements.txt (line 8))
+#9 3.678   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+#9 3.743 Collecting httptools>=0.6.3 (from uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 3.782   Downloading httptools-0.9.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#9 3.846 Collecting pyyaml>=5.1 (from uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 3.883   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#9 3.952 Collecting uvloop>=0.15.1 (from uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 3.989   Downloading uvloop-0.23.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+#9 4.084 Collecting watchfiles>=0.13 (from uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 4.123   Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#9 4.281 Collecting websockets>=10.4 (from uvicorn[standard]==0.36.0->-r backend/requirements.txt (line 3))
+#9 4.318   Downloading websockets-17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+#9 4.364 Collecting et-xmlfile (from openpyxl<4,>=3.1->-r backend/requirements.txt (line 6))
+#9 4.402   Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+#9 4.449 Collecting argon2-cffi-bindings (from argon2-cffi<26,>=23.1->-r backend/requirements.txt (line 7))
+#9 4.486   Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (7.5 kB)
+#9 4.539 Collecting certifi (from httpx<1,>=0.27->-r backend/requirements.txt (line 9))
+#9 4.576   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+#9 4.626 Collecting httpcore==1.* (from httpx<1,>=0.27->-r backend/requirements.txt (line 9))
+#9 4.664   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#9 4.711 Collecting idna (from httpx<1,>=0.27->-r backend/requirements.txt (line 9))
+#9 4.748   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#9 4.915 Collecting psycopg-binary==3.3.6 (from psycopg[binary]<4,>=3.2->-r backend/requirements.txt (line 5))
+#9 4.952   Downloading psycopg_binary-3.3.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+#9 5.003 Collecting pycparser (from cffi>=2.0.0->cryptography==50.0.2->-r backend/requirements.txt (line 8))
+#9 5.042   Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+#9 5.092 Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 5.132   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#9 5.774 Collecting pydantic-core==2.50.1 (from pydantic>=2.9.0->fastapi==0.162.0->-r backend/requirements.txt (line 1))
+#9 5.812   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+#9 5.879 Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
+#9 5.929 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+#9 5.972 Downloading uvicorn-0.36.0-py3-none-any.whl (67 kB)
+#9 6.012 Downloading pydantic_settings-2.10.1-py3-none-any.whl (45 kB)
+#9 6.054 Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+#9 6.205    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 33.0 MB/s eta 0:00:00
+#9 6.244 Downloading psycopg-3.3.6-py3-none-any.whl (215 kB)
+#9 6.286 Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+#9 6.332 Downloading argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+#9 6.370 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#9 6.409 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#9 6.452 Downloading psycopg_binary-3.3.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+#9 6.523    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 77.8 MB/s eta 0:00:00
+#9 6.560 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#9 6.598 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#9 6.640 Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+#9 6.682 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#9 6.721 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#9 6.763 Downloading httptools-0.9.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (552 kB)
+#9 6.776    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 552.8/552.8 kB 54.2 MB/s eta 0:00:00
+#9 6.814 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#9 6.855 Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+#9 6.895 Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+#9 6.944 Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+#9 6.980    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 65.9 MB/s eta 0:00:00
+#9 7.017 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+#9 7.056 Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+#9 7.069    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 78.4 MB/s eta 0:00:00
+#9 7.106 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#9 7.145 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#9 7.188 Downloading uvloop-0.23.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.5 MB)
+#9 7.252    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 73.9 MB/s eta 0:00:00
+#9 7.291 Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+#9 7.338 Downloading websockets-17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (225 kB)
+#9 7.385 Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (26 kB)
+#9 7.423 Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+#9 7.466 Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+#9 7.503 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#9 7.540 Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+#9 7.665 Installing collected packages: websockets, uvloop, typing-extensions, pyyaml, python-dotenv, pycparser, psycopg-binary, idna, httptools, h11, et-xmlfile, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, psycopg, opentelemetry-api, openpyxl, httpcore, cffi, anyio, watchfiles, starlette, pydantic, httpx, cryptography, argon2-cffi-bindings, pydantic-settings, fastapi, argon2-cffi
+#9 9.658 Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 certifi-2026.10.23 cffi-2.1.1 click-8.5.0 cryptography-50.0.2 et-xmlfile-2.0.0 fastapi-0.162.0 h11-0.16.0 httpcore-1.0.9 httptools-0.9.0 httpx-0.28.1 idna-3.20 openpyxl-3.1.5 opentelemetry-api-1.45.1 psycopg-3.3.6 psycopg-binary-3.3.6 pycparser-3.12 pydantic-2.14.1 pydantic-core-2.50.1 pydantic-settings-2.10.1 python-dotenv-1.2.4 pyyaml-6.0.3 starlette-1.10.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.36.0 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.3
+#9 9.658 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 9.845 
+#9 9.845 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
+#9 9.845 [notice] To update, run: pip install --upgrade pip
+#9 DONE 10.4s
+
+#10 [backend-tests 5/8] COPY backend ./backend
+#10 DONE 0.1s
+
+#11 [backend 6/8] COPY data ./data
+#11 DONE 0.0s
+
+#12 [backend-tests 7/8] COPY scripts ./scripts
+#12 DONE 0.0s
+
+#13 [backend-tests 8/8] COPY tests ./tests
+#13 DONE 0.0s
+
+#14 [backend-tests] exporting to image
+#14 exporting layers
+#14 exporting layers 3.2s done
+#14 exporting manifest sha256:90da871d22d9c266c695024f1084645d21806024c62a24bdd3bf9af6b55a7d6a 0.1s done
+#14 exporting config sha256:e2325b24cca7819f8f69db4871b624ba71bbb64ab2bbff8b6f84ed5aa1e718de
+#14 exporting config sha256:e2325b24cca7819f8f69db4871b624ba71bbb64ab2bbff8b6f84ed5aa1e718de 0.0s done
+#14 exporting attestation manifest sha256:d989e3b81dadf0065fe620b31f2058938c928c6705839bc494e356ea0e02232c 0.0s done
+#14 exporting manifest list sha256:7fb6436b4d0453f24c55ac1affdd9085d301bea95f25389931cdef0923ef55fd 0.0s done
+#14 naming to docker.io/library/catalogo-aceptacion-tests-backend-tests:latest done
+#14 unpacking to docker.io/library/catalogo-aceptacion-tests-backend-tests:latest
+#14 unpacking to docker.io/library/catalogo-aceptacion-tests-backend-tests:latest 0.6s done
+#14 DONE 4.0s
+
+#15 [backend] exporting to image
+#15 exporting layers 3.2s done
+#15 exporting manifest sha256:7bf29111b57556a5dea24175d6ceb18123cc069520d1e96e27c27d62a36ed1d6 0.1s done
+#15 exporting config sha256:eaee3c15f9bedb3e41e5b4df52ec5ad37a074f1ef5e78d543182416ce78755c9 0.0s done
+#15 exporting attestation manifest sha256:999295be65d826d17c27a9b792bf43ee23a3f7db362221ccef368694b9a60244 0.0s done
+#15 exporting manifest list sha256:f00e4c2c593b7e532a9cfca5780a0d734f7d865b8ce6b9db0d5dc0ca23edbe47 0.0s done
+#15 naming to docker.io/library/catalogo-aceptacion-tests-backend:latest done
+#15 unpacking to docker.io/library/catalogo-aceptacion-tests-backend:latest 0.6s done
+#15 DONE 4.0s
+
+#16 [backend] resolving provenance for metadata file
+#16 DONE 0.0s
+
+#17 [backend-tests] resolving provenance for metadata file
+#17 DONE 0.0s
+ Image catalogo-aceptacion-tests-backend-tests Built 
+ Image catalogo-aceptacion-tests-backend Built 

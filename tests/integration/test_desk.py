@@ -64,6 +64,44 @@ class DeskIntegrationTest(base.ScenarioIntegrationTest):
         values.update(changes)
         return self.call('POST','/tickets',values,actor='sol1',expected=201).json()
 
+    def test_sd_08_historial_ci_filtrado_y_paginado(self):
+        original=self.client.get(f'/api/v1/cmdb/ci/{self.ci}',headers=self.admin).json()
+        code='AUD-CI-'+uuid4().hex
+        created=self.client.post('/api/v1/cmdb/ci',headers=self.admin,json={
+            'codigo':code,'nombre':'Historial CI de auditoría','etiqueta':code,
+            'clasificacion_id':original['clasificacion_id'],'ubicacion_id':original['ubicacion_id'],
+            'responsable_usuario_id':self.integration_admin_id})
+        self.assertEqual(created.status_code,201,created.text)
+        ci=created.json()['id']
+        first=self.ticket(ci_ids=[ci]);second=self.ticket(ci_ids=[ci])
+        self.ticket()  # Otro CI no debe entrar en el historial.
+        private=self.call('POST','/colas',{'codigo':'AUD-'+uuid4().hex,'nombre':'Cola privada','proceso':'incidentes'},actor='admin',expected=201).json()
+        hidden=self.call('POST','/tickets',{'titulo':'Ticket reservado','descripcion':'No visible a otras colas',
+            'cola_id':private['id'],'servicio_id':self.service,'ci_ids':[ci],'solicitante_id':self.ids['sol2']},actor='admin',expected=201).json()
+        url=f'/api/v1/cmdb/ci/{ci}/tickets'
+        self.assertEqual(self.client.get(url).status_code,401)
+        for headers in (self.headers['sol1'],self.headers['ag1'],self.reader):
+            page1=self.client.get(url+'?page_size=1',headers=headers).json()
+            page2=self.client.get(url+'?page_size=1&page=2',headers=headers).json()
+            self.assertEqual(page1['total'],2)
+            self.assertEqual({page1['items'][0]['id'],page2['items'][0]['id']},{first['id'],second['id']})
+        own=self.client.get(url,headers=self.headers['sol2']).json()
+        self.assertEqual([t['id'] for t in own['items']],[hidden['id']])
+        self.assertEqual(self.client.get(url,headers=self.admin).json()['total'],3)
+        self.assertEqual(self.client.get('/api/v1/cmdb/ci/99999999/tickets',headers=self.admin).status_code,404)
+
+    def test_sd_09_consultar_no_materializa_flujos(self):
+        from backend.app.database.connection import get_connection
+        ticket=self.ticket()
+        # Simula un registro heredado incompleto; la lectura no debe repararlo escribiendo.
+        with get_connection(base.TEST_DATABASE_URL) as connection:
+            connection.execute('DELETE FROM sd_procesos_ticket WHERE ticket_id=%s',(ticket['id'],))
+        for actor in ('sol1','reader'):
+            response=self.call('GET',f"/tickets/{ticket['id']}",actor=actor)
+            self.assertEqual(response.json()['flujo']['estado'],'registro')
+        with get_connection(base.TEST_DATABASE_URL) as connection:
+            self.assertEqual(connection.execute('SELECT count(*) AS n FROM sd_procesos_ticket WHERE ticket_id=%s',(ticket['id'],)).fetchone()['n'],0)
+
     def test_sd_01_referencias_y_aislamiento(self):
         ticket=self.ticket()
         self.call('GET',f"/tickets/{ticket['id']}",actor='sol2',expected=403)

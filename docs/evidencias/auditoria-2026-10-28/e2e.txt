@@ -1,0 +1,28 @@
+
+Running 18 tests using 3 workers
+
+  ✓   3 tests/e2e/catalogo.spec.js:30:1 › P01 rechaza credenciales incorrectas y acepta las válidas (1.8s)
+  ✓   2 tests/e2e/cmdb.spec.js:17:1 › CMDB busca entre 5000 dispositivos y navega ficha y dependencias (2.5s)
+  ✓   4 tests/e2e/catalogo.spec.js:37:1 › P02 y P03 protegen la sesión y respetan el rol consulta (1.4s)
+  ✓   6 tests/e2e/catalogo.spec.js:46:1 › el dashboard navega por pestañas sin apilar todas las vistas (1.4s)
+  ✓   5 tests/e2e/cmdb.spec.js:31:1 › CMDB consulta es de lectura y administrador mantiene ubicaciones (3.1s)
+  ✓   7 tests/e2e/catalogo.spec.js:54:1 › P10 permite búsqueda y filtros desde la interfaz (1.6s)
+  ✓   8 tests/e2e/experience.spec.js:3:1 › navegación móvil mantiene el portal y sus controles dentro de la pantalla (1.7s)
+  ✓   9 tests/e2e/catalogo.spec.js:83:1 › P04 muestra la jerarquía organizacional y los puestos (1.9s)
+  ✓   1 tests/e2e/desk.spec.js:24:1 › solicitante crea ticket con adjunto y agente atiende sin filtrar notas internas (9.7s)
+  ✓  11 tests/e2e/catalogo.spec.js:93:1 › P09 comunica al usuario el rango mínimo/máximo inválido (2.3s)
+  ✓  10 tests/e2e/experience.spec.js:23:1 › CMDB permite consultar tickets asociados y su bitácora (3.4s)
+  ✓  12 tests/e2e/desk.spec.js:60:1 › consulta no obtiene formularios de escritura en Service Desk (1.4s)
+  ✓  13 tests/e2e/experience.spec.js:40:1 › evento muestra notificación persistente y abre su incidente (2.4s)
+  ✓  15 tests/e2e/experience.spec.js:59:1 › solicitante tiene portal propio, FAQ y tablero calendario (2.4s)
+  ✓  16 tests/e2e/experience.spec.js:80:1 › agente usa consola y separa su portal de la atención (2.1s)
+  ✓  14 tests/e2e/desk.spec.js:68:1 › incidente exige evidencias y recorre sus etapas desde el formulario (9.3s)
+  ✓  17 tests/e2e/experience.spec.js:93:1 › administración publica FAQ sin mostrar borradores al autoservicio (3.6s)
+  ✓  18 tests/e2e/experience.spec.js:120:1 › consulta ve tablero y FAQ sin administración (888ms)
+
+  18 passed (23.0s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

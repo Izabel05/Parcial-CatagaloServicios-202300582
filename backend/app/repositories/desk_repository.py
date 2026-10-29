@@ -127,6 +127,9 @@ class DeskRepository:
         for name, column in mapping.items():
             if filters.get(name) is not None:
                 conditions.append(column+'=%s'); params.append(filters[name])
+        if filters.get('ci_id') is not None:
+            conditions.append('EXISTS(SELECT 1 FROM sd_ticket_ci tc WHERE tc.ticket_id=t.id AND tc.ci_id=%s)')
+            params.append(filters['ci_id'])
         if filters.get('search'):
             conditions.append('(t.numero ILIKE %s OR t.titulo ILIKE %s)')
             params.extend(['%'+filters['search']+'%'] * 2)
@@ -135,13 +138,14 @@ class DeskRepository:
                 conditions.append('t.created_at'+op+'%s'); params.append(filters[name])
         base = ' FROM sd_tickets t JOIN sd_colas q ON q.id=t.cola_id WHERE ' + ' AND '.join(conditions)
         total = self.connection.execute('SELECT count(*) AS total'+base, params).fetchone()['total']
+        order = 't.created_at DESC,t.id DESC' if filters.get('recientes') else 't.prioridad,t.created_at,t.id'
         rows = self.connection.execute('''SELECT t.*,q.nombre AS cola_nombre,q.proceso,
             s.code AS servicio_codigo,s.level_1_code,
             CASE q.proceso WHEN 'accesos' THEN 'solicitud_acceso' WHEN 'eventos' THEN 'evento'
             WHEN 'incidentes' THEN 'incidente' WHEN 'cambios' THEN 'solicitud_cambio'
             WHEN 'problemas' THEN 'problema' ELSE 'requisicion_servicio' END AS tipo
             ''' + base.replace(' WHERE ', ' JOIN services s ON s.id=t.servicio_id WHERE ', 1) +
-            ' ORDER BY t.prioridad,t.created_at,t.id LIMIT %s OFFSET %s', (*params, size, (page-1)*size)).fetchall()
+            ' ORDER BY '+order+' LIMIT %s OFFSET %s', (*params, size, (page-1)*size)).fetchall()
         return {'items':rows,'total':total,'page':page,'page_size':size}
 
     def details(self, ticket_id, internal):
@@ -152,7 +156,8 @@ class DeskRepository:
         attachments = self.connection.execute('''SELECT id,nombre,mime,sha256,interno,fecha,octet_length(contenido) AS bytes
             FROM sd_adjuntos WHERE ticket_id=%s AND (%s OR NOT interno) ORDER BY id''', (ticket_id, internal)).fetchall()
         approvals = self.connection.execute('SELECT * FROM sd_aprobaciones WHERE ticket_id=%s ORDER BY id', (ticket_id,)).fetchall()
-        return {'comentarios':comments,'historial':history,'adjuntos':attachments,'aprobaciones':approvals}
+        notifications = self.connection.execute('SELECT * FROM sd_notificaciones WHERE evento_id=%s ORDER BY id', (ticket_id,)).fetchall()
+        return {'comentarios':comments,'historial':history,'adjuntos':attachments,'aprobaciones':approvals,'notificaciones':notifications}
 
     def links(self, ticket_id):
         return self.connection.execute('SELECT * FROM sd_ticket_vinculos WHERE origen_id=%s OR destino_id=%s ORDER BY id', (ticket_id,ticket_id)).fetchall()

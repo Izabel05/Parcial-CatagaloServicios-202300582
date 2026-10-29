@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import CiTicketHistory from './CiTicketHistory.jsx'
 
 const API = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 const emptyCI = { codigo: '', nombre: '', clasificacion_id: '', ubicacion_id: '', responsable_usuario_id: '',
@@ -131,6 +132,7 @@ export default function CmdbPanel({ token, role }) {
       </form>}
       <button onClick={() => { setError(''); api(`/cmdb/ci/${detail.id}/dependencias`).then(setImpact).catch((e) => setError(e.message)) }}>Ver servicios potencialmente afectados</button>
       {impact && <div><p>{impact.advertencia} CI alcanzados: {impact.alcanzados}{impact.truncado && ' · recorrido truncado'}</p><ul>{impact.servicios_potencialmente_afectados.map((s) => <li key={s.id}>{s.code} · {s.name} · ruta {s.ruta_ci.join(' → ')} <button onClick={() => show(s.ci_id)}>Abrir CI de la ruta</button></li>)}</ul></div>}
+      <CiTicketHistory key={detail.id} token={token} ciId={detail.id}/>
       <details><summary>Historial del CI (últimas 100 acciones)</summary><ul>{detail.historial.map((h) => <li key={h.id}>{h.fecha} · {h.actor} · {h.accion}<pre>{JSON.stringify({ antes: h.antes, despues: h.despues }, null, 2)}</pre></li>)}</ul></details>
     </section>}
     {admin && <section className="card" aria-label="Mantenimiento de CI"><h3>{editing ? `Editar CI ${editing}` : 'Nuevo CI'}</h3>

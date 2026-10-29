@@ -3,6 +3,7 @@ from typing import Literal
 from fastapi import APIRouter, Depends, Query
 
 from backend.app.controllers.cmdb_controller import CmdbController
+from backend.app.controllers.desk_controller import DeskController
 from backend.app.models.user import AuthenticatedContext
 from backend.app.schemas.cmdb_schema import CatalogPayload, CIPayload, RelationPayload, ServiceLinkPayload
 from backend.app.security.dependencies import require_administrator, require_functional_reader
@@ -13,6 +14,10 @@ Catalog = Literal['clasificaciones', 'ubicaciones']
 
 def controller():
     return CmdbController()
+
+
+def desk_controller():
+    return DeskController()
 
 
 @router.get('/catalogos/{entity}')
@@ -62,6 +67,14 @@ def detail(ci_id: int, _: AuthenticatedContext = Depends(require_functional_read
 def update_ci(ci_id: int, payload: CIPayload,
               actor: AuthenticatedContext = Depends(require_administrator), c=Depends(controller)):
     return c.run('save_ci', payload.model_dump(), actor.user.id, ci_id)
+
+
+@router.get('/ci/{ci_id}/tickets')
+def tickets_for_ci(ci_id: int, page: int = Query(1, ge=1, le=1000000),
+                   page_size: int = Query(25, ge=1, le=100),
+                   actor: AuthenticatedContext = Depends(require_functional_reader),
+                   c=Depends(desk_controller)):
+    return c.run('tickets_for_ci', actor.user.id, ci_id, page, page_size)
 
 
 @router.delete('/ci/{ci_id}')

@@ -65,7 +65,7 @@ erDiagram
 
 | Entidad/campo | Diccionario |
 |---|---|
-| `sd_procesos_ticket.ticket_id` | PK/FK del ticket; una fila por trámite, creada al consultar/iniciar su flujo. |
+| `sd_procesos_ticket.ticket_id` | PK/FK del ticket; creada en la transacción de alta. La consulta no escribe; ante un registro heredado incompleto devuelve una representación inicial de lectura. |
 | `estado`, `datos` | Etapa específica y JSONB validado por el esquema de ese proceso; los atributos están enumerados en `process_schema.py`. |
 | `version`, `updated_at` | Ciclo positivo y última modificación; reabrir incrementa el ciclo. |
 | `servicio_resultado_id` | FK opcional al catálogo; resultado de nuevos servicios, independiente del contexto original. |
@@ -81,3 +81,12 @@ erDiagram
 La suite incorpora `tests/integration/test_processes.py`: recorridos completos, evidencias faltantes, saltos rechazados, aprobación vigente tras reapertura, datos congelados, I0–I6, E0–E3, correlación concurrente, vínculos correctos, creación de catálogo idempotente, beneficiario que intenta aprobar y confirmación reservada al solicitante. Conserva las pruebas de autenticación, catálogo, importación, CMDB y base Service Desk.
 
 Resultado verificado: [40 pruebas de backend, 11 E2E y persistencia](evidencias/PROCESOS-2026-10-28.md).
+
+## Cierre de auditoría
+
+La ficha del evento muestra sus notificaciones persistentes (mensaje y fecha).
+El enlace al incidente solo se ofrece si el actor puede consultarlo en el ámbito
+actual. La repetición no crea otra notificación. Una vez correlacionado, el
+servicio y los CI del evento no se pueden sustituir, para conservar la coherencia
+con el incidente asociado. El título y otros metadatos siguen sujetos a las
+validaciones generales. Evidencia y regresiones: [AUDITORIA](AUDITORIA.md).

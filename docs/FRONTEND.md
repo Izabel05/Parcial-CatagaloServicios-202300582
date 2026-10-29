@@ -92,3 +92,7 @@ elemento o la página para incluir los datos completos.
 Resultados y galería: [FRONTEND-2026-10-28](evidencias/FRONTEND-2026-10-28.md).
 La preparación específica en Fedora se mantiene en [FEDORA.md](FEDORA.md).
 Las capturas remotas no se presentan como prueba del equipo Fedora del alumno.
+
+La auditoría posterior agrega historial de tickets en la ficha de CI y las
+notificaciones visibles del evento. Sus dos regresiones elevan la suite a 18 E2E;
+las capturas adicionales y resultados están en [AUDITORIA](AUDITORIA.md).
