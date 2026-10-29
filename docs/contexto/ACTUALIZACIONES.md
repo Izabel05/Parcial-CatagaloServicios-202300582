@@ -42,3 +42,15 @@ commits creados antes de las ejecuciones del 28 de octubre.
 - **Verificación:** contraste con `MODELO.md`, `PRUEBAS.md` y los reportes reales.
 - **Commit:** consultar `git log --format='%h %s' -- docs/contexto/CONTEXTO-PROYECTO.md`;
   entrada con asunto `feat: completa Service Desk y actualiza contexto de fuentes`.
+
+## SD-2 — procedencia de IA, términos y criterios de verificación
+
+- **Problema:** el registro anterior cubría solo seis prompts del parcial; faltaban
+  vocabulario común y vínculo entre decisiones, cambios y verificaciones actuales.
+- **Cambio:** `IA.md` selecciona ocho solicitudes reales, dos refinamientos y
+  tres ciclos; `GLOSARIO.md` distingue CI, cola, ciclo y objetivo calendario.
+- **Motivo:** evitar resultados o modelos retrospectivos inventados y aclarar
+  que una prueba adversarial no implica una corrida roja histórica conservada.
+- **Verificación:** cada ciclo enlaza logs reales y declara fallos deliberados.
+- **Commit:** `git log --format='%h %s' -- docs/IA.md`, asunto
+  `docs: documenta IA contexto y ciclos con evidencia real`.
