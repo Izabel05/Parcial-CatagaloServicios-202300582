@@ -53,7 +53,8 @@ export default function DeskPanel({token,mode}) {
         <label>Prioridad filtro<select value={draft.prioridad} onChange={e=>setDraft({...draft,prioridad:e.target.value})}><option value="">Todas</option>{[1,2,3,4].map(p=><option key={p}>{p}</option>)}</select></label>
         <label>Responsable filtro<select value={draft.responsable_id} onChange={e=>setDraft({...draft,responsable_id:e.target.value})}><option value="">Todos</option>{users.map(u=><option key={u.id} value={u.id}>{u.username}</option>)}</select></label><button>Filtrar tickets</button>
       </form><p>{result.total} tickets · página {page} · orden: prioridad 1–4, antigüedad e ID</p>
-      <ul>{result.items.map(t=><li key={t.id}><button onClick={()=>open(t.id)}>{t.numero}</button> · {t.titulo} · {t.estado} · prioridad {t.prioridad} · {t.cola_nombre} · responsable {t.responsable_id??'Sin asignar'}</li>)}</ul>
+      <ul className="record-list">{result.items.map(t=><li key={t.id}><button onClick={()=>open(t.id)}>{t.numero}</button><div className="record-body"><strong>{t.titulo}</strong><small>Prioridad {t.prioridad} · {t.cola_nombre} · responsable {t.responsable_id??'Sin asignar'}</small></div><span className={`status-pill ${t.estado}`}>{t.estado.replaceAll('_',' ')}</span></li>)}</ul>
+      {result.items.length===0&&<p>No hay tickets para estos filtros. Prueba otra búsqueda o revisa tus colas autorizadas.</p>}
       <button disabled={page===1} onClick={()=>setPage(page-1)}>Anterior tickets</button><button disabled={page*25>=result.total} onClick={()=>setPage(page+1)}>Siguiente tickets</button>
     </section>
     {create&&<section className="card" aria-label="Crear ticket"><h3>Nuevo ticket</h3><form className="filter-grid" onSubmit={e=>{e.preventDefault();act(async()=>{

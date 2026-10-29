@@ -1,5 +1,17 @@
 import {test,expect} from '@playwright/test'
 
+test('navegación móvil mantiene el portal y sus controles dentro de la pantalla',async({page})=>{
+ test.skip(!process.env.E2E_REQUESTER_PASSWORD,'Requiere solicitante demo')
+ await page.setViewportSize({width:390,height:844})
+ await login(page,process.env.E2E_REQUESTER_USER,process.env.E2E_REQUESTER_PASSWORD)
+ await expect(page.getByRole('heading',{name:'Portal del solicitante',exact:true})).toBeVisible()
+ await expect(page.getByRole('region',{name:'Crear ticket',exact:true})).toBeVisible()
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true)
+ await page.getByRole('tab',{name:'FAQ',exact:true}).click()
+ await expect(page.getByLabel('Buscar en FAQ')).toBeVisible()
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true)
+})
+
 async function login(page,user,password){
  await page.goto('/');await page.getByLabel('Usuario o correo').fill(user)
  await page.getByLabel('Contraseña',{exact:true}).fill(password)

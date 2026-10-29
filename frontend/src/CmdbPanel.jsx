@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const API = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 const emptyCI = { codigo: '', nombre: '', clasificacion_id: '', ubicacion_id: '', responsable_usuario_id: '',
@@ -31,6 +31,8 @@ export default function CmdbPanel({ token, role }) {
   const [result, setResult] = useState({ items: [], total: 0 })
   const [revision, setRevision] = useState(0)
   const [detail, setDetail] = useState(null)
+  const detailRef = useRef(null)
+  useEffect(() => { if (detail) detailRef.current?.scrollIntoView({ block: 'start' }) }, [detail?.id])
   const [impact, setImpact] = useState(null)
   const [ciForm, setCiForm] = useState(emptyCI)
   const [editing, setEditing] = useState(null)
@@ -95,7 +97,7 @@ export default function CmdbPanel({ token, role }) {
 
   return <section aria-label="CMDB">
     <div className="card"><h2>CMDB</h2><p>{report?.dispositivos_activos ?? 0} dispositivos activos</p>
-      <p>Clasificación disponible: tipos del Excel. La jerarquía docente multinivel sigue pendiente de verificación.</p>
+      <p>La clasificación organiza tus CI. Las relaciones técnicas permiten explorar sus dependencias.</p>
       {report && <details><summary>Distribución por clasificación</summary><ul>{report.por_clasificacion.map((r) => <li key={r.id}>{r.codigo} · nivel configurado {r.nivel}: {r.dispositivos_subarbol}</li>)}</ul></details>}
     </div>
     {error && <p role="alert" className="error">{error}</p>}{notice && <p role="status">{notice}</p>}
@@ -108,11 +110,12 @@ export default function CmdbPanel({ token, role }) {
         <label>Clase de registro<select value={draft.es_dispositivo} onChange={(e) => selected('es_dispositivo', e.target.value)}><option value="">Todos los CI</option><option value="true">Dispositivos físicos</option><option value="false">Otros CI</option></select></label>
         <button>Aplicar filtros CMDB</button>
       </form><p>{result.total} resultados · página {page}</p>
-      <ul>{result.items.map((ci) => <li key={ci.id}><button className="small-button" onClick={() => show(ci.id)}>{ci.codigo}</button> · {ci.nombre} · {ci.clasificacion_nombre} · ID {ci.id} · {ci.activo ? 'Activo' : 'Inactivo'}</li>)}</ul>
+      <ul className="record-list">{result.items.map((ci) => <li key={ci.id}><button className="small-button" onClick={() => show(ci.id)}>{ci.codigo}</button><div className="record-body"><strong>{ci.nombre}</strong><small>{ci.clasificacion_nombre} · ID {ci.id}</small></div><span className={`status-pill ${ci.activo ? '' : 'inactive'}`}>{ci.activo ? 'Activo' : 'Inactivo'}</span></li>)}</ul>
+      {result.items.length === 0 && <p>No hay dispositivos que coincidan con estos filtros.</p>}
       <button disabled={page === 1} onClick={() => setPage(page - 1)}>Anterior CMDB</button>{' '}
       <button disabled={page * 25 >= result.total} onClick={() => setPage(page + 1)}>Siguiente CMDB</button>
     </section>
-    {detail && <section className="card" aria-label="Ficha de CI"><h3>{detail.codigo} · {detail.nombre}</h3>
+    {detail && <section ref={detailRef} className="card ci-detail" aria-label="Ficha de CI"><h3>{detail.codigo} · {detail.nombre}</h3>
       <p>Clasificación: {detail.clasificacion_completa.map((c) => c.nombre).join(' → ')}</p>
       <dl>{Object.entries({ ...optionalLabels, estado: 'Estado técnico', ubicacion_id: 'ID ubicación', responsable_usuario_id: 'ID responsable' }).map(([key, label]) => <div key={key}><dt>{label}</dt><dd>{String(detail[key] ?? 'Sin dato')}</dd></div>)}</dl>
       <p>Dispositivo: {detail.dispositivo?.etiqueta ?? 'No es dispositivo físico'}</p><pre>{JSON.stringify(detail.atributos_tecnicos, null, 2)}</pre>

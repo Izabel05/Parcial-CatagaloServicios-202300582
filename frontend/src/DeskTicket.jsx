@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ProcessPanel from './ProcessPanel.jsx'
 import { downloadAttachment } from './deskApi.js'
 
 export default function DeskTicket({ticket,mode,queues,users,services,me,token,api,act,refresh,open}) {
+  const detailRef=useRef(null)
+  useEffect(()=>{detailRef.current?.scrollIntoView({block:'start'})},[ticket.id])
   const [text,setText]=useState(''),[internal,setInternal]=useState(false)
   const [target,setTarget]=useState(''),[destination,setDestination]=useState(''),[reason,setReason]=useState('')
   const [other,setOther]=useState(''),[kind,setKind]=useState('relacionado')
@@ -18,7 +20,7 @@ export default function DeskTicket({ticket,mode,queues,users,services,me,token,a
       impacto:ticket.impacto,urgencia:ticket.urgencia,canal:ticket.canal,
       ci_ids:ticket.ci.map(c=>c.id).join(','),motivo_sin_ci:ticket.motivo_sin_ci||'',motivo:''})
   }
-  return <section className="card" aria-label="Ficha de ticket"><h3>{ticket.numero} · {ticket.titulo}</h3>
+  return <section ref={detailRef} className="card ticket-detail" aria-label="Ficha de ticket"><h3>{ticket.numero} · {ticket.titulo}</h3>
     <p>{ticket.descripcion}</p><p>{ticket.proceso} · {ticket.tipo} · {ticket.estado} · prioridad {ticket.prioridad}</p>
     <p>Cola: {ticket.cola_nombre} · solicitante: {ticket.solicitante_id} · creador: {ticket.creador_id} · responsable: {ticket.responsable_id??'Sin asignar'}</p>
     <p>Servicio: {ticket.servicio_id} · nivel 1: {ticket.level_1_code}</p>
